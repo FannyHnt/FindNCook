@@ -14,8 +14,8 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
 
         // Get screen dimensions
-        double screenWidth = Screen.getPrimary().getBounds().getWidth();
-        double screenHeight = Screen.getPrimary().getBounds().getHeight();
+        double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
+        double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
 
         Scene scene = new Scene(fxmlLoader.load(), screenWidth, screenHeight);
         stage.setTitle("Hello!");
