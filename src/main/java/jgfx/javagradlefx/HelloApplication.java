@@ -36,6 +36,6 @@ public class HelloApplication extends Application {
         //service.testRecipeByPreference();
         //System.out.println(service.getAnalyzedRecipeInfomation(1095889L).keySet());
         //System.out.println(service.getAnalyzedRecipeInfomation(1095889L));
-        System.out.println(service.getRecipeInfo(1095889L));
+        //System.out.println(service.getRecipeInfo(1095889L));
     }
 }
