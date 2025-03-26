@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="jgfx.javagradlefx.controller.UtilisateurController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <Label text="Gérer mon profil" style="-fx-font-size: 20px;"/>
+    <TextField fx:id="nomField" promptText="Nom"/>
+    <TextField fx:id="regimeField" promptText="Régime alimentaire"/>
+    <TextField fx:id="intoleranceField" promptText="Ajouter une intolérance"/>
+    <Button text="Ajouter" onAction="#ajouterIntolerance"/>
+    <ListView fx:id="intoleranceList"/>
+
+    <HBox spacing="10">
+        <Button text="Sauvegarder" onAction="#sauvegarder"/>
+        <Button text="Réinitialiser" onAction="#reinitialiser"/>
+    </HBox>
+</VBox>

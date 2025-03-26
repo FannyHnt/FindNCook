@@ -1,18 +1,21 @@
 package jgfx.javagradlefx.controller;
 
-import jgfx.javagradlefx.model.Ingredient;
-import jgfx.javagradlefx.model.Nutrient;
-import jgfx.javagradlefx.model.Recette;
-import jgfx.javagradlefx.model.RecetteInfo;
+import jgfx.javagradlefx.model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class JsonHandler {
+
+    private static final String USER_FILE_PATH = "src/main/resources/data/utilisateur.json";
 
     // Transforme l'obejt JSON en liste de recettes
     public List<Recette> jsonToRecipe(JSONObject obj) {
@@ -107,4 +110,73 @@ public class JsonHandler {
         }
         return nutrients;
     }
+
+    // Lecture de l'utilisateur depuis le fichier JSON
+    public Utilisateur chargerUtilisateur() {
+        try {
+            Path path = Paths.get(USER_FILE_PATH);
+            if (!Files.exists(path)) {
+                Utilisateur user = new Utilisateur(1L, "UtilisateurTest");
+                modifierFichierUtilisateur(user);
+                return user;
+            }
+
+            String content = Files.readString(path);
+            JSONObject obj = new JSONObject(content);
+
+            Long id = obj.getLong("id");
+            String nom = obj.getString("nom");
+
+            JSONObject prefJson = obj.getJSONObject("preference");
+            Preference preference = new Preference(prefJson.getLong("id"));
+            preference.setRegimeAlimentaire(prefJson.getString("regimeAlimentaire"));
+
+            JSONArray intolerancesArray = prefJson.getJSONArray("intolerancesAlimentaires");
+            for (int i = 0; i < intolerancesArray.length(); i++) {
+                preference.ajouterIntoleranceAlimentaire(intolerancesArray.getString(i));
+            }
+
+            Utilisateur utilisateur = new Utilisateur(id, nom);
+            utilisateur.mettreAJourPreference(preference);
+
+            return utilisateur;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Sauvegarde de l'utilisateur dans le fichier JSON
+    public void modifierFichierUtilisateur(Utilisateur utilisateur) {
+        try {
+            JSONObject obj = new JSONObject();
+            obj.put("id", utilisateur.getId());
+            obj.put("nom", utilisateur.getNom());
+
+            Preference pref = utilisateur.getPreference();
+            JSONObject prefJson = new JSONObject();
+            prefJson.put("id", pref.getId());
+            prefJson.put("regimeAlimentaire", pref.getRegimeAlimentaire());
+            prefJson.put("intolerancesAlimentaires", pref.getIntolerancesAlimentaires());
+
+            obj.put("preference", prefJson);
+
+            Files.createDirectories(Paths.get("src/main/resources/data"));
+            Files.writeString(Paths.get(USER_FILE_PATH), obj.toString(4));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Réinitialisation de l'utilisateur : nom vide, préférences par défaut
+    public void reinitialiserFichierUtilisateur() {
+        Utilisateur utilisateur = new Utilisateur(1L, "");
+        Preference preference = new Preference(1L);
+        preference.setRegimeAlimentaire("");
+        preference.setIntolerancesAlimentaires(new ArrayList<>());
+        utilisateur.mettreAJourPreference(preference);
+        modifierFichierUtilisateur(utilisateur);
+    }
+
 }

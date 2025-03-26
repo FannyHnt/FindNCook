@@ -1,0 +1,9 @@
+{
+  "id": 123,
+  "nom": "",
+  "preference": {
+    "id": 123,
+    "regimeAlimentaire": "",
+    "intolerancesAlimentaires": []
+  }
+}
