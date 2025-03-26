@@ -1,20 +1,43 @@
 package jgfx.javagradlefx.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Preference {
     private Long id;
-    private List<String> regimesAlimentaires;
+    private String regimeAlimentaire;
     private List<String> intolerancesAlimentaires;
 
-    //methode pour ajourter un regime alimentaire
-    public void ajouterRegimeAlimentaire(String regimeAlimentaire){
-        this.regimesAlimentaires.add(regimeAlimentaire);
+    //constructeur
+    public Preference(Long id){
+        this.id = id;
+        regimeAlimentaire = "";
+        intolerancesAlimentaires = new ArrayList<String>();
     }
 
-    //méthode pour supprimer un regime alimentaire
-    public void supprimerRegimeAlimentaire(String regimeAlimentaire){
-        this.regimesAlimentaires.remove(regimeAlimentaire);
+    //getters et setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRegimeAlimentaire() {
+        return regimeAlimentaire;
+    }
+
+    public void setRegimeAlimentaire(String regimeAlimentaire) {
+        this.regimeAlimentaire = regimeAlimentaire;
+    }
+
+    public List<String> getIntolerancesAlimentaires() {
+        return intolerancesAlimentaires;
+    }
+
+    public void setIntolerancesAlimentaires(List<String> intolerancesAlimentaires) {
+        this.intolerancesAlimentaires = intolerancesAlimentaires;
     }
 
     //méthode pour ajouter une intolérance alimentaire

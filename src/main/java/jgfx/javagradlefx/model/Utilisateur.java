@@ -6,16 +6,45 @@ public class Utilisateur {
     private Preference preference;
     private Favoris favoris;
 
+    //constructeur
+    public Utilisateur(Long id, String nom){
+        this.id = id;
+        this.nom = nom;
+        this.preference = new Preference(id);
+    }
+
+    //getters et setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Preference getPreference() {
+        return preference;
+    }
+
+    //Methode pour mettre à jour les préférences de l'utilisateur
+    public void mettreAJourPreference(Preference preference) {
+        this.preference = preference;
+    }
+
     // méthodes pour ajouter les recettes dans les favoris
     public void ajouterFavoris(Recette recette) {
     }
 
     //methodes pour suppirmer les recettes des favoris
     public void supprimerFavoris(Recette recette) {
-    }
-
-    //Methode pour mettre à jour les préférences de l'utilisateur
-    public void mettreAJourPreference(Preference preference) {
     }
 
 }
