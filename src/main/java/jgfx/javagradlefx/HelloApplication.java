@@ -10,6 +10,8 @@ import jgfx.javagradlefx.model.Preference;
 import jgfx.javagradlefx.model.Utilisateur;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 
 public class HelloApplication extends Application {
@@ -27,10 +29,10 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
-        SpoonacularService service = new SpoonacularService();
-        service.essaie();
-        service.testRecipeByPreference();
+    public static void main(String[] args) throws UnsupportedEncodingException {
+        //launch();
+        //SpoonacularService service = new SpoonacularService();
+        //service.getRecipe("tomato rice");
+        //service.testRecipeByPreference();
     }
 }

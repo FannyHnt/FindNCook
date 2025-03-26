@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import jgfx.javagradlefx.model.Preference;
@@ -15,16 +16,18 @@ import javax.swing.*;
 
 
 public class SpoonacularService {
+    private JsonHandler jsonHandler = new JsonHandler();
     private String key = "f983acdf88c24b66b7705299529f9032";
     private String prefix = "https://api.spoonacular.com/recipes/";
 
-    public void essaie() {
+    public List<Recette> getRecipe(String query) throws RuntimeException {
         try {
+
             String complex = "complexSearch";
             // Create a URL object with the API endpoint
 
-            //URL url = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=f983acdf88c24b66b7705299529f9032");
-            URL url = new URL(prefix + complex + "?apiKey=" + key);
+            //URL url = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=f983acdf88c24b66b7705299529f9032&query=pasta");
+            URL url = new URL(prefix + complex + "?apiKey=" + key + "&query=" + URLEncoder.encode(query, "UTF-8"));
 
             // Open a connection
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -55,23 +58,16 @@ public class SpoonacularService {
             System.out.println("essaie requete complexSearch sans parametre");
             System.out.println(obj.getJSONArray("results"));
             System.out.println("Nombre de recettes retournées: " + obj.getJSONArray("results").length() + "\n");
+            return jsonHandler.JsonResultsToRecettes(obj);
 
         } catch (Exception e) {
             e.printStackTrace();
+            throw new RuntimeException("IL y a un problème au niveau du query de la fonction getRecipe");
         }
     }
 
-    public List<Recette> JsonResultsToRecettes(JSONObject obj) {
-        List<Recette> recettes = new ArrayList<Recette>();
-        for (int i = 0; i < obj.getJSONArray("results").length(); i++) {
-            JSONObject recette = obj.getJSONArray("results").getJSONObject(i);
-            Recette rec = new Recette(recette.getLong("id"), recette.getString("title"), recette.getString("image"));
-            recettes.add(rec);
-        }
-        return recettes;
-    }
 
-    public List<Recette> getRecipeByPrefs(String regime, List<String> intolerancesAlimentaires) {
+    public List<Recette> getRecipeByPrefs(String regime, List<String> intolerancesAlimentaires) throws RuntimeException{
         try {
             // intégrer le paramètre de régime alimentaire
             String diet = "";
@@ -118,11 +114,11 @@ public class SpoonacularService {
             System.out.println(obj.getJSONArray("results"));
             System.out.println("Nombre de recettes retournées: " + obj.getJSONArray("results").length() + "\n");
 
-            return JsonResultsToRecettes(obj);
+            return jsonHandler.JsonResultsToRecettes(obj);
         } catch (Exception e) {
             e.printStackTrace();
 
-            return null;
+            throw  new RuntimeException("Il y a un problème au niveau du query de la fonction getRecipeByPrefs");
         }
     }
 
