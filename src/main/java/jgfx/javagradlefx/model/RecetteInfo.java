@@ -5,6 +5,8 @@ import java.util.List;
 
 public class RecetteInfo {
     private Long id;
+    private String nom;
+    private String image;
     private int portion;
     private double tempsPreparation;
     private List<Ingredient> ingredientList;
@@ -13,8 +15,8 @@ public class RecetteInfo {
     private List<String> regimesAlimentaires;
     private List<Nutrient> nutrients;
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return id.toString();
     }
 
     @Override
@@ -30,45 +32,24 @@ public class RecetteInfo {
                 '}';
     }
 
-    public RecetteInfo(Long id, int portion,
-                       double tempsPreparation,
-                       List<Ingredient> ingredientList,
-                       List<String> etapes,
-                       List<String> regimesAlimentaires,
-                       List<Nutrient> nutrients) {
+    public RecetteInfo(Long id, String nom, String image, List<Nutrient> nutrients, List<String> regimesAlimentaires, List<String> etapes, List<Ingredient> ingredientList, double tempsPreparation, int portion) {
         this.id = id;
-        this.portion = portion;
-        this.tempsPreparation = tempsPreparation;
-        this.ingredientList = ingredientList;
-        this.etapes = etapes;
-        this.regimesAlimentaires = regimesAlimentaires;
+        this.nom = nom;
+        this.image = image;
         this.nutrients = nutrients;
+        this.regimesAlimentaires = regimesAlimentaires;
+        this.etapes = etapes;
+        this.ingredientList = ingredientList;
+        this.tempsPreparation = tempsPreparation;
+        this.portion = portion;
+
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setPortion(int portion) {
-        this.portion = portion;
-    }
 
-    public void setTempsPreparation(double tempsPreparation) {
-        this.tempsPreparation = tempsPreparation;
-    }
-
-    public void setIngredientList(List<Ingredient> ingredientList) {
-        this.ingredientList = ingredientList;
-    }
-
-    public void setEtapes(List<String> etapes) {
-        this.etapes = etapes;
-    }
-
-
-    public void setRegimesAlimentaires(List<String> regimesAlimentaires) {
-        this.regimesAlimentaires = regimesAlimentaires;
-    }
 
     public int getPortion() {
         return portion;
@@ -88,6 +69,18 @@ public class RecetteInfo {
 
     public List<String> getRegimesAlimentaires() {
         return regimesAlimentaires;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public List<Nutrient> getNutrients() {
+        return nutrients;
     }
 }
 

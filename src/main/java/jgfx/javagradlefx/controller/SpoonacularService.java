@@ -64,7 +64,7 @@ public class SpoonacularService {
 
     }
 
-    // Requetes pour récupere des recette d'apres les recommandation du client
+    // Requetes pour récupere les recettes d'apres les recommandations du client
     public List<Recette> getRecipe(String query) throws RuntimeException {
         try {
 
@@ -155,7 +155,7 @@ public class SpoonacularService {
         }
     }
 
-    // Requete pour récupérer les les instructions d'une recette de manière plus detaillée
+    // Requete pour récupérer  les instructions d'une recette de manière plus detaillée
     public JSONArray getAnalyzedRecipeInfomation(Long id) throws RuntimeException {
         try {
             // Création de l'URL

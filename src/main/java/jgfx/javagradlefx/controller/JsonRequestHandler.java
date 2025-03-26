@@ -32,6 +32,8 @@ public class JsonRequestHandler {
         Long id = obj.getLong("id");
         int portion = obj.getInt("servings");
         double tempsPreparation = obj.getDouble("readyInMinutes");
+        String title = obj.getString("title");
+        String imageurl = obj.getString("image");
         List<String> steps = new ArrayList<>();
         List<Ingredient> ingredientList = jsonToIngredients(ingredientsObj, id);
         JSONArray dietsArray = obj.getJSONArray("diets");
@@ -44,7 +46,7 @@ public class JsonRequestHandler {
             steps.add(key);
         }
 
-        return new RecetteInfo(id, portion, tempsPreparation, ingredientList, steps, regimesAlimentaires, nutrients);
+        return new RecetteInfo(id, title, imageurl, nutrients, regimesAlimentaires, steps, ingredientList, tempsPreparation, portion );
     }
     // Methode pour extraire les ingrédients et les etapes d'une recette
     public Map<String, List<String>> extractStepsAndIngredients(JSONArray instructionsArray) {
