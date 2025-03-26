@@ -5,14 +5,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import jgfx.javagradlefx.model.Preference;
+import jgfx.javagradlefx.model.RecetteInfo;
 import jgfx.javagradlefx.model.Utilisateur;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import jgfx.javagradlefx.model.Recette;
-
-import javax.swing.*;
 
 
 public class SpoonacularService {
@@ -139,4 +140,167 @@ public class SpoonacularService {
         }
     }
 
+    // Requetes pour récuprérer une recette de manière plus détaillé
+    public JSONObject getRecipeInformation(Long id) throws RuntimeException {
+        try {
+            // Création de l'URL
+            URL url = new URL(prefix + id + "/information?apiKey=" + key);
+
+            // Ouverture de connexion et définition de la méthode de requete
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            int responseCode = connection.getResponseCode();
+
+
+            // Lecture de la réponse et conversion en objet JSON
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuilder content = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+
+            in.close();
+            connection.disconnect();
+
+            JSONObject obj = new JSONObject(content.toString());
+            //System.out.println(obj);
+
+            // Affichage de la réponse
+            //Map<String, List<String>> step = getAnalyzedRecipeInfomation(id);
+            //JSONArray array = getAnalyzedRecipeInfomation(id);
+            //System.out.println(obj.getString("J'y suis"));
+
+            return obj;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Il y a un problème au niveau du query de la fonction getRecipeDetails");
+        }
+    }
+
+    // Requete pour récupérer les les instructions d'une recette de manière plus detaillée
+    public JSONArray getAnalyzedRecipeInfomation(Long id) throws RuntimeException {
+        try {
+            // Création de l'URL
+            URL url = new URL(prefix + id + "/analyzedInstructions?apiKey=" + key);
+
+            // Ouverture de connexion et définition de la méthode de requête
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            int responseCode = connection.getResponseCode();
+
+            // Lecture de la réponse et conversion en objet JSON
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuilder content = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+
+            in.close();
+            connection.disconnect();
+
+            JSONArray instructionsArray = new JSONArray(content.toString());
+
+            // Extraction des étapes, ingrédients et équipements
+//            for (int i = 0; i < instructionsArray.length(); i++) {
+//                JSONObject instruction = instructionsArray.getJSONObject(i);
+//                JSONArray steps = instruction.getJSONArray("steps");
+//                for (int j = 0; j < steps.length(); j++) {
+//                    JSONObject step = steps.getJSONObject(j);
+//                    System.out.println("Étape " + step.getInt("number") + ": " + step.getString("step"));
+//
+//                    // Extraction des ingrédients
+//                    JSONArray ingredients = step.getJSONArray("ingredients");
+//                    for (int k = 0; k < ingredients.length(); k++) {
+//                        JSONObject ingredient = ingredients.getJSONObject(k);
+//                        System.out.println("  Ingrédient: " + ingredient.getString("name"));
+//                    }
+//
+//                    // Extraction des équipements
+//                    JSONArray equipment = step.getJSONArray("equipment");
+//                    for (int l = 0; l < equipment.length(); l++) {
+//                        JSONObject equip = equipment.getJSONObject(l);
+//                        System.out.println("  Équipement: " + equip.getString("name"));
+//                    }
+//                }
+//            }
+            //System.out.println(jsonHandler.extractStepsAndIngredients(instructionsArray));
+            return instructionsArray;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Il y a un problème au niveau du query de la fonction getAnalyzedRecipeInfomation");
+        }
+    }
+
+    //Methode pour récupérer les informations des ingredients
+    public JSONObject getIngredientById(Long Id) {
+        try {
+            // Création de l'URL
+            URL url = new URL(prefix + Id + "/ingredientWidget.json?apiKey=" + key);
+
+            // Ouverture de connexion et définition de la méthode de requête
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            int responseCode = connection.getResponseCode();
+
+            // Lecture de la réponse et conversion en objet JSON
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuilder content = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+
+            in.close();
+            connection.disconnect();
+
+            JSONObject obj = new JSONObject(content.toString());
+            return obj;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Il y a un problème au niveau du query de la fonction getIngredientById");
+        }
+
+    }
+
+    // Methode pour récupérer les informations récupérer les apports nutritionnels des plats
+    public JSONObject getNutritionInfo(Long id) {
+        try {
+            // Création de l'URL
+            URL url = new URL(prefix + id + "/nutritionWidget.json?apiKey=" + key);
+
+            // Ouverture de connexion et définition de la méthode de requête
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            int responseCode = connection.getResponseCode();
+
+            // Lecture de la réponse et conversion en objet JSON
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuilder content = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+
+            in.close();
+            connection.disconnect();
+
+            JSONObject obj = new JSONObject(content.toString());
+            return obj;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Il y a un problème au niveau du query de la fonction getNutritionInfo");
+        }
+    }
+
+    // Méthode pour concevoir la recette detaillée à partir des deux requêtes
+    public RecetteInfo getRecipeInfo(long id) {
+        JSONObject obj = getRecipeInformation(id);
+        JSONArray array = getAnalyzedRecipeInfomation(id);
+        Map<String , List<String>> stepsAndIngredients = jsonHandler.extractStepsAndIngredients(array);
+        JSONObject ingredientsObj = getIngredientById(id);
+        JSONObject nutritionObj = getNutritionInfo(id);
+        return jsonHandler.jsonToRecipeInfo(obj, stepsAndIngredients, ingredientsObj, nutritionObj);
+    }
 }

@@ -1,8 +1,6 @@
 package jgfx.javagradlefx.model;
 
 
-import jgfx.javagradlefx.controller.SpoonacularService;
-
 import java.util.List;
 
 public class RecetteInfo {
@@ -11,21 +9,40 @@ public class RecetteInfo {
     private double tempsPreparation;
     private List<Ingredient> ingredientList;
     private List<String> etapes;
-    private List<String> ustensiles;
+    //private List<String> ustensiles;
     private List<String> regimesAlimentaires;
+    private List<Nutrient> nutrients;
 
     public Long getId() {
         return id;
     }
 
-    public RecetteInfo(Long id, int portion, double tempsPreparation, List<Ingredient> ingredientList, List<String> etapes, List<String> ustensiles, List<String> regimesAlimentaires) {
+    @Override
+    public String toString() {
+        return "RecetteInfo{" +
+                "id=" + id +
+                ", portion=" + portion +
+                ", tempsPreparation=" + tempsPreparation +
+                ", ingredientList=" + ingredientList +
+                ", etapes=" + etapes +
+                ", regimesAlimentaires=" + regimesAlimentaires +
+                ", nutrients=" + nutrients +
+                '}';
+    }
+
+    public RecetteInfo(Long id, int portion,
+                       double tempsPreparation,
+                       List<Ingredient> ingredientList,
+                       List<String> etapes,
+                       List<String> regimesAlimentaires,
+                       List<Nutrient> nutrients) {
         this.id = id;
         this.portion = portion;
         this.tempsPreparation = tempsPreparation;
         this.ingredientList = ingredientList;
         this.etapes = etapes;
-        this.ustensiles = ustensiles;
         this.regimesAlimentaires = regimesAlimentaires;
+        this.nutrients = nutrients;
     }
 
     public void setId(Long id) {
@@ -48,9 +65,6 @@ public class RecetteInfo {
         this.etapes = etapes;
     }
 
-    public void setUstensiles(List<String> ustensiles) {
-        this.ustensiles = ustensiles;
-    }
 
     public void setRegimesAlimentaires(List<String> regimesAlimentaires) {
         this.regimesAlimentaires = regimesAlimentaires;
@@ -70,10 +84,6 @@ public class RecetteInfo {
 
     public List<String> getEtapes() {
         return etapes;
-    }
-
-    public List<String> getUstensiles() {
-        return ustensiles;
     }
 
     public List<String> getRegimesAlimentaires() {
