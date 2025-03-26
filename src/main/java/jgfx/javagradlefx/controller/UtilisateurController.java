@@ -18,12 +18,12 @@ public class UtilisateurController {
     @FXML private TextField intoleranceField;
     @FXML private ListView<String> intoleranceList;
 
-    private JsonHandler jsonHandler = new JsonHandler();
+    private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
     private Utilisateur utilisateur;
 
     @FXML
     public void initialize() {
-        utilisateur = jsonHandler.chargerUtilisateur();
+        utilisateur = jsonRequestHandler.chargerUtilisateur();
         nomField.setText(utilisateur.getNom());
         regimeField.setText(utilisateur.getPreference().getRegimeAlimentaire());
         intoleranceList.getItems().addAll(utilisateur.getPreference().getIntolerancesAlimentaires());
@@ -44,13 +44,13 @@ public class UtilisateurController {
         Preference pref = utilisateur.getPreference();
         pref.setRegimeAlimentaire(regimeField.getText().trim());
         pref.setIntolerancesAlimentaires(intoleranceList.getItems());
-        jsonHandler.modifierFichierUtilisateur(utilisateur);
+        jsonRequestHandler.modifierFichierUtilisateur(utilisateur);
     }
 
     @FXML
     public void reinitialiser() {
-        jsonHandler.reinitialiserFichierUtilisateur();
-        utilisateur = jsonHandler.chargerUtilisateur();
+        jsonRequestHandler.reinitialiserFichierUtilisateur();
+        utilisateur = jsonRequestHandler.chargerUtilisateur();
         nomField.setText("");
         regimeField.setText("");
         intoleranceField.clear();

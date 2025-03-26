@@ -16,10 +16,19 @@ public class Ingredient {
                 '}';
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
     public Ingredient(long id, String name, String unite, int quantite) {
         this.id = id;
         this.name = name;
         this.unite = unite;
         this.quantite = quantite;
     }
+
 }

@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import jgfx.javagradlefx.model.Preference;
 import jgfx.javagradlefx.model.Recette;
 import jgfx.javagradlefx.model.Utilisateur;
 
@@ -18,7 +17,7 @@ public class AccueilController {
 
     private SpoonacularService spoonacularService = new SpoonacularService();
     private List<Recette> recipes;
-    private JsonHandler json = new JsonHandler();
+    private JsonRequestHandler json = new JsonRequestHandler();
     private Utilisateur user = json.chargerUtilisateur();
 
     @FXML

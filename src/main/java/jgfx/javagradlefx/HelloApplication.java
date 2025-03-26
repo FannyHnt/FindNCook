@@ -5,13 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import jgfx.javagradlefx.controller.SpoonacularService;
-import jgfx.javagradlefx.model.Preference;
-import jgfx.javagradlefx.model.Utilisateur;
+import jgfx.javagradlefx.controller.JsonFilesHandler;
+import jgfx.javagradlefx.model.Ingredient;
+import jgfx.javagradlefx.model.ListeDecourses;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HelloApplication extends Application {
@@ -30,7 +31,20 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        launch();
+        //launch();
+        JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
+        ListeDecourses listeDecourses = new ListeDecourses();
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(new Ingredient(1, "pomme", "g", 5));
+        ingredients.add(new Ingredient(2, "orange", "g", 4));
+        ingredients.add(new Ingredient(3, "avocat", "kg", 3));
+        ingredients.add(new Ingredient(4, "huile", "mg", 6));
+
+        System.out.println("----------------Avant---------------");
+        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/ListeDeCourse.json"));
+        listeDecourses.genereListeDeCourseAutomatiquement(ingredients);
+        System.out.println("----------------Après---------------");
+        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/ListeDeCourse.json"));
         //SpoonacularService service = new SpoonacularService();
         //service.getRecipe("tomato rice");
         //service.testRecipeByPreference();

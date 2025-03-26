@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JsonHandler {
+public class JsonRequestHandler {
 
     private static final String USER_FILE_PATH = "src/main/resources/data/utilisateur.json";
 

@@ -20,7 +20,7 @@ import jgfx.javagradlefx.model.Recette;
 
 public class SpoonacularService {
 
-    private JsonHandler jsonHandler = new JsonHandler();
+    private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
     private String key = "e8a0cb265d1d4ab79427f52aba817b54";
     private String prefix = "https://api.spoonacular.com/recipes/";
 
@@ -78,7 +78,7 @@ public class SpoonacularService {
             // Convert the response to a JSON object
             JSONObject obj = new JSONObject(connexion(url).toString());
 
-            return jsonHandler.jsonToRecipe(obj);
+            return jsonRequestHandler.jsonToRecipe(obj);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,7 +117,7 @@ public class SpoonacularService {
             System.out.println(obj.getJSONArray("results"));
             System.out.println("Nombre de recettes retournées: " + obj.getJSONArray("results").length() + "\n");
 
-            return jsonHandler.jsonToRecipe(obj);
+            return jsonRequestHandler.jsonToRecipe(obj);
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -200,9 +200,9 @@ public class SpoonacularService {
     public RecetteInfo getRecipeInfo(long id) {
         JSONObject obj = getRecipeInformation(id);
         JSONArray array = getAnalyzedRecipeInfomation(id);
-        Map<String , List<String>> stepsAndIngredients = jsonHandler.extractStepsAndIngredients(array);
+        Map<String , List<String>> stepsAndIngredients = jsonRequestHandler.extractStepsAndIngredients(array);
         JSONObject ingredientsObj = getIngredientById(id);
         JSONObject nutritionObj = getNutritionInfo(id);
-        return jsonHandler.jsonToRecipeInfo(obj, stepsAndIngredients, ingredientsObj, nutritionObj);
+        return jsonRequestHandler.jsonToRecipeInfo(obj, stepsAndIngredients, ingredientsObj, nutritionObj);
     }
 }
