@@ -1,8 +1,10 @@
 package jgfx.javagradlefx.controller;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
@@ -19,19 +21,12 @@ import jgfx.javagradlefx.model.Recette;
 public class SpoonacularService {
 
     private JsonHandler jsonHandler = new JsonHandler();
-    private String key = "f983acdf88c24b66b7705299529f9032";
+    private String key = "e8a0cb265d1d4ab79427f52aba817b54";
     private String prefix = "https://api.spoonacular.com/recipes/";
 
-    // Requetes pour récupere des recette d'apres les recommandation du client
-    public List<Recette> getRecipe(String query) throws RuntimeException {
+    // Cette méthode permet d'ouvrire une connexion avec l'API de spoonacular
+    public StringBuilder connexion(URL url) {
         try {
-
-            String complex = "complexSearch";
-            // Create a URL object with the API endpoint
-
-            //URL url = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=f983acdf88c24b66b7705299529f9032&query=pasta");
-            URL url = new URL(prefix + complex + "?apiKey=" + key + "&query=" + URLEncoder.encode(query, "UTF-8"));
-
             // Open a connection
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -40,7 +35,7 @@ public class SpoonacularService {
 
             // Get the response code
             int responseCode = connection.getResponseCode();
-            System.out.println("Response Code: " + responseCode);
+
 
             // Read the response
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -53,14 +48,29 @@ public class SpoonacularService {
             // Close the connections
             in.close();
             connection.disconnect();
+            return  content;
+        } catch (RuntimeException e) {
+            throw new RuntimeException("Il y a un problème au niveau du query de la fonction connexion");
+        } catch (ProtocolException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    // Requetes pour récupere des recette d'apres les recommandation du client
+    public List<Recette> getRecipe(String query) throws RuntimeException {
+        try {
+
+            String complex = "complexSearch";
+            // Create a URL object with the API endpoint
+
+            URL url = new URL(prefix + complex + "?apiKey=" + key + "&query=" + URLEncoder.encode(query, "UTF-8"));
 
             // Convert the response to a JSON object
-            JSONObject obj = new JSONObject(content.toString());
+            JSONObject obj = new JSONObject(connexion(url).toString());
 
-            // Print the response
-            System.out.println("essaie requete complexSearch sans parametre");
-            System.out.println(obj.getJSONArray("results"));
-            System.out.println("Nombre de recettes retournées: " + obj.getJSONArray("results").length() + "\n");
             return jsonHandler.jsonToRecipe(obj);
 
         } catch (Exception e) {
@@ -95,24 +105,7 @@ public class SpoonacularService {
             String request = prefix + "complexSearch?apiKey=" + key + diet + intolerances+ number;
             URL url = new URL(request);
 
-            // Ouverture de connexion et définition de la méthode de requete
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            int responseCode = connection.getResponseCode();
-            System.out.println("Response Code: " + responseCode);
-
-            // Lecture de la réponse et conversion en objet JSON
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String inputLine;
-            StringBuilder content = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
-            }
-
-            in.close();
-            connection.disconnect();
-
-            JSONObject obj = new JSONObject(content.toString());
+            JSONObject obj = new JSONObject(connexion(url).toString());
 
             System.out.println(obj.getJSONArray("results"));
             System.out.println("Nombre de recettes retournées: " + obj.getJSONArray("results").length() + "\n");
@@ -146,30 +139,7 @@ public class SpoonacularService {
             // Création de l'URL
             URL url = new URL(prefix + id + "/information?apiKey=" + key);
 
-            // Ouverture de connexion et définition de la méthode de requete
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            int responseCode = connection.getResponseCode();
-
-
-            // Lecture de la réponse et conversion en objet JSON
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String inputLine;
-            StringBuilder content = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
-            }
-
-            in.close();
-            connection.disconnect();
-
-            JSONObject obj = new JSONObject(content.toString());
-            //System.out.println(obj);
-
-            // Affichage de la réponse
-            //Map<String, List<String>> step = getAnalyzedRecipeInfomation(id);
-            //JSONArray array = getAnalyzedRecipeInfomation(id);
-            //System.out.println(obj.getString("J'y suis"));
+            JSONObject obj = new JSONObject(connexion(url).toString());
 
             return obj;
         } catch (Exception e) {
@@ -184,48 +154,7 @@ public class SpoonacularService {
             // Création de l'URL
             URL url = new URL(prefix + id + "/analyzedInstructions?apiKey=" + key);
 
-            // Ouverture de connexion et définition de la méthode de requête
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            int responseCode = connection.getResponseCode();
-
-            // Lecture de la réponse et conversion en objet JSON
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String inputLine;
-            StringBuilder content = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
-            }
-
-            in.close();
-            connection.disconnect();
-
-            JSONArray instructionsArray = new JSONArray(content.toString());
-
-            // Extraction des étapes, ingrédients et équipements
-//            for (int i = 0; i < instructionsArray.length(); i++) {
-//                JSONObject instruction = instructionsArray.getJSONObject(i);
-//                JSONArray steps = instruction.getJSONArray("steps");
-//                for (int j = 0; j < steps.length(); j++) {
-//                    JSONObject step = steps.getJSONObject(j);
-//                    System.out.println("Étape " + step.getInt("number") + ": " + step.getString("step"));
-//
-//                    // Extraction des ingrédients
-//                    JSONArray ingredients = step.getJSONArray("ingredients");
-//                    for (int k = 0; k < ingredients.length(); k++) {
-//                        JSONObject ingredient = ingredients.getJSONObject(k);
-//                        System.out.println("  Ingrédient: " + ingredient.getString("name"));
-//                    }
-//
-//                    // Extraction des équipements
-//                    JSONArray equipment = step.getJSONArray("equipment");
-//                    for (int l = 0; l < equipment.length(); l++) {
-//                        JSONObject equip = equipment.getJSONObject(l);
-//                        System.out.println("  Équipement: " + equip.getString("name"));
-//                    }
-//                }
-//            }
-            //System.out.println(jsonHandler.extractStepsAndIngredients(instructionsArray));
+            JSONArray instructionsArray = new JSONArray(connexion(url).toString());
             return instructionsArray;
         } catch (Exception e) {
             e.printStackTrace();
@@ -238,24 +167,7 @@ public class SpoonacularService {
         try {
             // Création de l'URL
             URL url = new URL(prefix + Id + "/ingredientWidget.json?apiKey=" + key);
-
-            // Ouverture de connexion et définition de la méthode de requête
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            int responseCode = connection.getResponseCode();
-
-            // Lecture de la réponse et conversion en objet JSON
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String inputLine;
-            StringBuilder content = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
-            }
-
-            in.close();
-            connection.disconnect();
-
-            JSONObject obj = new JSONObject(content.toString());
+            JSONObject obj = new JSONObject(connexion(url).toString());
             return obj;
         } catch (Exception e) {
             e.printStackTrace();
@@ -269,24 +181,7 @@ public class SpoonacularService {
         try {
             // Création de l'URL
             URL url = new URL(prefix + id + "/nutritionWidget.json?apiKey=" + key);
-
-            // Ouverture de connexion et définition de la méthode de requête
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            int responseCode = connection.getResponseCode();
-
-            // Lecture de la réponse et conversion en objet JSON
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String inputLine;
-            StringBuilder content = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
-            }
-
-            in.close();
-            connection.disconnect();
-
-            JSONObject obj = new JSONObject(content.toString());
+            JSONObject obj = new JSONObject(connexion(url).toString());
             return obj;
         } catch (Exception e) {
             e.printStackTrace();
