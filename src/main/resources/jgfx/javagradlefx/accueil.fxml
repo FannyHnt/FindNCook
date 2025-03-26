@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.Image?>
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="jgfx.javagradlefx.controller.AccueilController"
+      spacing="20" alignment="TOP_CENTER" style="-fx-background-color: #a56600;" prefWidth="1200">
+
+    <!-- Barre de tâche avec les différents icônes -->
+    <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="50" style="-fx-background-color: black;" VBox.vgrow="NEVER">
+
+        <Button fx:id="userButton" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="25" fitWidth="25" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/User.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Region fx:id="headerSpacer" HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="groceryButton" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/Caddie.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Button fx:id="advancedSearchButton" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="23" fitWidth="23" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/Search.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Button fx:id="favoritesButton" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="25" fitWidth="25" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/Heart.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </HBox>
+
+    <!-- Logo et champ de recherche -->
+    <VBox spacing="15" alignment="CENTER">
+        <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@/images/Logo.PNG" />
+            </image>
+        </ImageView>
+
+        <TextField fx:id="searchField" promptText="Search recipes"
+                   style="-fx-background-radius: 10; -fx-padding: 5 10;"
+                   VBox.vgrow="NEVER"
+                   maxWidth="200"
+        />
+
+    </VBox>
+
+</VBox>
