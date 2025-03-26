@@ -43,18 +43,16 @@ public class AccueilController {
             imageView.setFitHeight(90);
             imageView.setPreserveRatio(true);
             try {
-                imageView.setImage(new Image(recette.getUrlImage(), true));
+                Image image = new Image(recette.getUrlImage(), true);
+                imageView.setImage(image);
+                if (image.isError()) {
+                    System.out.println("Erreur chargement image pour recette " + recette.getNom() + ": " + image.getException());
+                } else {
+                    System.out.println("Image chargée avec succès pour recette " + recette.getNom());
+                }
             } catch (Exception e) {
-                System.out.println("Erreur chargement image pour recette " + recette.getNom());
+                System.out.println("Exception lors du chargement de l'image pour recette " + recette.getNom() + ": " + e.getMessage());
             }
-
-            // Nom
-            Button button = new Button();
-            button.setText(recette.getNom());
-            button.setId(String.valueOf(recette.getId()));
-            button.setOnAction(event -> {
-                System.out.println("Recette sélectionnée : " + recette.getNom());
-            });
 
             Hyperlink hyperlink = new Hyperlink();
             hyperlink.setText(recette.getNom());
