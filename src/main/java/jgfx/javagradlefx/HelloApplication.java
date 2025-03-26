@@ -30,8 +30,8 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        //launch();
-        SpoonacularService service = new SpoonacularService();
+        launch();
+        //SpoonacularService service = new SpoonacularService();
         //service.getRecipe("tomato rice");
         //service.testRecipeByPreference();
         //System.out.println(service.getAnalyzedRecipeInfomation(1095889L).keySet());

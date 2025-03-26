@@ -27,6 +27,16 @@ public class SpoonacularService {
     // Cette méthode permet d'ouvrire une connexion avec l'API de spoonacular
     public StringBuilder connexion(URL url) {
         try {
+
+            String complex = "complexSearch";
+            // Create a URL object with the API endpoint
+
+            // intégrer le nombre de recette à retourner
+            String number = "&number=24";
+
+            //URL url = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=f983acdf88c24b66b7705299529f9032&query=pasta");
+            URL url = new URL(prefix + complex + "?apiKey=" + key + "&query=" + URLEncoder.encode(query, "UTF-8") + number);
+
             // Open a connection
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -99,7 +109,7 @@ public class SpoonacularService {
             }
 
             // intégrer le nombre de recette à retourner
-            String number = "&number=5";
+            String number = "&number=24";
 
             // Création de l'URL
             String request = prefix + "complexSearch?apiKey=" + key + diet + intolerances+ number;
