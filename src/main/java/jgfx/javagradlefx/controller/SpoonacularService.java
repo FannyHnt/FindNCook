@@ -15,7 +15,7 @@ import javax.swing.*;
 
 
 public class SpoonacularService {
-    private String key = "4b292240b23a42c89c878c3baf1ececd";
+    private String key = "f983acdf88c24b66b7705299529f9032";
     private String prefix = "https://api.spoonacular.com/recipes/";
 
     public void essaie() {
@@ -23,7 +23,7 @@ public class SpoonacularService {
             String complex = "complexSearch";
             // Create a URL object with the API endpoint
 
-            //URL url = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=4b292240b23a42c89c878c3baf1ececd");
+            //URL url = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=f983acdf88c24b66b7705299529f9032");
             URL url = new URL(prefix + complex + "?apiKey=" + key);
 
             // Open a connection
@@ -139,7 +139,6 @@ public class SpoonacularService {
         for(Recette rec : recommendation){
             System.out.println(rec.getId());
         }
-
     }
 
 }
