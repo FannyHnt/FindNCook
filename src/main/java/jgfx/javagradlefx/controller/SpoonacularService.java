@@ -133,7 +133,9 @@ public class SpoonacularService {
 
         System.out.println("Essaie requete complexSearch avec les préférences (diet, intolerances)");
         List<Recette> recommendation = getRecipeByPrefs(utilisateur.getPreference().getRegimeAlimentaire(), utilisateur.getPreference().getIntolerancesAlimentaires());
-        System.out.println(recommendation.toString());
+        for(Recette rec : recommendation){
+            System.out.println(rec.getId());
+        }
 
     }
 

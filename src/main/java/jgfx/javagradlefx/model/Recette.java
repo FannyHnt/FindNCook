@@ -12,6 +12,31 @@ public class Recette {
         this.urlImage = urlImage;
     }
 
+    //getters et setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
     @Override
     public String toString() {
         return id+":{id=" + id + ", nom='" + nom + "', urlImage='" + urlImage + "'}";
