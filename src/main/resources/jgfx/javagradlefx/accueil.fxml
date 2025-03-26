@@ -15,7 +15,7 @@
 
         <Button fx:id="userButton" style="-fx-background-color: transparent;">
             <graphic>
-                <ImageView fitHeight="25" fitWidth="25" preserveRatio="true">
+                <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                     <image>
                         <Image url="@/images/User.png" />
                     </image>
@@ -23,23 +23,13 @@
             </graphic>
         </Button>
 
-        <Region fx:id="headerSpacer" HBox.hgrow="ALWAYS"/>
+        <Region fx:id="Space" HBox.hgrow="ALWAYS"/>
 
         <Button fx:id="groceryButton" style="-fx-background-color: transparent;">
             <graphic>
-                <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
+                <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
                     <image>
-                        <Image url="@/images/Caddie.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-
-        <Button fx:id="advancedSearchButton" style="-fx-background-color: transparent;">
-            <graphic>
-                <ImageView fitHeight="23" fitWidth="23" preserveRatio="true">
-                    <image>
-                        <Image url="@/images/Search.png" />
+                        <Image url="@/images/caddie.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -47,14 +37,26 @@
 
         <Button fx:id="favoritesButton" style="-fx-background-color: transparent;">
             <graphic>
-                <ImageView fitHeight="25" fitWidth="25" preserveRatio="true">
+                <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
                     <image>
-                        <Image url="@/images/Heart.png" />
+                        <Image url="@/images/heart.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Button fx:id="advancedSearchButton" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="45" fitWidth="45" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/search.png" />
                     </image>
                 </ImageView>
             </graphic>
         </Button>
     </HBox>
+
+
 
     <!-- Logo et champ de recherche -->
     <VBox spacing="15" alignment="CENTER">
