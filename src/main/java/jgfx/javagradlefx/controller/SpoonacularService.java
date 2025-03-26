@@ -16,10 +16,12 @@ import javax.swing.*;
 
 
 public class SpoonacularService {
+
     private JsonHandler jsonHandler = new JsonHandler();
     private String key = "f983acdf88c24b66b7705299529f9032";
     private String prefix = "https://api.spoonacular.com/recipes/";
 
+    // Requetes pour récupere des recette d'apres les recommandation du client
     public List<Recette> getRecipe(String query) throws RuntimeException {
         try {
 
@@ -58,7 +60,7 @@ public class SpoonacularService {
             System.out.println("essaie requete complexSearch sans parametre");
             System.out.println(obj.getJSONArray("results"));
             System.out.println("Nombre de recettes retournées: " + obj.getJSONArray("results").length() + "\n");
-            return jsonHandler.JsonResultsToRecettes(obj);
+            return jsonHandler.jsonToRecipe(obj);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +68,7 @@ public class SpoonacularService {
         }
     }
 
-
+    // Requete pour récupérer des recettes d'après les préférences du client
     public List<Recette> getRecipeByPrefs(String regime, List<String> intolerancesAlimentaires) throws RuntimeException{
         try {
             // intégrer le paramètre de régime alimentaire
@@ -114,7 +116,7 @@ public class SpoonacularService {
             System.out.println(obj.getJSONArray("results"));
             System.out.println("Nombre de recettes retournées: " + obj.getJSONArray("results").length() + "\n");
 
-            return jsonHandler.JsonResultsToRecettes(obj);
+            return jsonHandler.jsonToRecipe(obj);
         } catch (Exception e) {
             e.printStackTrace();
 

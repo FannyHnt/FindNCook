@@ -8,7 +8,7 @@ import java.util.List;
 
 public class JsonHandler {
 
-    public List<Recette> JsonResultsToRecettes(JSONObject obj) {
+    public List<Recette> jsonToRecipe(JSONObject obj) {
         List<Recette> recettes = new ArrayList<Recette>();
         for (int i = 0; i < obj.getJSONArray("results").length(); i++) {
             JSONObject recette = obj.getJSONArray("results").getJSONObject(i);
