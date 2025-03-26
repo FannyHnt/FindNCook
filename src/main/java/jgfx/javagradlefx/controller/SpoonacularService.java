@@ -20,8 +20,11 @@ public class SpoonacularService {
 
     public void essaie() {
         try {
+            String complex = "complexSearch";
             // Create a URL object with the API endpoint
-            URL url = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=4b292240b23a42c89c878c3baf1ececd");
+
+            //URL url = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=4b292240b23a42c89c878c3baf1ececd");
+            URL url = new URL(prefix + complex + "?apiKey=" + key);
 
             // Open a connection
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
