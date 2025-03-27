@@ -15,6 +15,7 @@
     <top>
         <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="50"
               style="-fx-background-color: black;">
+
             <Button fx:id="backButton" style="-fx-background-color: transparent;">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
@@ -91,6 +92,10 @@
                     <Label fx:id="etapesLabel" styleClass="info-label"/>
                     <Label fx:id="regimesAlimentairesLabel" styleClass="info-label"/>
                     <Label fx:id="nutrientsLabel" styleClass="info-label"/>
+
+                    <!-- Ajout des nouveaux boutons -->
+                    <Button fx:id="addToShoppingListButton" text="add to shopping list" styleClass="action-button" onAction="#addToShoppingList"/>
+                    <Button fx:id="addToFavoriteListButton" text="add to favorite list" styleClass="action-button" onAction="#addToFavoriteList"/>
                 </VBox>
             </content>
         </ScrollPane>

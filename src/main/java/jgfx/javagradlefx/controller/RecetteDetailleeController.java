@@ -154,4 +154,13 @@ public class RecetteDetailleeController {
         }
         return sb.toString();
     }
+
+    @FXML
+    private void addToShoppingList() {
+        System.out.println("Added to shopping list");
+    }
+    @FXML
+    private void addToFavoriteList() {
+        System.out.println("Added to favorite list");
+    }
 }

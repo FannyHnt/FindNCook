@@ -94,23 +94,20 @@ public class AccueilController {
         showRecipes();
     }
 
-        @FXML
-        private void goToUserPage() throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/utilisateur.fxml"));
+    @FXML
+    private void goToUserPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/utilisateur.fxml"));
 
-            // Get screen dimensions
-            double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
-            double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
+        // Get screen dimensions
+        double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
+        double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
 
-            Scene root =new Scene(loader.load(),screenWidth,screenHeight);
+        Scene root =new Scene(loader.load(),screenWidth,screenHeight);
 
-            Stage stage = (Stage) searchField.getScene().getWindow();
-            stage.setScene(root);
-            stage.show();
+        Stage stage = (Stage) searchField.getScene().getWindow();
+        stage.setScene(root);
+        stage.show();
 
-        }
-
-
-
+    }
 }
 
