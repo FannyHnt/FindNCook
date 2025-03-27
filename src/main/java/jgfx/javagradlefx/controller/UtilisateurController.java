@@ -10,40 +10,42 @@ import jgfx.javagradlefx.model.Utilisateur;
 import jgfx.javagradlefx.model.Preference;
 
 import java.io.IOException;
+import java.util.List;
 
 public class UtilisateurController {
 
-    @FXML private TextField nomField;
-    @FXML private TextField regimeField;
-    @FXML private TextField intoleranceField;
-    @FXML private ListView<String> intoleranceList;
+    @FXML private TextField nameField;
+    @FXML private ComboBox dietField;
+
 
     private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
     private Utilisateur utilisateur;
 
+    private List<String> intolerancesPossibles = List.of("Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat");
+    private List<String> regimesPossibles = List.of("","Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo","Primal", "Whole30", "Low FODMAP");
+
     @FXML
     public void initialize() {
         utilisateur = jsonRequestHandler.chargerUtilisateur();
-        nomField.setText(utilisateur.getNom());
-        regimeField.setText(utilisateur.getPreference().getRegimeAlimentaire());
-        intoleranceList.getItems().addAll(utilisateur.getPreference().getIntolerancesAlimentaires());
+        nameField.setText(utilisateur.getNom());
+        for (String regime : regimesPossibles) {
+            dietField.getItems().add(regime);
+        }
+        //dietField.setText(utilisateur.getPreference().getRegimeAlimentaire());
+        //intoleranceList.getItems().addAll(utilisateur.getPreference().getIntolerancesAlimentaires());
     }
 
     @FXML
     public void ajouterIntolerance() {
-        String intolerance = intoleranceField.getText().trim();
-        if (!intolerance.isEmpty() && !intoleranceList.getItems().contains(intolerance)) {
-            intoleranceList.getItems().add(intolerance);
-            intoleranceField.clear();
-        }
+
     }
 
     @FXML
     public void sauvegarder() {
-        utilisateur.setNom(nomField.getText().trim());
+        utilisateur.setNom(nameField.getText().trim());
         Preference pref = utilisateur.getPreference();
-        pref.setRegimeAlimentaire(regimeField.getText().trim());
-        pref.setIntolerancesAlimentaires(intoleranceList.getItems());
+        pref.setRegimeAlimentaire(dietField.getValue().toString());
+        //pref.setIntolerancesAlimentaires(intoleranceList.getItems());
         jsonRequestHandler.modifierFichierUtilisateur(utilisateur);
     }
 
@@ -51,17 +53,17 @@ public class UtilisateurController {
     public void reinitialiser() {
         jsonRequestHandler.reinitialiserFichierUtilisateur();
         utilisateur = jsonRequestHandler.chargerUtilisateur();
-        nomField.setText("");
-        regimeField.setText("");
-        intoleranceField.clear();
-        intoleranceList.getItems().clear();
+        nameField.setText("");
+        dietField.setValue(dietField.getItems().get(0));
+        //intoleranceField.clear();
+        //intoleranceList.getItems().clear();
     }
 
     @FXML
     public void goToAccueil() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/accueil.fxml"));
         Parent root = loader.load();
-        Stage stage = (Stage) nomField.getScene().getWindow();
+        Stage stage = (Stage) nameField.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
 }

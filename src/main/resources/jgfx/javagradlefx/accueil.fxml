@@ -4,17 +4,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
             fx:controller="jgfx.javagradlefx.controller.AccueilController"
             style="-fx-background-color: #a56600;">
 
-    <!-- 🔝 Barre de tâche FIXE -->
+    <!-- Barre de tâche FIXE -->
     <top>
         <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="50"
               style="-fx-background-color: black;">
-            <Button fx:id="userButton" style="-fx-background-color: transparent;">
+            <Button fx:id="userButton" style="-fx-background-color: transparent;" onAction="#goToUserPage">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
@@ -62,7 +61,7 @@
     <center>
         <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
             <content>
-                <VBox spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
+                <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
 
                     <!-- Logo et champ de recherche -->
                     <VBox spacing="15" alignment="CENTER">

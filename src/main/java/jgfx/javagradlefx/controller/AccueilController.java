@@ -1,6 +1,9 @@
 package jgfx.javagradlefx.controller;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -8,9 +11,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+import jgfx.javagradlefx.model.Preference;
 import jgfx.javagradlefx.model.Recette;
 import jgfx.javagradlefx.model.Utilisateur;
 
+import java.io.IOException;
 import java.util.List;
 
 public class AccueilController {
@@ -68,11 +75,6 @@ public class AccueilController {
     @FXML
     private void initialize() {
         System.out.println("Accueil chargé !");
-        //Preference pref1L = new Preference(1L);
-        //pref1L.setRegimeAlimentaire("omnivore");
-        //pref1L.ajouterIntoleranceAlimentaire("gluten");
-        //pref1L.ajouterIntoleranceAlimentaire("dairy");
-        //user.mettreAJourPreference(pref1L);
 
         recipes = spoonacularService.getRecipeByPrefs(user.getPreference().getRegimeAlimentaire(),user.getPreference().getIntolerancesAlimentaires());
         showRecipes();
@@ -91,5 +93,24 @@ public class AccueilController {
         recipes=spoonacularService.getRecipe(query);
         showRecipes();
     }
+
+        @FXML
+        private void goToUserPage() throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/utilisateur.fxml"));
+
+            // Get screen dimensions
+            double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
+            double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
+
+            Scene root =new Scene(loader.load(),screenWidth,screenHeight);
+
+            Stage stage = (Stage) searchField.getScene().getWindow();
+            stage.setScene(root);
+            stage.show();
+
+        }
+
+
+
 }
 
