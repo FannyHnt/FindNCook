@@ -25,4 +25,24 @@ public class Nutrient {
                 ", percentOfDailyNeeds=" + percentOfDailyNeeds +
                 '}';
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public double getPercentOfDailyNeeds() {
+        return percentOfDailyNeeds;
+    }
 }

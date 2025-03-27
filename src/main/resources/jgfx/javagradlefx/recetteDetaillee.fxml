@@ -1,14 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
-</AnchorPane>
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="jgfx.javagradlefx.controller.RecetteDetailleeController"
+            stylesheets="@/styles/styleRecetteinfo.css"
+            style="-fx-background-color: #a56600;">
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="50"
+              style="-fx-background-color: black;">
+            <Button fx:id="backButton" style="-fx-background-color: transparent;">
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
+                        <image>
+                            <Image url="@/images/retour.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Button fx:id="userButton" style="-fx-background-color: transparent;">
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
+                        <image>
+                            <Image url="@/images/User.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Region fx:id="Space" HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="groceryButton" style="-fx-background-color: transparent;">
+                <graphic>
+                    <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                        <image>
+                            <Image url="@/images/caddie.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Button fx:id="favoritesButton" style="-fx-background-color: transparent;">
+                <graphic>
+                    <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                        <image>
+                            <Image url="@/images/heart.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Button fx:id="advancedSearchButton" style="-fx-background-color: transparent;">
+                <graphic>
+                    <ImageView fitHeight="45" fitWidth="45" preserveRatio="true">
+                        <image>
+                            <Image url="@/images/search.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
+            <content>
+                <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
+                    <VBox spacing="15" alignment="CENTER">
+                        <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/images/Logo.PNG" />
+                            </image>
+                        </ImageView>
+                    </VBox>
+
+                    <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
+
+                    <!-- Ajout des nouveaux éléments avec style -->
+                    <Label fx:id="titleLabel" styleClass="title-label"/>
+                    <Label fx:id="ingredientsLabel" styleClass="info-label"/>
+                    <Label fx:id="tempsPreparationLabel" styleClass="info-label"/>
+                    <Label fx:id="portionLabel" styleClass="info-label"/>
+                    <Label fx:id="etapesLabel" styleClass="info-label"/>
+                    <Label fx:id="regimesAlimentairesLabel" styleClass="info-label"/>
+                    <Label fx:id="nutrientsLabel" styleClass="info-label"/>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
