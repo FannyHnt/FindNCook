@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ListeDecourses {
+public class ListeDeCourses {
 
     private final String PATH = "src/main/resources/data/ListeDeCourse.json";
     private JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();

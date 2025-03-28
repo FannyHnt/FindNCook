@@ -2,14 +2,12 @@ package jgfx.javagradlefx.controller;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import jgfx.javagradlefx.model.Favoris;
-import jgfx.javagradlefx.model.Ingredient;
-import jgfx.javagradlefx.model.Nutrient;
-import jgfx.javagradlefx.model.RecetteInfo;
+import jgfx.javagradlefx.model.*;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -25,6 +23,7 @@ public class RecetteDetailleeController {
     private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
     private String favoritesView = "/jgfx/javagradlefx/favorisView.fxml";
     private String homeView = "/jgfx/javagradlefx/accueil.fxml";
+    ListeDeCourses listeDeCourse;
     @FXML
     private Text titleContent;
     @FXML
@@ -47,21 +46,18 @@ public class RecetteDetailleeController {
     private Button homeButton;
     @FXML
     private Button toFavoriteListButton;
-    private Favoris favoris = new Favoris();
-
-
-
+    private Favoris favoris;
 
     @FXML
     public void initialize() {
-        System.out.println("Controller  initialized");
+        favoris = new Favoris();
+        listeDeCourse = new ListeDeCourses();
     }
 
     public void setRecetteId(Long id) {
-
         if (favoris.isInFavorites(String.valueOf(id))){
             toFavoriteListButton.setText("Remove from favorites");
-            this.recetteInfo = favoris.getFavorisById(String.valueOf(id));
+            this.recetteInfo = favoris.getFavoriteById(String.valueOf(id));
         } else {
             this.recetteInfo = service.getRecipeInfo(id);
             toFavoriteListButton.setText("Add to favorites");
@@ -70,7 +66,6 @@ public class RecetteDetailleeController {
     }
 
     private void showRecipes() {
-
         recipeDetailCard.getChildren().clear();
         recipeDetailCard.setMaxWidth(700);
 
@@ -94,7 +89,6 @@ public class RecetteDetailleeController {
         } catch (Exception e) {
             System.out.println("Exception lors du chargement de l'image pour recette " + recetteInfo.getNom() + ": " + e.getMessage());
         }
-
 
         // Affichage des autres éléments
         titleContent.setText("\t" + recetteInfo.getNom());
@@ -126,13 +120,12 @@ public class RecetteDetailleeController {
         StringBuilder sb = new StringBuilder();
         for(int i = 0 ; i < nutrients.size() - 1; i++) {
             sb.append("\t");
-            sb.append("- ");
-            sb.append(nutrients.get(i).getName());
+            sb.append("- " + nutrients.get(i).getQuantity() + " " + nutrients.get(i).getUnit() + " " + nutrients.get(i).getName());
             sb.append("\n");
         }
         sb.append("\t");
         sb.append("- ");
-        sb.append(nutrients.get(nutrients.size()-1).getName());
+        sb.append(nutrients.get(nutrients.size()-1).getQuantity() + " " + nutrients.get(nutrients.size()-1).getUnit() + " " + nutrients.get(nutrients.size()-1).getName());
         return sb.toString();
     }
 
@@ -166,6 +159,7 @@ public class RecetteDetailleeController {
         sb.append(regimes.get(regimes.size()-1));
         return sb.toString();
     }
+
     @FXML
     public void modifInFavoriteList() {
         if (toFavoriteListButton.getText().equals("Add to favorites")) {
@@ -179,7 +173,12 @@ public class RecetteDetailleeController {
 
     @FXML
     private void addToShoppingList() {
-        System.out.println("Added to shopping list");
+        listeDeCourse.genereListeDeCourseAutomatiquement(recetteInfo.getIngredientList());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Liste de courses");
+        alert.setHeaderText(null);
+        alert.setContentText("Les éléments ont bien été ajoutés à la liste de courses.");
+        alert.showAndWait();
     }
 
     @FXML

@@ -5,7 +5,6 @@ import jgfx.javagradlefx.controller.JsonRequestHandler;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Favoris {
@@ -51,11 +50,6 @@ public class Favoris {
         return newJon;
     }
 
-    // Méthode pour récupérer les recettes des favoris en tant que JSON
-    public JSONObject getJsonFavoris() {
-        return jsonFilesHandler.chargerFichier(PATH);
-    }
-
     // Méthode pour vérifier si une recette est dans les favoris
     public boolean isInFavorites(String id) {
         JSONObject obj = jsonFilesHandler.chargerFichier(PATH);
@@ -74,7 +68,7 @@ public class Favoris {
         return recettes;
     }
 
-    public RecetteInfo getFavorisById(String id) {
+    public RecetteInfo getFavoriteById(String id) {
         JSONObject obj = jsonFilesHandler.chargerFichier(PATH);
         if (obj.has(id)) {
             JSONObject recette = obj.getJSONObject(id);
