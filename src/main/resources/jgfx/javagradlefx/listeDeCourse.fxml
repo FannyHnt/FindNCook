@@ -16,7 +16,7 @@
     <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="50"
           style="-fx-background-color: black;">
 
-        <Button fx:id="backButton" style="-fx-background-color: transparent;">
+        <Button fx:id="homeButton" style="-fx-background-color: transparent;">
             <graphic>
                 <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                     <image>
@@ -25,11 +25,12 @@
                 </ImageView>
             </graphic>
         </Button>
+
         <Button fx:id="userButton" style="-fx-background-color: transparent;">
             <graphic>
                 <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                     <image>
-                        <Image url="@/images/user.png" />
+                        <Image url="@/images/User.png" />
                     </image>
                 </ImageView>
             </graphic>
