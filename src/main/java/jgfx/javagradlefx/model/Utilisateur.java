@@ -39,12 +39,4 @@ public class Utilisateur {
         this.preference = preference;
     }
 
-    // méthodes pour ajouter les recettes dans les favoris
-    public void ajouterFavoris(Recette recette) {
-    }
-
-    //methodes pour suppirmer les recettes des favoris
-    public void supprimerFavoris(Recette recette) {
-    }
-
 }

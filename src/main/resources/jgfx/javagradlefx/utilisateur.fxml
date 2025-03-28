@@ -85,7 +85,7 @@
                     </VBox>
 
                     <VBox alignment="CENTER" spacing="20"
-                          style="-fx-background-color: white ; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #a56600; -fx-border-width: 2px;"
+                          style="-fx-background-color: white ; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #a56600; -fx-border-width: 2px; -fx-text-fill: #FFD700;"
                           maxWidth="500"
                           maxHeight="500">
 
@@ -98,6 +98,13 @@
                             <Label fx:id="dietLabel" text="Diet : " style="-fx-font-size: 15px;"/>
                             <ComboBox fx:id="dietField"/>
                         </HBox>
+
+                        <VBox>
+                            <Label fx:id="intolerancesLabel" text="Intolerances : " style="-fx-font-size: 15px;"/>
+                            <FlowPane fx:id="intoleranceCheckboxes" hgap="15" vgap="15" alignment="CENTER">
+
+                            </FlowPane>
+                        </VBox>
 
                     </VBox>
 

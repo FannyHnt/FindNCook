@@ -1,6 +1,5 @@
 package jgfx.javagradlefx.controller;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -10,8 +9,6 @@ import jgfx.javagradlefx.model.Ingredient;
 import jgfx.javagradlefx.model.Nutrient;
 import jgfx.javagradlefx.model.RecetteInfo;
 import javafx.scene.text.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecetteDetailleeController {
@@ -132,6 +129,9 @@ public class RecetteDetailleeController {
     }
 
     public String regimeToString(List<String> regimes) {
+        if (regimes.isEmpty()) {
+            return "";
+        }
         StringBuilder sb = new StringBuilder();
         for(int i = 0 ; i < regimes.size() - 1; i++) {
             sb.append("\t");
