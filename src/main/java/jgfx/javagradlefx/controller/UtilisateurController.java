@@ -98,7 +98,6 @@ public class UtilisateurController {
     public void reinitialiser() {
         jsonRequestHandler.reinitialiserFichierUtilisateur();
         utilisateur = jsonRequestHandler.chargerUtilisateur();
-        nameField.setText("");
         dietField.setValue(dietField.getItems().get(0));
         initialIntolerances.clear();
         added.clear();

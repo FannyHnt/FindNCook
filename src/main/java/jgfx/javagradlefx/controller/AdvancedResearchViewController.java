@@ -49,6 +49,12 @@ public class AdvancedResearchViewController {
     @FXML
     private FlowPane recipeFlowPane; // Ajoutez cette ligne pour référencer le FlowPane des résultats
 
+    private NavigationHandler navbar = new NavigationHandler();
+    private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
+    private String home = "/jgfx/javagradlefx/accueil.fxml";
+    private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
+    private String favoritesView = "/jgfx/javagradlefx/favorisView.fxml";
+
     private final Set<String> intolerancesChecked = new HashSet<>();
     private final Map<CheckBox, String> checkBoxToIntolerance = new HashMap<>();
     private SpoonacularService spoonacularService;
@@ -210,4 +216,25 @@ public class AdvancedResearchViewController {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    private void goToUser() throws IOException {
+        navbar.goToAnotherPage(includeIngredientField, userView);
+    }
+
+    @FXML
+    private void goToHome() throws IOException {
+        navbar.goToAnotherPage(includeIngredientField, home);
+    }
+
+    @FXML
+    private void goToGroceryList() throws IOException {
+        navbar.goToAnotherPage(includeIngredientField, groceryListView);
+    }
+
+    @FXML
+    private void goToFavorites() throws IOException {
+        navbar.goToAnotherPage(includeIngredientField, favoritesView);
+    }
+
 }
