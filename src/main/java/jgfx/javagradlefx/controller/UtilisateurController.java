@@ -79,13 +79,13 @@ public class UtilisateurController {
         pref.setIntolerancesAlimentaires(new ArrayList<>(updated));
         jsonRequestHandler.modifierFichierUtilisateur(utilisateur);
 
-        // Mise à jour des états
+
         initialIntolerances.clear();
         initialIntolerances.addAll(updated);
         added.clear();
         removed.clear();
 
-        // Mettre à jour les styles
+        // Mise à jour les styles des checkboxes
         for (CheckBox cb : checkBoxToIntolerance.keySet()) {
             if (cb.isSelected()) {
                 cb.setStyle(COULEUR_VALIDE);
