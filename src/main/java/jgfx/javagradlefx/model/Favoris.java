@@ -53,6 +53,12 @@ public class Favoris {
         return jsonFilesHandler.chargerFichier(PATH);
     }
 
+    // Méthode pour vérifier si une recette est dans les favoris
+    public boolean isInFavorites(String id) {
+        JSONObject obj = jsonFilesHandler.chargerFichier(PATH);
+        return obj.has(id);
+    }
+
     // Méthode pour récupérer les recettes des favoris en tant que liste de recette
     public List<Recette> getFavoris() {
         JSONObject obj = jsonFilesHandler.chargerFichier(PATH);

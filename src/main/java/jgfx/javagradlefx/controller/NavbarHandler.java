@@ -11,8 +11,8 @@ import java.io.IOException;
 
 public class NavbarHandler {
     @FXML
-    public void goToUserPage(Node anyNodeInScene) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/utilisateur.fxml"));
+    public void goToAnotherPage(Node anyNodeInScene,String fxmlFile) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
 
         // Get screen dimensions
         double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;

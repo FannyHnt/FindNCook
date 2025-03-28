@@ -1,74 +1,254 @@
-{
-    "209129": {
-        "image": "https://img.spoonacular.com/recipes/716429-556x370.jpg",
-        "etapes": [
-            "etape1",
-            "etape2"
-        ],
-        "tempsPreparaation": 45,
-        "portion": 4,
-        "ingredients": [
-            {
-                "name": "pomme",
-                "id": 1
-            },
-            {
-                "name": "orange",
-                "id": 2
-            },
-            {
-                "name": "avocat",
-                "id": 3
-            },
-            {
-                "name": "huile",
-                "id": 4
-            }
-        ],
-        "regimeAlimentaires": ["Vegan"],
-        "nom": "Dinner Tonight: Grilled Romesco-Style Pork",
-        "nutrients": [{
-            "unit": "kg",
-            "quantity": 44,
-            "percentOfDailyNeeds": 50,
-            "name": "nutrient 1",
-            "id": 1
-        }]
-    },
-    "209128": {
-        "image": "https://img.spoonacular.com/recipes/716429-556x370.jpg",
-        "etapes": [
-            "etape1",
-            "etape2"
-        ],
-        "tempsPreparaation": 45,
-        "portion": 3,
-        "ingredients": [
-            {
-                "name": "pomme",
-                "id": 1
-            },
-            {
-                "name": "orange",
-                "id": 2
-            },
-            {
-                "name": "avocat",
-                "id": 3
-            },
-            {
-                "name": "huile",
-                "id": 4
-            }
-        ],
-        "regimeAlimentaires": ["Vegan"],
-        "nom": "Dinner Tonight: Grilled Romesco-Style Pork",
-        "nutrients": [{
-            "unit": "kg",
-            "quantity": 44,
-            "percentOfDailyNeeds": 50,
-            "name": "nutrient 1",
-            "id": 1
-        }]
-    }
-}
+{"644387": {
+    "image": "https://img.spoonacular.com/recipes/644387-556x370.jpg",
+    "etapes": [
+        "Uncover",
+        "Stir occasionally until the volume of the kale is reduced by half",
+        "Serve hot",
+        "Add the kale and cover",
+        "Add garlic and basalmic",
+        "Heat the olive oil in a large pot over medium heat",
+        "Allow to cook for about another 30 seconds or so, mixing well so that the garlic and vinegar are well distributed"
+    ],
+    "tempsPreparaation": 45,
+    "portion": 2,
+    "ingredients": [
+        {
+            "name": "balsamic vinegar",
+            "id": 644387
+        },
+        {
+            "name": "garlic",
+            "id": 644387
+        },
+        {
+            "name": "curly kale",
+            "id": 644387
+        },
+        {
+            "name": "olive oil",
+            "id": 644387
+        }
+    ],
+    "regimeAlimentaires": [
+        "gluten free",
+        "dairy free",
+        "paleolithic",
+        "lacto ovo vegetarian",
+        "primal",
+        "whole 30",
+        "vegan"
+    ],
+    "nom": "Garlicky Kale",
+    "nutrients": [
+        {
+            "unit": "kcal",
+            "quantity": 169.87,
+            "percentOfDailyNeeds": 8.49,
+            "name": "Calories",
+            "id": 644387
+        },
+        {
+            "unit": "g",
+            "quantity": 14.98,
+            "percentOfDailyNeeds": 23.04,
+            "name": "Fat",
+            "id": 644387
+        },
+        {
+            "unit": "g",
+            "quantity": 2.05,
+            "percentOfDailyNeeds": 12.81,
+            "name": "Saturated Fat",
+            "id": 644387
+        },
+        {
+            "unit": "g",
+            "quantity": 7.46,
+            "percentOfDailyNeeds": 2.49,
+            "name": "Carbohydrates",
+            "id": 644387
+        },
+        {
+            "unit": "g",
+            "quantity": 4.76,
+            "percentOfDailyNeeds": 1.73,
+            "name": "Net Carbohydrates",
+            "id": 644387
+        },
+        {
+            "unit": "g",
+            "quantity": 4.12,
+            "percentOfDailyNeeds": 4.58,
+            "name": "Sugar",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 0,
+            "percentOfDailyNeeds": 0,
+            "name": "Cholesterol",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 40.51,
+            "percentOfDailyNeeds": 1.76,
+            "name": "Sodium",
+            "id": 644387
+        },
+        {
+            "unit": "g",
+            "quantity": 0,
+            "percentOfDailyNeeds": 100,
+            "name": "Alcohol",
+            "id": 644387
+        },
+        {
+            "unit": "%",
+            "quantity": 0,
+            "percentOfDailyNeeds": 100,
+            "name": "Alcohol %",
+            "id": 644387
+        },
+        {
+            "unit": "g",
+            "quantity": 2.11,
+            "percentOfDailyNeeds": 4.22,
+            "name": "Protein",
+            "id": 644387
+        },
+        {
+            "unit": "µg",
+            "quantity": 261.95,
+            "percentOfDailyNeeds": 249.48,
+            "name": "Vitamin K",
+            "id": 644387
+        },
+        {
+            "unit": "IU",
+            "quantity": 6493.63,
+            "percentOfDailyNeeds": 129.869992,
+            "name": "Vitamin A",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 61.18,
+            "percentOfDailyNeeds": 74.16,
+            "name": "Vitamin C",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.48,
+            "percentOfDailyNeeds": 24.24,
+            "name": "Manganese",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 174.43,
+            "percentOfDailyNeeds": 17.44,
+            "name": "Calcium",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 2.45,
+            "percentOfDailyNeeds": 16.309999,
+            "name": "Vitamin E",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.23,
+            "percentOfDailyNeeds": 13.36,
+            "name": "Vitamin B2",
+            "id": 644387
+        },
+        {
+            "unit": "g",
+            "quantity": 2.7,
+            "percentOfDailyNeeds": 10.79,
+            "name": "Fiber",
+            "id": 644387
+        },
+        {
+            "unit": "µg",
+            "quantity": 40.35,
+            "percentOfDailyNeeds": 10.09,
+            "name": "Folate",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 259.23,
+            "percentOfDailyNeeds": 7.41,
+            "name": "Potassium",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 1.32,
+            "percentOfDailyNeeds": 7.32,
+            "name": "Iron",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 24.7,
+            "percentOfDailyNeeds": 6.18,
+            "name": "Magnesium",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.11,
+            "percentOfDailyNeeds": 5.71,
+            "name": "Vitamin B6",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.08,
+            "percentOfDailyNeeds": 5.1,
+            "name": "Vitamin B1",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 42.6,
+            "percentOfDailyNeeds": 4.26,
+            "name": "Phosphorus",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.78,
+            "percentOfDailyNeeds": 3.89,
+            "name": "Vitamin B3",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.05,
+            "percentOfDailyNeeds": 2.26,
+            "name": "Copper",
+            "id": 644387
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.29,
+            "percentOfDailyNeeds": 1.93,
+            "name": "Zinc",
+            "id": 644387
+        },
+        {
+            "unit": "µg",
+            "quantity": 0.8,
+            "percentOfDailyNeeds": 1.14,
+            "name": "Selenium",
+            "id": 644387
+        }
+    ]
+}}

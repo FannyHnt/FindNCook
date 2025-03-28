@@ -15,7 +15,7 @@
     <top>
         <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="50"
               style="-fx-background-color: black;">
-            <Button fx:id="homeButton" style="-fx-background-color: transparent;">
+            <Button fx:id="homeButton" style="-fx-background-color: transparent;" onAction="#goToHome">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
@@ -25,7 +25,7 @@
                 </graphic>
             </Button>
 
-            <Button fx:id="userButton" style="-fx-background-color: transparent;">
+            <Button fx:id="userButton" style="-fx-background-color: transparent;" onAction="#goToUser">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
@@ -47,7 +47,7 @@
                 </graphic>
             </Button>
 
-            <Button fx:id="favoritesButton" style="-fx-background-color: transparent;">
+            <Button fx:id="favoritesButton" style="-fx-background-color: transparent;" onAction="#goToFavorites">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
@@ -57,7 +57,7 @@
                 </graphic>
             </Button>
 
-            <Button fx:id="advancedSearchButton" style="-fx-background-color: transparent;">
+            <Button fx:id="advancedSearchButton" style="-fx-background-color: transparent;" onAction="#goToAdvancedSearch">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>

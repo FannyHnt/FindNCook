@@ -13,10 +13,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import jgfx.javagradlefx.model.Preference;
 import jgfx.javagradlefx.model.Recette;
 import jgfx.javagradlefx.model.Utilisateur;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -27,7 +25,10 @@ public class AccueilController {
     private JsonRequestHandler json = new JsonRequestHandler();
     private Utilisateur user = json.chargerUtilisateur();
     private NavbarHandler navbar = new NavbarHandler();
-
+    private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
+    private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
+    private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
+    private String favoritesView = "/jgfx/javagradlefx/favorisView.fxml";
     @FXML
     private TextField searchField;
     @FXML
@@ -100,8 +101,23 @@ public class AccueilController {
     }
 
     @FXML
-    private void goToUserPage() throws IOException {
-        navbar.goToUserPage(searchField);
+    private void goToUser() throws IOException {
+        navbar.goToAnotherPage(searchField,userView);
+    }
+
+    @FXML
+    private void goToAdvancedSearch() throws IOException {
+        navbar.goToAnotherPage(searchField,AdvancedSearchView);
+    }
+
+    @FXML
+    private void goToGroceryList() throws IOException {
+        navbar.goToAnotherPage(searchField,groceryListView);
+    }
+
+    @FXML
+    private void goToFavorites() throws IOException {
+        navbar.goToAnotherPage(searchField,favoritesView);
     }
 
     private void goToRecetteDetaillee(Long id) throws IOException {

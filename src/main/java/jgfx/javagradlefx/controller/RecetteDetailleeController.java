@@ -2,19 +2,30 @@ package jgfx.javagradlefx.controller;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import jgfx.javagradlefx.model.Favoris;
 import jgfx.javagradlefx.model.Ingredient;
 import jgfx.javagradlefx.model.Nutrient;
 import jgfx.javagradlefx.model.RecetteInfo;
 import javafx.scene.text.Text;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.List;
 
 public class RecetteDetailleeController {
 
     private RecetteInfo recetteInfo;
-
+    private SpoonacularService service = new SpoonacularService();
+    private NavbarHandler navbar = new NavbarHandler();
+    private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
+    private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
+    private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
+    private String favoritesView = "/jgfx/javagradlefx/favorisView.fxml";
+    private String homeView = "/jgfx/javagradlefx/accueil.fxml";
     @FXML
     private Text titleContent;
     @FXML
@@ -33,21 +44,32 @@ public class RecetteDetailleeController {
     private VBox recipeDetailCard;
     @FXML
     private VBox innerCardRecipe;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button toFavoriteListButton;
+    private Favoris favoris = new Favoris();
 
-    private SpoonacularService service = new SpoonacularService();
+
 
 
     @FXML
     public void initialize() {
-
+        System.out.println("Controller  initialized");
     }
 
     public void setRecetteId(Long id) {
         this.recetteInfo = service.getRecipeInfo(id);
         showRecipes();
+        if (favoris.isInFavorites(recetteInfo.getId())){
+            toFavoriteListButton.setText("Remove from favorites");
+        } else {
+            toFavoriteListButton.setText("Add to favorites");
+        }
     }
 
     private void showRecipes() {
+
         recipeDetailCard.getChildren().clear();
         recipeDetailCard.setMaxWidth(700);
 
@@ -144,13 +166,38 @@ public class RecetteDetailleeController {
         sb.append(regimes.get(regimes.size()-1));
         return sb.toString();
     }
+    @FXML
+    public void addToFavoriteList() {
+        favoris.ajouterFavoris(recetteInfo);
+    }
 
     @FXML
     private void addToShoppingList() {
         System.out.println("Added to shopping list");
     }
+
     @FXML
-    private void addToFavoriteList() {
-        System.out.println("Added to favorite list");
+    private void goToUser() throws IOException {
+        navbar.goToAnotherPage(homeButton,userView);
+    }
+
+    @FXML
+    private void goToHome() throws IOException {
+        navbar.goToAnotherPage(homeButton,homeView);
+    }
+
+    @FXML
+    private void goToAdvancedSearch() throws IOException {
+        navbar.goToAnotherPage(homeButton,AdvancedSearchView);
+    }
+
+    @FXML
+    private void goToGroceryList() throws IOException {
+        navbar.goToAnotherPage(homeButton,groceryListView);
+    }
+
+    @FXML
+    private void goToFavorites() throws IOException {
+        navbar.goToAnotherPage(homeButton,favoritesView);
     }
 }

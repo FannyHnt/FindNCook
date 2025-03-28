@@ -15,24 +15,26 @@ import java.util.*;
 
 public class UtilisateurController {
 
+    private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
+    private Utilisateur utilisateur;
     @FXML private TextField nameField;
     @FXML private ComboBox dietField;
+    private List<String> intolerancesPossibles = List.of("Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat");
     @FXML private FlowPane intoleranceCheckboxes;
+    private List<String> regimesPossibles = List.of("","Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo","Primal", "Whole30", "Low FODMAP");
     private final String COULEUR_VALIDE = "-fx-background-color: #90EE90;";
     private final String COULEUR_NOUVEAU = "-fx-background-color: #ADD8E6;";
     private final String COULEUR_DECOCHE = "-fx-background-color: #FFB6C1;";
-
     private final Map<CheckBox, String> checkBoxToIntolerance = new HashMap<>();
     private final Set<String> initialIntolerances = new HashSet<>();
     private final Set<String> added = new HashSet<>();
     private final Set<String> removed = new HashSet<>();
 
-
-    private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
-    private Utilisateur utilisateur;
-
-    private List<String> intolerancesPossibles = List.of("Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat");
-    private List<String> regimesPossibles = List.of("","Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo","Primal", "Whole30", "Low FODMAP");
+    private NavbarHandler navbar = new NavbarHandler();
+    private String homeView = "/jgfx/javagradlefx/accueil.fxml";
+    private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
+    private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
+    private String favoritesView = "/jgfx/javagradlefx/favorisView.fxml";
 
     @FXML
     public void initialize() {
@@ -113,14 +115,6 @@ public class UtilisateurController {
         }
     }
 
-    @FXML
-    public void goToAccueil() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/accueil.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) nameField.getScene().getWindow();
-        stage.setScene(new Scene(root));
-    }
-
     private void handleCheckboxChange(CheckBox cb) {
         String intolerance = checkBoxToIntolerance.get(cb);
 
@@ -145,4 +139,23 @@ public class UtilisateurController {
         }
     }
 
+    @FXML
+    private void goToHome() throws IOException {
+        navbar.goToAnotherPage(dietField, homeView);
+    }
+
+    @FXML
+    private void goToAdvancedSearch() throws IOException {
+        navbar.goToAnotherPage(dietField, AdvancedSearchView);
+    }
+
+    @FXML
+    private void goToGroceryList() throws IOException {
+        navbar.goToAnotherPage(dietField, groceryListView);
+    }
+
+    @FXML
+    private void goToFavorites() throws IOException {
+        navbar.goToAnotherPage(dietField, favoritesView);
+    }
 }

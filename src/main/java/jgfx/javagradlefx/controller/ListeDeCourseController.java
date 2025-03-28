@@ -17,8 +17,12 @@ public class ListeDeCourseController {
     private TextField ingredientNameField;
     @FXML
     private ListView<String> ingredientListView;
-
     private ListeDecourses listeDecourses = new ListeDecourses();
+    private NavbarHandler navbar = new NavbarHandler();
+    private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
+    private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
+    private String homeView = "/jgfx/javagradlefx/accueil.fxml";
+    private String favoritesView = "/jgfx/javagradlefx/favorisView.fxml";
 
     @FXML
     public void initialize() {
@@ -82,4 +86,25 @@ public class ListeDeCourseController {
             }
         }
     }
+
+    @FXML
+    private void goToUser() throws Exception {
+        navbar.goToAnotherPage(ingredientNameField, userView);
+    }
+
+    @FXML
+    private void goToHome() throws Exception {
+        navbar.goToAnotherPage(ingredientNameField, homeView);
+    }
+
+    @FXML
+    private void goToAdvancedSearch() throws Exception {
+        navbar.goToAnotherPage(ingredientNameField, AdvancedSearchView);
+    }
+
+    @FXML
+    private void goToFavorites() throws Exception {
+        navbar.goToAnotherPage(ingredientNameField, favoritesView);
+    }
+    
 }

@@ -16,11 +16,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FavorisController {
-    @FXML
-    private FlowPane recipeFlowPane;
 
     Favoris favoris = new Favoris();
     List<Recette> recipes = new ArrayList<>();
+    private NavbarHandler navbar = new NavbarHandler();
+    private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
+    private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
+    private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
+    private String homeView = "/jgfx/javagradlefx/accueil.fxml";
+
+    @FXML
+    private FlowPane recipeFlowPane;
 
     @FXML
     private void initialize() {
@@ -73,5 +79,25 @@ public class FavorisController {
             card.getChildren().addAll(imageView, hyperlink);
             recipeFlowPane.getChildren().add(card);
         }
+    }
+
+    @FXML
+    private void goToUser() throws Exception {
+        navbar.goToAnotherPage(recipeFlowPane, userView);
+    }
+
+    @FXML
+    private void goToAdvancedSearch() throws Exception {
+        navbar.goToAnotherPage(recipeFlowPane, AdvancedSearchView);
+    }
+
+    @FXML
+    private void goToGroceryList() throws Exception {
+        navbar.goToAnotherPage(recipeFlowPane, groceryListView);
+    }
+
+    @FXML
+    private void goToHome() throws Exception {
+        navbar.goToAnotherPage(recipeFlowPane, homeView);
     }
 }
