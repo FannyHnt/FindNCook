@@ -26,6 +26,7 @@ public class AccueilController {
     private List<Recette> recipes;
     private JsonRequestHandler json = new JsonRequestHandler();
     private Utilisateur user = json.chargerUtilisateur();
+    private NavbarHandler navbar = new NavbarHandler();
 
     @FXML
     private TextField searchField;
@@ -100,18 +101,7 @@ public class AccueilController {
 
     @FXML
     private void goToUserPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/utilisateur.fxml"));
-
-        // Get screen dimensions
-        double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
-        double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
-
-        Scene root =new Scene(loader.load(),screenWidth,screenHeight);
-
-        Stage stage = (Stage) searchField.getScene().getWindow();
-        stage.setScene(root);
-        stage.show();
-
+        navbar.goToUserPage(searchField);
     }
 
     private void goToRecetteDetaillee(Long id) throws IOException {
@@ -129,7 +119,6 @@ public class AccueilController {
         Stage stage = (Stage) searchField.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-
     }
 
 }

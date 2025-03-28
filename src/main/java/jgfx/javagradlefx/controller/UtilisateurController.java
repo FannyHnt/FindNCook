@@ -127,6 +127,7 @@ public class UtilisateurController {
         if (cb.isSelected()) {
             if (!initialIntolerances.contains(intolerance)) {
                 added.add(intolerance);
+                
                 removed.remove(intolerance);
                 cb.setStyle(COULEUR_NOUVEAU);
             } else {
