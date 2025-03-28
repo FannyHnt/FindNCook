@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="jgfx.javagradlefx.controller.FavorisController"
+            style="-fx-background-color: #a56600;">
+
+<!-- Barre de tâche FIXE -->
+<top>
+    <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="50"
+          style="-fx-background-color: black;">
+
+        <Button fx:id="homeButton" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/home.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Button fx:id="userButton" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/User.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Region fx:id="Space" HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="groceryButton" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/gorcery.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Button fx:id="favoritesButton" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/heart.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Button fx:id="advancedSearchButton" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/search.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </HBox>
+</top>
+
+<!-- 📜 Partie scrollable -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
+            <content>
+                <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
+
+                    <!-- Logo et champ de recherche -->
+                    <VBox spacing="15" alignment="CENTER">
+                        <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/images/Logo.PNG" />
+                            </image>
+                        </ImageView>
+                    </VBox>
+
+                    <!-- Recettes -->
+                    <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+    <bottom>
+    <HBox style="-fx-background-color: #a56600;" minHeight="0" prefHeight="0" maxHeight="0"/>
+    </bottom>
+</BorderPane>

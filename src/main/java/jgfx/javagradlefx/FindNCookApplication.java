@@ -5,9 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import jgfx.javagradlefx.controller.JsonFilesHandler;
+import jgfx.javagradlefx.model.Favoris;
 import jgfx.javagradlefx.model.Ingredient;
 import jgfx.javagradlefx.model.Nutrient;
 import jgfx.javagradlefx.model.RecetteInfo;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -32,7 +35,7 @@ public class FindNCookApplication extends Application {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
         launch();
-//        JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
+       JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
 //        ListeDecourses listeDecourses = new ListeDecourses();
 //        List<Ingredient> ingredients = new ArrayList<>();
 //        ingredients.add(new Ingredient(1, "pomme", "g", 5));
@@ -43,18 +46,18 @@ public class FindNCookApplication extends Application {
 //        Nutrient nutrient = new Nutrient(1L,"nutrient 1", 44, "kg", 50);
 //        List<Nutrient> nutrients = new ArrayList<>();
 //        nutrients.add(nutrient);
-////
-////        List<String> regime = new ArrayList<>();
-////        regime.add("Vegan");
-////        List<String> etapes = new ArrayList<>();
-////        etapes.add("etape1");
-////        etapes.add("etape2");
-////
-////        System.out.println("----------------Avant---------------");
-////        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/ListeDeCourse.json"));
-////        listeDecourses.genereListeDeCourseAutomatiquement(ingredients);
-////        System.out.println("----------------Après---------------");
-////        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/ListeDeCourse.json"));
+//
+//        List<String> regime = new ArrayList<>();
+//        regime.add("Vegan");
+//        List<String> etapes = new ArrayList<>();
+//        etapes.add("etape1");
+//        etapes.add("etape2");
+//
+//        System.out.println("----------------Avant---------------");
+//        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/ListeDeCourse.json"));
+//        listeDecourses.genereListeDeCourseAutomatiquement(ingredients);
+//        System.out.println("----------------Après---------------");
+//        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/ListeDeCourse.json"));
 //        //SpoonacularService service = new SpoonacularService();
 //        //service.getRecipe("tomato rice");
 //        //service.testRecipeByPreference();
@@ -76,10 +79,9 @@ public class FindNCookApplication extends Application {
 //
 //
 //        System.out.println("----------------Avant---------------");
-//        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/Favoris.json"));
-//        favoris.ajouterFavoris(recetteInfo);
-//        System.out.println("----------------Après---------------");
-//        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/Favoris.json"));
+//        JSONObject obj = jsonFilesHandler.chargerFichier("src/main/resources/data/Favoris.json");
+//        System.out.println(obj.getJSONObject("209129").get("image"));
+
 
     }
 }

@@ -3,6 +3,7 @@ package jgfx.javagradlefx.model;
 import jgfx.javagradlefx.controller.JsonFilesHandler;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Favoris {
@@ -45,5 +46,22 @@ public class Favoris {
         newJon.put("tempsPreparaation", recetteInfo.getTempsPreparation());
         newJon.put("portion", recetteInfo.getPortion());
         return newJon;
+    }
+
+    // Méthode pour récupérer les recettes des favoris en tant que JSON
+    public JSONObject getJsonFavoris() {
+        return jsonFilesHandler.chargerFichier(PATH);
+    }
+
+    // Méthode pour récupérer les recettes des favoris en tant que liste de recette
+    public List<Recette> getFavoris() {
+        JSONObject obj = jsonFilesHandler.chargerFichier(PATH);
+        List<Recette> recettes = new ArrayList<>();
+        for (String key : obj.keySet()) {
+            JSONObject recette = obj.getJSONObject(key);
+            Recette rec = new Recette(Long.parseLong(key), recette.getString("nom"), recette.getString("image"));
+            recettes.add(rec);
+        }
+        return recettes;
     }
 }
