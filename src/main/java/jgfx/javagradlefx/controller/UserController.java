@@ -3,16 +3,16 @@ package jgfx.javagradlefx.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
-import jgfx.javagradlefx.model.Utilisateur;
+import jgfx.javagradlefx.model.User;
 import jgfx.javagradlefx.model.Preference;
 
 import java.io.IOException;
 import java.util.*;
 
-public class UtilisateurController {
+public class UserController {
 
     private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
-    private Utilisateur utilisateur;
+    private User user;
     @FXML private TextField nameField;
     @FXML private ComboBox dietField;
     private List<String> intolerancesPossibles = List.of("Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat");
@@ -27,22 +27,22 @@ public class UtilisateurController {
     private final Set<String> removed = new HashSet<>();
 
     private NavigationHandler navbar = new NavigationHandler();
-    private String homeView = "/jgfx/javagradlefx/accueil.fxml";
+    private String homeView = "/jgfx/javagradlefx/HomeView.fxml";
     private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
-    private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
-    private String favoritesView = "/jgfx/javagradlefx/favorisView.fxml";
+    private String groceryListView = "/jgfx/javagradlefx/GroceryListView.fxml";
+    private String favoritesView = "/jgfx/javagradlefx/FavoriteListView.fxml";
 
     @FXML
     public void initialize() {
 
         // On récupère les données enregistrées sur l'utilisateur
-        utilisateur = jsonRequestHandler.chargerUtilisateur();
-        nameField.setText(utilisateur.getNom());
+        user = jsonRequestHandler.chargerUtilisateur();
+        nameField.setText(user.getNom());
         for (String regime : regimesPossibles) {
             dietField.getItems().add(regime);
         }
 
-        Preference pref = utilisateur.getPreference();
+        Preference pref = user.getPreference();
         dietField.setValue(pref.getRegimeAlimentaire());
 
         // Charger les intolérances enregistrées
@@ -66,8 +66,8 @@ public class UtilisateurController {
 
     @FXML
     public void sauvegarder() {
-        utilisateur.setNom(nameField.getText().trim());
-        Preference pref = utilisateur.getPreference();
+        user.setNom(nameField.getText().trim());
+        Preference pref = user.getPreference();
         pref.setRegimeAlimentaire(dietField.getValue().toString());
 
         // Appliquer les modifs aux intolérances
@@ -75,7 +75,7 @@ public class UtilisateurController {
         updated.addAll(added);
         updated.removeAll(removed);
         pref.setIntolerancesAlimentaires(new ArrayList<>(updated));
-        jsonRequestHandler.modifierFichierUtilisateur(utilisateur);
+        jsonRequestHandler.modifierFichierUtilisateur(user);
 
 
         initialIntolerances.clear();
@@ -97,7 +97,7 @@ public class UtilisateurController {
     @FXML
     public void reinitialiser() {
         jsonRequestHandler.reinitialiserFichierUtilisateur();
-        utilisateur = jsonRequestHandler.chargerUtilisateur();
+        user = jsonRequestHandler.chargerUtilisateur();
         dietField.setValue(dietField.getItems().get(0));
         initialIntolerances.clear();
         added.clear();

@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 import jgfx.javagradlefx.model.Preference;
-import jgfx.javagradlefx.model.RecetteInfo;
-import jgfx.javagradlefx.model.Utilisateur;
+import jgfx.javagradlefx.model.RecipeDetails;
+import jgfx.javagradlefx.model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import jgfx.javagradlefx.model.Recette;
+import jgfx.javagradlefx.model.Recipe;
 
 
 public class SpoonacularService {
@@ -60,7 +60,7 @@ public class SpoonacularService {
     }
 
     // Requetes pour récupere les recettes d'apres les recommandations du client
-    public List<Recette> getRecipe(String query) throws RuntimeException {
+    public List<Recipe> getRecipe(String query) throws RuntimeException {
         try {
 
             String complex = "complexSearch";
@@ -82,7 +82,7 @@ public class SpoonacularService {
     }
 
     // Requete pour récupérer des recettes d'après les préférences du client
-    public List<Recette> getRecipeByPrefs(String regime, List<String> intolerancesAlimentaires) throws RuntimeException{
+    public List<Recipe> getRecipeByPrefs(String regime, List<String> intolerancesAlimentaires) throws RuntimeException{
         try {
             // intégrer le paramètre de régime alimentaire
             String diet = "";
@@ -121,16 +121,16 @@ public class SpoonacularService {
     }
 
     public void testRecipeByPreference(){
-        Utilisateur utilisateur = new Utilisateur(1L, "John");
+        User user = new User(1L, "John");
         Preference pref1L = new Preference(1L);
         pref1L.setRegimeAlimentaire("omnivore");
         pref1L.ajouterIntoleranceAlimentaire("gluten");
         pref1L.ajouterIntoleranceAlimentaire("dairy");
-        utilisateur.mettreAJourPreference(pref1L);
+        user.mettreAJourPreference(pref1L);
 
         System.out.println("Essaie requete complexSearch avec les préférences (diet, intolerances)");
-        List<Recette> recommendation = getRecipeByPrefs(utilisateur.getPreference().getRegimeAlimentaire(), utilisateur.getPreference().getIntolerancesAlimentaires());
-        for(Recette rec : recommendation){
+        List<Recipe> recommendation = getRecipeByPrefs(user.getPreference().getRegimeAlimentaire(), user.getPreference().getIntolerancesAlimentaires());
+        for(Recipe rec : recommendation){
             System.out.println(rec.getId());
         }
     }
@@ -192,7 +192,7 @@ public class SpoonacularService {
     }
 
     // Méthode pour concevoir la recette detaillée à partir des deux requêtes
-    public RecetteInfo getRecipeInfo(long id) {
+    public RecipeDetails getRecipeInfo(long id) {
         JSONObject obj = getRecipeInformation(id);
         JSONArray array = getAnalyzedRecipeInfomation(id);
         Map<String , List<String>> stepsAndIngredients = jsonRequestHandler.extractStepsAndIngredients(array);

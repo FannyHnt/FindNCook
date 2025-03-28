@@ -7,16 +7,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-
-<?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="jgfx.javagradlefx.controller.RecetteDetailleeController"
-            stylesheets="@/styles/styleRecetteinfo.css"
+            fx:controller="jgfx.javagradlefx.controller.ShoppingListController"
             style="-fx-background-color: #a56600;">
+
+    <!-- Barre de tâche FIXE -->
     <top>
         <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="50"
               style="-fx-background-color: black;">
-
             <Button fx:id="homeButton" style="-fx-background-color: transparent;" onAction="#goToHome">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
@@ -39,7 +37,7 @@
 
             <Region fx:id="Space" HBox.hgrow="ALWAYS"/>
 
-            <Button fx:id="groceryButton" style="-fx-background-color: transparent;" onAction="#goToGroceryList">
+            <Button fx:id="groceryButton" style="-fx-background-color: transparent;">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
@@ -71,10 +69,12 @@
         </HBox>
     </top>
 
+    <!-- Partie scrollable -->
     <center>
         <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
             <content>
                 <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
+                    <!-- Logo et champ de recherche -->
                     <VBox spacing="15" alignment="CENTER">
                         <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -82,46 +82,15 @@
                             </image>
                         </ImageView>
                     </VBox>
-
-
-
-                    <VBox fx:id="recipeDetailCard" spacing="20" alignment="CENTER" maxWidth="700" styleClass="recipe-card"/>
-
-                    <!-- Ajout des nouveaux éléments avec style -->
-                    <VBox fx:id="innerCardRecipe" spacing="15" alignment="TOP_LEFT" maxWidth="400">
-                        <VBox fx:id="titleBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="titleLabel" styleClass="title-label" text="TITLE :"/>
-                            <Text fx:id="titleContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="ingredientsBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="ingredientsLabel" styleClass="info-label" text="INGREDIENTS :"/>
-                            <Text fx:id="ingredientsContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="timeBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="tempsPreparationLabel" styleClass="info-label" text="PREPARATION TIME :"/>
-                            <Text fx:id="timeContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="portionBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="portionLabel" styleClass="info-label" text="SERVING :"/>
-                            <Text fx:id="portionContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="stepsBox" alignment="CENTER_LEFT" spacing="5">
-                            <Label fx:id="etapesLabel" styleClass="info-label" text="STEPS :"/>
-                            <Text fx:id="stepsContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="dietBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="regimesAlimentairesLabel" styleClass="info-label" text="DIET AND INTOLERANCES :"/>
-                            <Text fx:id="dietContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="nutrientsBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="nutrientsLabel" styleClass="info-label" text="NUTRIENTS :"/>
-                            <Text fx:id="nutrientsContent" styleClass="content-text"/>
-                        </VBox>
-                    </VBox>
-
-                    <!-- Ajout des nouveaux boutons -->
-                    <Button fx:id="addToShoppingListButton" text="add to shopping list" styleClass="action-button" onAction="#addToShoppingList"/>
-                    <Button fx:id="toFavoriteListButton" styleClass="action-button" onAction="#modifInFavoriteList"/>
+                    <Label text="Shopping List" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                    <!-- Formulaire pour ajouter un ingrédient -->
+                    <HBox spacing="10" alignment="CENTER">
+                        <TextField fx:id="ingredientNameField" promptText="ingredient name"/>
+                        <Button text="Add" onAction="#ajouterIngredient"/>
+                    </HBox>
+                    <!-- Liste des ingrédients -->
+                    <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
+                    <ListView fx:id="ingredientListView" prefHeight="400" prefWidth="30"/>
                 </VBox>
             </content>
         </ScrollPane>

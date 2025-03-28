@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
+
+<?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="jgfx.javagradlefx.controller.UtilisateurController"
+            fx:controller="jgfx.javagradlefx.controller.RecipeDetailsController"
             stylesheets="@/styles/styleRecetteinfo.css"
             style="-fx-background-color: #a56600;">
-
-    <!-- Barre de tâche FIXE -->
     <top>
         <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="50"
               style="-fx-background-color: black;">
+
             <Button fx:id="homeButton" style="-fx-background-color: transparent;" onAction="#goToHome">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
@@ -24,7 +27,7 @@
                 </graphic>
             </Button>
 
-            <Button fx:id="userButton" style="-fx-background-color: transparent;">
+            <Button fx:id="userButton" style="-fx-background-color: transparent;" onAction="#goToUser">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
@@ -68,61 +71,59 @@
         </HBox>
     </top>
 
-    <!-- Partie scrollable -->
     <center>
         <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
             <content>
                 <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
-
-                    <VBox alignment="CENTER" spacing="20">
+                    <VBox spacing="15" alignment="CENTER">
                         <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@/images/Logo.PNG" />
                             </image>
                         </ImageView>
-
-                        <Label text="MANAGE PREFERENCES" style="-fx-font-size: 30px; -fx-font-weight: BOLD;"/>
                     </VBox>
 
-                    <VBox alignment="CENTER" spacing="20"
-                          style="-fx-background-color: white ; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #a56600; -fx-border-width: 2px; -fx-text-fill: #FFD700;"
-                          maxWidth="500"
-                          maxHeight="500">
 
-                        <HBox fx:id="nameBox" spacing="10" alignment="CENTER">
-                            <Label fx:id="nameLabel" text="User name: " style="-fx-font-size: 15px;"/>
-                            <TextField fx:id="nameField"/>
-                        </HBox>
 
-                        <HBox fx:id="dietBox" spacing="10" alignment="CENTER">
-                            <Label fx:id="dietLabel" text="Diet : " style="-fx-font-size: 15px;"/>
-                            <ComboBox fx:id="dietField"/>
-                        </HBox>
+                    <VBox fx:id="recipeDetailCard" spacing="20" alignment="CENTER" maxWidth="700" styleClass="recipe-card"/>
 
-                        <VBox>
-                            <Label fx:id="intolerancesLabel" text="Intolerances : " style="-fx-font-size: 15px;"/>
-                            <FlowPane fx:id="intoleranceCheckboxes" hgap="15" vgap="15" alignment="CENTER">
-
-                            </FlowPane>
+                    <!-- Ajout des nouveaux éléments avec style -->
+                    <VBox fx:id="innerCardRecipe" spacing="15" alignment="TOP_LEFT" maxWidth="400">
+                        <VBox fx:id="titleBox" spacing="5" alignment="CENTER_LEFT">
+                            <Label fx:id="titleLabel" styleClass="title-label" text="TITLE :"/>
+                            <Text fx:id="titleContent" styleClass="content-text"/>
                         </VBox>
-
+                        <VBox fx:id="ingredientsBox" spacing="5" alignment="CENTER_LEFT">
+                            <Label fx:id="ingredientsLabel" styleClass="info-label" text="INGREDIENTS :"/>
+                            <Text fx:id="ingredientsContent" styleClass="content-text"/>
+                        </VBox>
+                        <VBox fx:id="timeBox" spacing="5" alignment="CENTER_LEFT">
+                            <Label fx:id="tempsPreparationLabel" styleClass="info-label" text="PREPARATION TIME :"/>
+                            <Text fx:id="timeContent" styleClass="content-text"/>
+                        </VBox>
+                        <VBox fx:id="portionBox" spacing="5" alignment="CENTER_LEFT">
+                            <Label fx:id="portionLabel" styleClass="info-label" text="SERVING :"/>
+                            <Text fx:id="portionContent" styleClass="content-text"/>
+                        </VBox>
+                        <VBox fx:id="stepsBox" alignment="CENTER_LEFT" spacing="5">
+                            <Label fx:id="etapesLabel" styleClass="info-label" text="STEPS :"/>
+                            <Text fx:id="stepsContent" styleClass="content-text"/>
+                        </VBox>
+                        <VBox fx:id="dietBox" spacing="5" alignment="CENTER_LEFT">
+                            <Label fx:id="regimesAlimentairesLabel" styleClass="info-label" text="DIET AND INTOLERANCES :"/>
+                            <Text fx:id="dietContent" styleClass="content-text"/>
+                        </VBox>
+                        <VBox fx:id="nutrientsBox" spacing="5" alignment="CENTER_LEFT">
+                            <Label fx:id="nutrientsLabel" styleClass="info-label" text="NUTRIENTS :"/>
+                            <Text fx:id="nutrientsContent" styleClass="content-text"/>
+                        </VBox>
                     </VBox>
 
-                    <HBox spacing="10" alignment="CENTER">
-                        <Button text="Sauvegarder" onAction="#sauvegarder" styleClass="action-button"/>
-                        <Button text="Réinitialiser" onAction="#reinitialiser" styleClass="action-button" />
-                    </HBox>
-
+                    <!-- Ajout des nouveaux boutons -->
+                    <Button fx:id="addToShoppingListButton" text="add to shopping list" styleClass="action-button" onAction="#addToShoppingList"/>
+                    <Button fx:id="toFavoriteListButton" styleClass="action-button" onAction="#modifInFavoriteList"/>
                 </VBox>
             </content>
         </ScrollPane>
     </center>
-
-
-    <bottom>
-        <HBox style="-fx-background-color: #a56600;" minHeight="0" prefHeight="0" maxHeight="0"/>
-    </bottom>
 </BorderPane>
-
-
-

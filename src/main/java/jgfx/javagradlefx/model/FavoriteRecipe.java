@@ -7,13 +7,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Favoris {
-    private final String PATH = "src/main/resources/data/Favoris.json";
+public class FavoriteRecipe {
+    private final String PATH = "src/main/resources/data/FavoriteRecipe.json";
     private JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
     private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
 
     //methodes pour ajouter une recette dans la liste des favoris
-    public void ajouterFavoris(RecetteInfo recette) {
+    public void ajouterFavoris(RecipeDetails recette) {
         // Charger le contenu du fichier
         JSONObject fichier = jsonFilesHandler.chargerFichier(PATH);
 
@@ -25,7 +25,7 @@ public class Favoris {
     }
 
     //methodes pour supprimer une recette de la liste des favoris
-    public void supprimerFavoris(RecetteInfo recette) {
+    public void supprimerFavoris(RecipeDetails recette) {
         // Charger le contenu du fichier
         JSONObject fichier = jsonFilesHandler.chargerFichier(PATH);
 
@@ -37,16 +37,16 @@ public class Favoris {
     }
 
     // Transforme une recette en objet JSON
-    public JSONObject recetteInfoToJson(RecetteInfo recetteInfo) {
+    public JSONObject recetteInfoToJson(RecipeDetails recipeDetails) {
         JSONObject newJon = new JSONObject();
-        newJon.put("nom", recetteInfo.getNom());
-        newJon.put("image", recetteInfo.getImage());
-        newJon.put("nutrients", recetteInfo.getNutrients());
-        newJon.put("regimeAlimentaires", recetteInfo.getRegimesAlimentaires());
-        newJon.put("etapes", recetteInfo.getEtapes());
-        newJon.put("ingredients", recetteInfo.getIngredientList());
-        newJon.put("tempsPreparaation", recetteInfo.getTempsPreparation());
-        newJon.put("portion", recetteInfo.getPortion());
+        newJon.put("nom", recipeDetails.getNom());
+        newJon.put("image", recipeDetails.getImage());
+        newJon.put("nutrients", recipeDetails.getNutrients());
+        newJon.put("regimeAlimentaires", recipeDetails.getRegimesAlimentaires());
+        newJon.put("etapes", recipeDetails.getEtapes());
+        newJon.put("ingredients", recipeDetails.getIngredientList());
+        newJon.put("tempsPreparaation", recipeDetails.getTempsPreparation());
+        newJon.put("portion", recipeDetails.getPortion());
         return newJon;
     }
 
@@ -57,18 +57,18 @@ public class Favoris {
     }
 
     // Méthode pour récupérer les recettes des favoris en tant que liste de recette
-    public List<Recette> getFavoris() {
+    public List<Recipe> getFavoris() {
         JSONObject obj = jsonFilesHandler.chargerFichier(PATH);
-        List<Recette> recettes = new ArrayList<>();
+        List<Recipe> recipes = new ArrayList<>();
         for (String key : obj.keySet()) {
             JSONObject recette = obj.getJSONObject(key);
-            Recette rec = new Recette(Long.parseLong(key), recette.getString("nom"), recette.getString("image"));
-            recettes.add(rec);
+            Recipe rec = new Recipe(Long.parseLong(key), recette.getString("nom"), recette.getString("image"));
+            recipes.add(rec);
         }
-        return recettes;
+        return recipes;
     }
 
-    public RecetteInfo getFavoriteById(String id) {
+    public RecipeDetails getFavoriteById(String id) {
         JSONObject obj = jsonFilesHandler.chargerFichier(PATH);
         if (obj.has(id)) {
             JSONObject recette = obj.getJSONObject(id);

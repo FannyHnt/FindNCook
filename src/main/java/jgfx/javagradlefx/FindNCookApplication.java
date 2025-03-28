@@ -6,10 +6,10 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import jgfx.javagradlefx.controller.JsonFilesHandler;
-import jgfx.javagradlefx.model.Favoris;
+import jgfx.javagradlefx.model.FavoriteRecipe;
 import jgfx.javagradlefx.model.Ingredient;
 import jgfx.javagradlefx.model.Nutrient;
-import jgfx.javagradlefx.model.RecetteInfo;
+import jgfx.javagradlefx.model.RecipeDetails;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ import java.util.List;
 public class FindNCookApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(FindNCookApplication.class.getResource("accueil.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FindNCookApplication.class.getResource("HomeView.fxml"));
 
         // Get screen dimensions
         double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
@@ -56,10 +56,10 @@ public class FindNCookApplication extends Application {
         etapes.add("etape2");
 //
 //        System.out.println("----------------Avant---------------");
-//        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/ListeDeCourse.json"));
+//        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/GroceryList.json"));
 //        listeDecourses.genereListeDeCourseAutomatiquement(ingredients);
 //        System.out.println("----------------Après---------------");
-//        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/ListeDeCourse.json"));
+//        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/GroceryList.json"));
 //        //SpoonacularService service = new SpoonacularService();
 //        //service.getRecipe("tomato rice");
 //        //service.testRecipeByPreference();
@@ -67,7 +67,7 @@ public class FindNCookApplication extends Application {
 //        //System.out.println(service.getAnalyzedRecipeInfomation(1095889L));
 //        //System.out.println(service.getRecipeInfo(1095889L));
 //
-        RecetteInfo recetteInfo = new RecetteInfo(209129L,
+        RecipeDetails recipeDetails = new RecipeDetails(209129L,
                 "Dinner Tonight: Grilled Romesco-Style Pork",
                 "https://img.spoonacular.com/recipes/716429-556x370.jpg",
                 nutrients,
@@ -77,13 +77,13 @@ public class FindNCookApplication extends Application {
                 45,3
                 );
 
-        Favoris favoris = new Favoris();
+        FavoriteRecipe favoriteRecipe = new FavoriteRecipe();
 
 
         System.out.println("----------------Avant---------------");
-        JSONObject obj = jsonFilesHandler.chargerFichier("src/main/resources/data/Favoris.json");
+        JSONObject obj = jsonFilesHandler.chargerFichier("src/main/resources/data/FavoriteRecipe.json");
         System.out.println("-----------------apres----------------");
-        favoris.ajouterFavoris(recetteInfo);
+        favoriteRecipe.ajouterFavoris(recipeDetails);
         System.out.println(obj.getJSONObject("209129").get("image"));
 
 

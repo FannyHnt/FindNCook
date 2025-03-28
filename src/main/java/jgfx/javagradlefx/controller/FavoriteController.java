@@ -8,22 +8,22 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import jgfx.javagradlefx.model.Favoris;
-import jgfx.javagradlefx.model.Recette;
+import jgfx.javagradlefx.model.FavoriteRecipe;
+import jgfx.javagradlefx.model.Recipe;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavorisController {
+public class FavoriteController {
 
-    Favoris favoris = new Favoris();
-    List<Recette> recipes = new ArrayList<>();
+    FavoriteRecipe favoriteRecipe = new FavoriteRecipe();
+    List<Recipe> recipes = new ArrayList<>();
     private NavigationHandler navbar = new NavigationHandler();
-    private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
+    private String userView = "/jgfx/javagradlefx/UserView.fxml";
     private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
-    private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
-    private String homeView = "/jgfx/javagradlefx/accueil.fxml";
+    private String groceryListView = "/jgfx/javagradlefx/GroceryListView.fxml";
+    private String homeView = "/jgfx/javagradlefx/HomeView.fxml";
 
     @FXML
     private FlowPane recipeFlowPane;
@@ -38,14 +38,14 @@ public class FavorisController {
 
     private void showRecipes(){
         recipeFlowPane.getChildren().clear();
-        recipes = favoris.getFavoris();
+        recipes = favoriteRecipe.getFavoris();
 
         if (recipes.isEmpty()) {
             Label label = new Label("Empty");
             recipeFlowPane.getChildren().add(label);
             return;
         }
-        for (Recette recette : recipes) {
+        for (Recipe recipe : recipes) {
 
             VBox card = new VBox(5);
             card.setStyle("-fx-background-color: white; -fx-padding: 10; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.3, 0, 2);");
@@ -58,20 +58,20 @@ public class FavorisController {
             imageView.setFitHeight(90);
             imageView.setPreserveRatio(true);
             try {
-                Image image = new Image(recette.getUrlImage(), true);
+                Image image = new Image(recipe.getUrlImage(), true);
                 imageView.setImage(image);
                 if (image.isError()) {
-                    System.out.println("Erreur chargement image pour recette " + recette.getNom() + ": " + image.getException());
+                    System.out.println("Erreur chargement image pour recette " + recipe.getNom() + ": " + image.getException());
                 } else {
-                    System.out.println("Image chargée avec succès pour recette " + recette.getNom());
+                    System.out.println("Image chargée avec succès pour recette " + recipe.getNom());
                 }
             } catch (Exception e) {
-                System.out.println("Exception lors du chargement de l'image pour recette " + recette.getNom() + ": " + e.getMessage());
+                System.out.println("Exception lors du chargement de l'image pour recette " + recipe.getNom() + ": " + e.getMessage());
             }
 
             Hyperlink hyperlink = new Hyperlink();
-            hyperlink.setText(recette.getNom());
-            hyperlink.setId(String.valueOf(recette.getId()));
+            hyperlink.setText(recipe.getNom());
+            hyperlink.setId(String.valueOf(recipe.getId()));
             hyperlink.setOnAction(event -> {
                 try {
                     navbar.goToRecetteDetaillee(Long.parseLong(hyperlink.getId()), recipeFlowPane);

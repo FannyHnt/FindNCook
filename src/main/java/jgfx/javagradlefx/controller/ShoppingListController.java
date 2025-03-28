@@ -8,20 +8,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.util.Callback;
-import jgfx.javagradlefx.model.ListeDeCourses;
+import jgfx.javagradlefx.model.GroceryList;
 
-public class ListeDeCourseController {
+public class ShoppingListController {
 
     @FXML
     private TextField ingredientNameField;
     @FXML
     private ListView<String> ingredientListView;
-    private ListeDeCourses listeDecourses = new ListeDeCourses();
+    private GroceryList listeDecourses = new GroceryList();
     private NavigationHandler navbar = new NavigationHandler();
-    private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
+    private String userView = "/jgfx/javagradlefx/UserView.fxml";
     private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
-    private String homeView = "/jgfx/javagradlefx/accueil.fxml";
-    private String favoritesView = "/jgfx/javagradlefx/favorisView.fxml";
+    private String homeView = "/jgfx/javagradlefx/HomeView.fxml";
+    private String favoritesView = "/jgfx/javagradlefx/FavoriteListView.fxml";
 
     @FXML
     public void initialize() {

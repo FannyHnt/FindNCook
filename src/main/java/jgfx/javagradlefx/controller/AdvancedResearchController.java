@@ -12,7 +12,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import jgfx.javagradlefx.model.Recette;
+import jgfx.javagradlefx.model.Recipe;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.*;
 
-public class AdvancedResearchViewController {
+public class AdvancedResearchController {
 
     @FXML
     private ComboBox<String> cuisineField;
@@ -50,16 +50,16 @@ public class AdvancedResearchViewController {
     private FlowPane recipeFlowPane; // Ajoutez cette ligne pour référencer le FlowPane des résultats
 
     private NavigationHandler navbar = new NavigationHandler();
-    private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
-    private String home = "/jgfx/javagradlefx/accueil.fxml";
-    private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
-    private String favoritesView = "/jgfx/javagradlefx/favorisView.fxml";
+    private String userView = "/jgfx/javagradlefx/UserView.fxml";
+    private String home = "/jgfx/javagradlefx/HomeView.fxml";
+    private String groceryListView = "/jgfx/javagradlefx/GroceryListView.fxml";
+    private String favoritesView = "/jgfx/javagradlefx/FavoriteListView.fxml";
 
     private final Set<String> intolerancesChecked = new HashSet<>();
     private final Map<CheckBox, String> checkBoxToIntolerance = new HashMap<>();
     private SpoonacularService spoonacularService;
     private JsonRequestHandler jsonRequestHandler;
-    List<Recette> recipes;
+    List<Recipe> recipes;
 
     private final List<String> cuisines = List.of("","African", "Asian", "American", "British", "Cajun", "Caribbean", "Chinese", "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", "Italian", "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai", "Vietnamese");
     private final List<String> diets = List.of("","Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo", "Primal", "Low FODMAP", "Whole30");
@@ -147,7 +147,7 @@ public class AdvancedResearchViewController {
 
     private void showRecipes() {
         recipeFlowPane.getChildren().clear();
-        for (Recette recette : recipes) {
+        for (Recipe recipe : recipes) {
             VBox card = new VBox(5);
             card.setStyle("-fx-background-color: white; -fx-padding: 10; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.3, 0, 2);");
             card.setPrefWidth(300);
@@ -159,20 +159,20 @@ public class AdvancedResearchViewController {
             imageView.setFitHeight(90);
             imageView.setPreserveRatio(true);
             try {
-                Image image = new Image(recette.getUrlImage(), true);
+                Image image = new Image(recipe.getUrlImage(), true);
                 imageView.setImage(image);
                 if (image.isError()) {
-                    System.out.println("Erreur chargement image pour recette " + recette.getNom() + ": " + image.getException());
+                    System.out.println("Erreur chargement image pour recette " + recipe.getNom() + ": " + image.getException());
                 } else {
-                    System.out.println("Image chargée avec succès pour recette " + recette.getNom());
+                    System.out.println("Image chargée avec succès pour recette " + recipe.getNom());
                 }
             } catch (Exception e) {
-                System.out.println("Exception lors du chargement de l'image pour recette " + recette.getNom() + ": " + e.getMessage());
+                System.out.println("Exception lors du chargement de l'image pour recette " + recipe.getNom() + ": " + e.getMessage());
             }
 
             Hyperlink hyperlink = new Hyperlink();
-            hyperlink.setText(recette.getNom());
-            hyperlink.setId(String.valueOf(recette.getId()));
+            hyperlink.setText(recipe.getNom());
+            hyperlink.setId(String.valueOf(recipe.getId()));
             hyperlink.setOnAction(event -> {
                 try {
                     goToRecetteDetaillee(Long.parseLong(hyperlink.getId()));
@@ -201,10 +201,10 @@ public class AdvancedResearchViewController {
     }
 
     private void goToRecetteDetaillee(Long id) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/recetteDetaillee.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/RecipeDetailsView.fxml"));
         Parent root = loader.load(); // Le FXML est chargé ici, le contrôleur est instancié par JavaFX
 
-        RecetteDetailleeController controller = loader.getController();
+        RecipeDetailsController controller = loader.getController();
         controller.setRecetteId(id);
 
         double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;

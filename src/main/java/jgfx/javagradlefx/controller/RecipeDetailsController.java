@@ -13,17 +13,17 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.List;
 
-public class RecetteDetailleeController {
+public class RecipeDetailsController {
 
-    private RecetteInfo recetteInfo;
+    private RecipeDetails recipeDetails;
     private SpoonacularService service = new SpoonacularService();
     private NavigationHandler navbar = new NavigationHandler();
-    private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
+    private String userView = "/jgfx/javagradlefx/UserView.fxml";
     private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
-    private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
-    private String favoritesView = "/jgfx/javagradlefx/favorisView.fxml";
-    private String homeView = "/jgfx/javagradlefx/accueil.fxml";
-    ListeDeCourses listeDeCourse;
+    private String groceryListView = "/jgfx/javagradlefx/GroceryListView.fxml";
+    private String favoritesView = "/jgfx/javagradlefx/FavoriteListView.fxml";
+    private String homeView = "/jgfx/javagradlefx/HomeView.fxml";
+    GroceryList listeDeCourse;
     @FXML
     private Text titleContent;
     @FXML
@@ -46,20 +46,20 @@ public class RecetteDetailleeController {
     private Button homeButton;
     @FXML
     private Button toFavoriteListButton;
-    private Favoris favoris;
+    private FavoriteRecipe favoriteRecipe;
 
     @FXML
     public void initialize() {
-        favoris = new Favoris();
-        listeDeCourse = new ListeDeCourses();
+        favoriteRecipe = new FavoriteRecipe();
+        listeDeCourse = new GroceryList();
     }
 
     public void setRecetteId(Long id) {
-        if (favoris.isInFavorites(String.valueOf(id))){
+        if (favoriteRecipe.isInFavorites(String.valueOf(id))){
             toFavoriteListButton.setText("Remove from favorites");
-            this.recetteInfo = favoris.getFavoriteById(String.valueOf(id));
+            this.recipeDetails = favoriteRecipe.getFavoriteById(String.valueOf(id));
         } else {
-            this.recetteInfo = service.getRecipeInfo(id);
+            this.recipeDetails = service.getRecipeInfo(id);
             toFavoriteListButton.setText("Add to favorites");
         }
         showRecipes();
@@ -79,25 +79,25 @@ public class RecetteDetailleeController {
         imageView.setFitHeight(90);
         imageView.setPreserveRatio(true);
         try {
-            Image image = new Image(recetteInfo.getImage(), true);
+            Image image = new Image(recipeDetails.getImage(), true);
             imageView.setImage(image);
             if (image.isError()) {
-                System.out.println("Erreur chargement image pour recette " + recetteInfo.getNom() + ": " + image.getException());
+                System.out.println("Erreur chargement image pour recette " + recipeDetails.getNom() + ": " + image.getException());
             } else {
-                System.out.println("Image chargée avec succès pour recette " + recetteInfo.getNom());
+                System.out.println("Image chargée avec succès pour recette " + recipeDetails.getNom());
             }
         } catch (Exception e) {
-            System.out.println("Exception lors du chargement de l'image pour recette " + recetteInfo.getNom() + ": " + e.getMessage());
+            System.out.println("Exception lors du chargement de l'image pour recette " + recipeDetails.getNom() + ": " + e.getMessage());
         }
 
         // Affichage des autres éléments
-        titleContent.setText("\t" + recetteInfo.getNom());
-        portionContent.setText("\t" + Integer.toString(recetteInfo.getPortion()));
-        timeContent.setText("\t" + recetteInfo.getTempsPreparation() + " minutes");
-        ingredientsContent.setText(ingredientToString(recetteInfo.getIngredientList()));
-        stepsContent.setText(etapesToString(recetteInfo.getEtapes()));
-        dietContent.setText(regimeToString(recetteInfo.getRegimesAlimentaires()));
-        nutrientsContent.setText(nutrientToString(recetteInfo.getNutrients()));
+        titleContent.setText("\t" + recipeDetails.getNom());
+        portionContent.setText("\t" + Integer.toString(recipeDetails.getPortion()));
+        timeContent.setText("\t" + recipeDetails.getTempsPreparation() + " minutes");
+        ingredientsContent.setText(ingredientToString(recipeDetails.getIngredientList()));
+        stepsContent.setText(etapesToString(recipeDetails.getEtapes()));
+        dietContent.setText(regimeToString(recipeDetails.getRegimesAlimentaires()));
+        nutrientsContent.setText(nutrientToString(recipeDetails.getNutrients()));
         innerCardRecipeImage.getChildren().addAll(imageView);
         recipeDetailCard.getChildren().add(innerCardRecipeImage);
         recipeDetailCard.getChildren().add(innerCardRecipe);
@@ -163,17 +163,17 @@ public class RecetteDetailleeController {
     @FXML
     public void modifInFavoriteList() {
         if (toFavoriteListButton.getText().equals("Add to favorites")) {
-            favoris.ajouterFavoris(recetteInfo);
+            favoriteRecipe.ajouterFavoris(recipeDetails);
             toFavoriteListButton.setText("Remove from favorites");
         } else {
-            favoris.supprimerFavoris(recetteInfo);
+            favoriteRecipe.supprimerFavoris(recipeDetails);
             toFavoriteListButton.setText("Add to favorites");
         }
     }
 
     @FXML
     private void addToShoppingList() {
-        listeDeCourse.genereListeDeCourseAutomatiquement(recetteInfo.getIngredientList());
+        listeDeCourse.genereListeDeCourseAutomatiquement(recipeDetails.getIngredientList());
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Liste de courses");
         alert.setHeaderText(null);

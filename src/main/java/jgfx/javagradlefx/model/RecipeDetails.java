@@ -3,7 +3,7 @@ package jgfx.javagradlefx.model;
 
 import java.util.List;
 
-public class RecetteInfo {
+public class RecipeDetails {
     private Long id;
     private String nom;
     private String image;
@@ -32,7 +32,7 @@ public class RecetteInfo {
                 '}';
     }
 
-    public RecetteInfo(Long id, String nom, String image, List<Nutrient> nutrients, List<String> regimesAlimentaires, List<String> etapes, List<Ingredient> ingredientList, double tempsPreparation, int portion) {
+    public RecipeDetails(Long id, String nom, String image, List<Nutrient> nutrients, List<String> regimesAlimentaires, List<String> etapes, List<Ingredient> ingredientList, double tempsPreparation, int portion) {
         this.id = id;
         this.nom = nom;
         this.image = image;

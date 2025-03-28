@@ -1,15 +1,16 @@
 package jgfx.javagradlefx.model;
 
-public class Recette {
+public class User {
     private Long id;
     private String nom;
-    private String urlImage;
+    private Preference preference;
+    private FavoriteRecipe favoriteRecipe;
 
     //constructeur
-    public Recette(Long id, String nom, String urlImage){
+    public User(Long id, String nom){
         this.id = id;
         this.nom = nom;
-        this.urlImage = urlImage;
+        this.preference = new Preference(id);
     }
 
     //getters et setters
@@ -29,16 +30,13 @@ public class Recette {
         this.nom = nom;
     }
 
-    public String getUrlImage() {
-        return urlImage;
+    public Preference getPreference() {
+        return preference;
     }
 
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
+    //Methode pour mettre à jour les préférences de l'utilisateur
+    public void mettreAJourPreference(Preference preference) {
+        this.preference = preference;
     }
 
-    @Override
-    public String toString() {
-        return id+":{id=" + id + ", nom='" + nom + "', urlImage='" + urlImage + "'}";
-    }
 }

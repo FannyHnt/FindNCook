@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ListeDeCourses {
+public class GroceryList {
 
-    private final String PATH = "src/main/resources/data/ListeDeCourse.json";
+    private final String PATH = "src/main/resources/data/GroceryList.json";
     private JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
 
     // methode pour ajouter un ingredient dans la liste de course

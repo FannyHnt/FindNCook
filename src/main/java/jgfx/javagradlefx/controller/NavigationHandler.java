@@ -28,10 +28,10 @@ public class NavigationHandler {
 
     @FXML
     public void goToRecetteDetaillee(Long id, Node anyNode) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/recetteDetaillee.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/RecipeDetailsView.fxml"));
         Parent root = loader.load(); // Le FXML est chargé ici, le contrôleur est instancié par JavaFX
 
-        RecetteDetailleeController controller = loader.getController();
+        RecipeDetailsController controller = loader.getController();
         controller.setRecetteId(id);
 
         double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;

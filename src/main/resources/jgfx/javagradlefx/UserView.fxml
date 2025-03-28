@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="jgfx.javagradlefx.controller.ListeDeCourseController"
+            fx:controller="jgfx.javagradlefx.controller.UserController"
+            stylesheets="@/styles/styleRecetteinfo.css"
             style="-fx-background-color: #a56600;">
 
     <!-- Barre de tâche FIXE -->
@@ -25,7 +24,7 @@
                 </graphic>
             </Button>
 
-            <Button fx:id="userButton" style="-fx-background-color: transparent;" onAction="#goToUser">
+            <Button fx:id="userButton" style="-fx-background-color: transparent;">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
@@ -37,7 +36,7 @@
 
             <Region fx:id="Space" HBox.hgrow="ALWAYS"/>
 
-            <Button fx:id="groceryButton" style="-fx-background-color: transparent;">
+            <Button fx:id="groceryButton" style="-fx-background-color: transparent;" onAction="#goToGroceryList">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
@@ -74,25 +73,56 @@
         <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
             <content>
                 <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
-                    <!-- Logo et champ de recherche -->
-                    <VBox spacing="15" alignment="CENTER">
+
+                    <VBox alignment="CENTER" spacing="20">
                         <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@/images/Logo.PNG" />
                             </image>
                         </ImageView>
+
+                        <Label text="MANAGE PREFERENCES" style="-fx-font-size: 30px; -fx-font-weight: BOLD;"/>
                     </VBox>
-                    <Label text="Shopping List" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-                    <!-- Formulaire pour ajouter un ingrédient -->
+
+                    <VBox alignment="CENTER" spacing="20"
+                          style="-fx-background-color: white ; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #a56600; -fx-border-width: 2px; -fx-text-fill: #FFD700;"
+                          maxWidth="500"
+                          maxHeight="500">
+
+                        <HBox fx:id="nameBox" spacing="10" alignment="CENTER">
+                            <Label fx:id="nameLabel" text="User name: " style="-fx-font-size: 15px;"/>
+                            <TextField fx:id="nameField"/>
+                        </HBox>
+
+                        <HBox fx:id="dietBox" spacing="10" alignment="CENTER">
+                            <Label fx:id="dietLabel" text="Diet : " style="-fx-font-size: 15px;"/>
+                            <ComboBox fx:id="dietField"/>
+                        </HBox>
+
+                        <VBox>
+                            <Label fx:id="intolerancesLabel" text="Intolerances : " style="-fx-font-size: 15px;"/>
+                            <FlowPane fx:id="intoleranceCheckboxes" hgap="15" vgap="15" alignment="CENTER">
+
+                            </FlowPane>
+                        </VBox>
+
+                    </VBox>
+
                     <HBox spacing="10" alignment="CENTER">
-                        <TextField fx:id="ingredientNameField" promptText="ingredient name"/>
-                        <Button text="Add" onAction="#ajouterIngredient"/>
+                        <Button text="Sauvegarder" onAction="#sauvegarder" styleClass="action-button"/>
+                        <Button text="Réinitialiser" onAction="#reinitialiser" styleClass="action-button" />
                     </HBox>
-                    <!-- Liste des ingrédients -->
-                    <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
-                    <ListView fx:id="ingredientListView" prefHeight="400" prefWidth="30"/>
+
                 </VBox>
             </content>
         </ScrollPane>
     </center>
+
+
+    <bottom>
+        <HBox style="-fx-background-color: #a56600;" minHeight="0" prefHeight="0" maxHeight="0"/>
+    </bottom>
 </BorderPane>
+
+
+
