@@ -1,5 +1,6 @@
 package jgfx.javagradlefx.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -30,7 +31,7 @@ public class RecetteDetailleeController {
         Nutrient nutrient = new Nutrient(1L,"nutrient 1", 44, "kg", 50);
         List<Nutrient> nutrients = new ArrayList<>();
         nutrients.add(nutrient);
-        recette = new RecetteInfo(209129L,
+        recetteInfo = new RecetteInfo(209129L,
                 "Dinner Tonight: Grilled Romesco-Style Pork",
                 "https://img.spoonacular.com/recipes/716429-556x370.jpg",
                 nutrients,
@@ -42,7 +43,7 @@ public class RecetteDetailleeController {
 
     }
 
-    private RecetteInfo recette;
+    private RecetteInfo recetteInfo;
 
     @FXML
     private Text titleContent;
@@ -63,9 +64,16 @@ public class RecetteDetailleeController {
     @FXML
     private VBox innerCardRecipe;
 
+    private SpoonacularService service = new SpoonacularService();
+
 
     @FXML
     public void initialize() {
+
+    }
+
+    public void setRecetteId(Long id) {
+        this.recetteInfo = service.getRecipeInfo(id);
         showRecipes();
     }
 
@@ -83,26 +91,26 @@ public class RecetteDetailleeController {
         imageView.setFitHeight(90);
         imageView.setPreserveRatio(true);
         try {
-            Image image = new Image(recette.getImage(), true);
+            Image image = new Image(recetteInfo.getImage(), true);
             imageView.setImage(image);
             if (image.isError()) {
-                System.out.println("Erreur chargement image pour recette " + recette.getNom() + ": " + image.getException());
+                System.out.println("Erreur chargement image pour recette " + recetteInfo.getNom() + ": " + image.getException());
             } else {
-                System.out.println("Image chargée avec succès pour recette " + recette.getNom());
+                System.out.println("Image chargée avec succès pour recette " + recetteInfo.getNom());
             }
         } catch (Exception e) {
-            System.out.println("Exception lors du chargement de l'image pour recette " + recette.getNom() + ": " + e.getMessage());
+            System.out.println("Exception lors du chargement de l'image pour recette " + recetteInfo.getNom() + ": " + e.getMessage());
         }
 
 
         // Affichage des autres éléments
-        titleContent.setText("\t" + recette.getNom());
-        portionContent.setText("\t" + Integer.toString(recette.getPortion()));
-        timeContent.setText("\t" + recette.getTempsPreparation() + " minutes");
-        ingredientsContent.setText(ingredientToString(recette.getIngredientList()));
-        stepsContent.setText(etapesToString(recette.getEtapes()));
-        dietContent.setText(regimeToString(recette.getRegimesAlimentaires()));
-        nutrientsContent.setText(nutrientToString(recette.getNutrients()));
+        titleContent.setText("\t" + recetteInfo.getNom());
+        portionContent.setText("\t" + Integer.toString(recetteInfo.getPortion()));
+        timeContent.setText("\t" + recetteInfo.getTempsPreparation() + " minutes");
+        ingredientsContent.setText(ingredientToString(recetteInfo.getIngredientList()));
+        stepsContent.setText(etapesToString(recetteInfo.getEtapes()));
+        dietContent.setText(regimeToString(recetteInfo.getRegimesAlimentaires()));
+        nutrientsContent.setText(nutrientToString(recetteInfo.getNutrients()));
         innerCardRecipeImage.getChildren().addAll(imageView);
         recipeDetailCard.getChildren().add(innerCardRecipeImage);
         recipeDetailCard.getChildren().add(innerCardRecipe);

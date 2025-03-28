@@ -64,7 +64,11 @@ public class AccueilController {
             hyperlink.setText(recette.getNom());
             hyperlink.setId(String.valueOf(recette.getId()));
             hyperlink.setOnAction(event -> {
-                System.out.println("Recette sélectionnée : " + recette.getNom());
+                try {
+                    goToRecetteDetaillee(Long.parseLong(hyperlink.getId()));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             });
 
             card.getChildren().addAll(imageView, hyperlink);
@@ -109,5 +113,24 @@ public class AccueilController {
         stage.show();
 
     }
+
+    private void goToRecetteDetaillee(Long id) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/recetteDetaillee.fxml"));
+        Parent root = loader.load(); // Le FXML est chargé ici, le contrôleur est instancié par JavaFX
+
+        RecetteDetailleeController controller = loader.getController();
+        controller.setRecetteId(id);
+
+        double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
+        double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
+
+        Scene scene =new Scene(root,screenWidth,screenHeight);
+
+        Stage stage = (Stage) searchField.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
 }
 

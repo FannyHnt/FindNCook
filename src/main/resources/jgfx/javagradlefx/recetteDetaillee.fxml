@@ -74,7 +74,7 @@
     <center>
         <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
             <content>
-                <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
+                <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" maxWidth="1200" style="-fx-background-color: #a56600;">
                     <VBox spacing="15" alignment="CENTER">
                         <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -85,8 +85,7 @@
 
 
 
-                    <VBox fx:id="recipeDetailCard" spacing="20" alignment="CENTER" style="-fx-background-color: white; -fx-padding: 10; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.3, 0, 2);" styleClass="recipe-card"/>
-
+                    <VBox fx:id="recipeDetailCard" spacing="20" alignment="CENTER" maxWidth="700" styleClass="recipe-card"/>
 
                     <!-- Ajout des nouveaux éléments avec style -->
                     <VBox fx:id="innerCardRecipe" spacing="15" alignment="TOP_LEFT" maxWidth="400">
