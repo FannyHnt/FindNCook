@@ -88,7 +88,7 @@ public class AdvancedResearchViewController {
 
         // Construire la requête API avec les paramètres sélectionnés
         StringBuilder sb = new StringBuilder();
-        if (dietField.getValue() != null) {
+        if (cuisineField.getValue() != null) {
             StringBuilder cuisine = new StringBuilder(cuisineField.getValue());
             sb.append("&cuisine=").append(URLEncoder.encode(cuisine.toString(), "UTF-8"));
         }
