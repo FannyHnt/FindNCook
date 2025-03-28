@@ -60,14 +60,21 @@ public class JsonRequestHandler {
                 JSONObject stepObj = stepsArray.getJSONObject(j);
                 String step = stepObj.getString("step");
 
-                List<String> ingredients = new ArrayList<>();
-                JSONArray ingredientsArray = stepObj.getJSONArray("ingredients");
-                for (int k = 0; k < ingredientsArray.length(); k++) {
-                    JSONObject ingredientObj = ingredientsArray.getJSONObject(k);
-                    ingredients.add(ingredientObj.getString("name"));
-                }
+                // Diviser l'étape en phrases
+                String[] sentences = step.split("\\.");
 
-                stepsAndIngredients.put(step, ingredients);
+                for (String sentence : sentences) {
+                    if (!sentence.trim().isEmpty()) {
+                        List<String> ingredients = new ArrayList<>();
+                        JSONArray ingredientsArray = stepObj.getJSONArray("ingredients");
+                        for (int k = 0; k < ingredientsArray.length(); k++) {
+                            JSONObject ingredientObj = ingredientsArray.getJSONObject(k);
+                            ingredients.add(ingredientObj.getString("name"));
+                        }
+
+                        stepsAndIngredients.put(sentence.trim(), ingredients);
+                    }
+                }
             }
         }
 
