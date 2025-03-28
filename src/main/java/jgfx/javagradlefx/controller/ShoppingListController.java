@@ -16,7 +16,7 @@ public class ShoppingListController {
     private TextField ingredientNameField;
     @FXML
     private ListView<String> ingredientListView;
-    private GroceryList listeDecourses = new GroceryList();
+    private GroceryList groceryList = new GroceryList();
     private NavigationHandler navbar = new NavigationHandler();
     private String userView = "/jgfx/javagradlefx/UserView.fxml";
     private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
@@ -26,8 +26,7 @@ public class ShoppingListController {
     @FXML
     public void initialize() {
         // Charger les ingrédients existants
-        chargerIngredients();
-
+        uploadIngredients();
         // Configurer la ListView pour utiliser des cellules personnalisées
         ingredientListView.setCellFactory(new Callback<>() {
             @Override
@@ -38,18 +37,18 @@ public class ShoppingListController {
     }
 
     @FXML
-    private void ajouterIngredient() {
+    private void addIngredient() {
         String name = ingredientNameField.getText();
         if (!name.isEmpty()) {
-            listeDecourses.ajouterIngredient(name);
-            chargerIngredients();
+            groceryList.addIngredient(name);
+            uploadIngredients();
             ingredientNameField.clear();
         }
     }
 
-    private void chargerIngredients() {
+    private void uploadIngredients() {
         ingredientListView.getItems().clear();
-        for (String ingredient : listeDecourses.getListeDeCourse()) {
+        for (String ingredient : groceryList.getGroceryList()) {
             ingredientListView.getItems().add(ingredient);
         }
     }
@@ -67,8 +66,8 @@ public class ShoppingListController {
             deleteButton.setOnAction(event -> {
                 String item = getItem();
                 if (item != null) {
-                    listeDecourses.supprimerIngredient(item);
-                    chargerIngredients();
+                    groceryList.removeIngredient(item);
+                    uploadIngredients();
                 }
             });
         }

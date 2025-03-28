@@ -46,7 +46,7 @@
                 </graphic>
             </Button>
 
-            <Button fx:id="favoritesButton" style="-fx-background-color: transparent;">
+            <Button fx:id="favoritesButton" style="-fx-background-color: transparent;" onAction="#goToFavorites">
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>

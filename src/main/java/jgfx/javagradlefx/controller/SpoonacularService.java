@@ -108,30 +108,11 @@ public class SpoonacularService {
             URL url = new URL(request);
 
             JSONObject obj = new JSONObject(connexion(url).toString());
-
-            System.out.println(obj.getJSONArray("results"));
-            System.out.println("Nombre de recettes retournées: " + obj.getJSONArray("results").length() + "\n");
-
             return jsonRequestHandler.jsonToRecipe(obj);
         } catch (Exception e) {
             e.printStackTrace();
 
             throw  new RuntimeException("Il y a un problème au niveau du query de la fonction getRecipeByPrefs");
-        }
-    }
-
-    public void testRecipeByPreference(){
-        User user = new User(1L, "John");
-        Preference pref1L = new Preference(1L);
-        pref1L.setRegimeAlimentaire("omnivore");
-        pref1L.ajouterIntoleranceAlimentaire("gluten");
-        pref1L.ajouterIntoleranceAlimentaire("dairy");
-        user.mettreAJourPreference(pref1L);
-
-        System.out.println("Essaie requete complexSearch avec les préférences (diet, intolerances)");
-        List<Recipe> recommendation = getRecipeByPrefs(user.getPreference().getRegimeAlimentaire(), user.getPreference().getIntolerancesAlimentaires());
-        for(Recipe rec : recommendation){
-            System.out.println(rec.getId());
         }
     }
 

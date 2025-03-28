@@ -20,7 +20,7 @@ import java.util.List;
 
 public class HomeController {
 
-    private SpoonacularService spoonacularService = new SpoonacularService();
+    private SpoonacularService spoonacularService;
     private List<Recipe> recipes;
     private JsonRequestHandler json = new JsonRequestHandler();
     private User user = json.chargerUtilisateur();
@@ -54,20 +54,18 @@ public class HomeController {
                 Image image = new Image(recipe.getUrlImage(), true);
                 imageView.setImage(image);
                 if (image.isError()) {
-                    System.out.println("Erreur chargement image pour recette " + recipe.getNom() + ": " + image.getException());
-                } else {
-                    System.out.println("Image chargée avec succès pour recette " + recipe.getNom());
+                    System.out.println("Erreur chargement image pour recette " + recipe.getName() + ": " + image.getException());
                 }
             } catch (Exception e) {
-                System.out.println("Exception lors du chargement de l'image pour recette " + recipe.getNom() + ": " + e.getMessage());
+                System.out.println("Exception lors du chargement de l'image pour recette " + recipe.getName() + ": " + e.getMessage());
             }
 
             Hyperlink hyperlink = new Hyperlink();
-            hyperlink.setText(recipe.getNom());
+            hyperlink.setText(recipe.getName());
             hyperlink.setId(String.valueOf(recipe.getId()));
             hyperlink.setOnAction(event -> {
                 try {
-                    goToRecetteDetaillee(Long.parseLong(hyperlink.getId()));
+                    goToRecipeDetails(Long.parseLong(hyperlink.getId()));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -80,22 +78,19 @@ public class HomeController {
 
     @FXML
     private void initialize() {
-        System.out.println("Accueil chargé !");
-
-        recipes = spoonacularService.getRecipeByPrefs(user.getPreference().getRegimeAlimentaire(),user.getPreference().getIntolerancesAlimentaires());
+        spoonacularService = new SpoonacularService();
+        recipes = spoonacularService.getRecipeByPrefs(user.getPreference().getDiet(),user.getPreference().getIntolerances());
         showRecipes();
     }
 
     @FXML
     private void handleSearch() {
         String query = searchField.getText().trim();
-
         if (!query.isEmpty()) {
             searchResultLabel.setText("You searched : " + query);
         } else {
             searchResultLabel.setText("The search bar is empty !");
         }
-
         recipes=spoonacularService.getRecipe(query);
         showRecipes();
     }
@@ -120,7 +115,7 @@ public class HomeController {
         navbar.goToAnotherPage(searchField,favoritesView);
     }
 
-    private void goToRecetteDetaillee(Long id) throws IOException {
+    private void goToRecipeDetails(Long id) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/RecipeDetailsView.fxml"));
         Parent root = loader.load(); // Le FXML est chargé ici, le contrôleur est instancié par JavaFX
 

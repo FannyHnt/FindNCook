@@ -30,11 +30,8 @@ public class FavoriteController {
 
     @FXML
     private void initialize() {
-
         showRecipes();
     }
-
-
 
     private void showRecipes(){
         recipeFlowPane.getChildren().clear();
@@ -61,20 +58,20 @@ public class FavoriteController {
                 Image image = new Image(recipe.getUrlImage(), true);
                 imageView.setImage(image);
                 if (image.isError()) {
-                    System.out.println("Erreur chargement image pour recette " + recipe.getNom() + ": " + image.getException());
+                    System.out.println("Erreur chargement image pour recette " + recipe.getName() + ": " + image.getException());
                 } else {
-                    System.out.println("Image chargée avec succès pour recette " + recipe.getNom());
+                    System.out.println("Image chargée avec succès pour recette " + recipe.getName());
                 }
             } catch (Exception e) {
-                System.out.println("Exception lors du chargement de l'image pour recette " + recipe.getNom() + ": " + e.getMessage());
+                System.out.println("Exception lors du chargement de l'image pour recette " + recipe.getName() + ": " + e.getMessage());
             }
 
             Hyperlink hyperlink = new Hyperlink();
-            hyperlink.setText(recipe.getNom());
+            hyperlink.setText(recipe.getName());
             hyperlink.setId(String.valueOf(recipe.getId()));
             hyperlink.setOnAction(event -> {
                 try {
-                    navbar.goToRecetteDetaillee(Long.parseLong(hyperlink.getId()), recipeFlowPane);
+                    navbar.goToRicipeDetails(Long.parseLong(hyperlink.getId()), recipeFlowPane);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

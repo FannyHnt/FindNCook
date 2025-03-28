@@ -26,15 +26,9 @@ public class Nutrient {
                 '}';
     }
 
-    public long getId() {
+    public long getId() {return id;}
 
-        return id;
-    }
-
-    public String getName() {
-
-        return name;
-    }
+    public String getName() {return name;}
 
     public String getUnit() {
         return unit;

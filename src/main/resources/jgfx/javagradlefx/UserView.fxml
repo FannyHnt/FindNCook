@@ -109,8 +109,8 @@
                     </VBox>
 
                     <HBox spacing="10" alignment="CENTER">
-                        <Button text="Sauvegarder" onAction="#sauvegarder" styleClass="action-button"/>
-                        <Button text="Réinitialiser" onAction="#reinitialiser" styleClass="action-button" />
+                        <Button text="Sauvegarder" onAction="#save" styleClass="action-button"/>
+                        <Button text="Réinitialiser" onAction="#reinitialize" styleClass="action-button" />
                     </HBox>
 
                 </VBox>

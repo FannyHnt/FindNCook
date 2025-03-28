@@ -15,12 +15,12 @@ public class UserController {
     private User user;
     @FXML private TextField nameField;
     @FXML private ComboBox dietField;
-    private List<String> intolerancesPossibles = List.of("Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat");
+    private List<String> intolerancesLabels = List.of("Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat");
     @FXML private FlowPane intoleranceCheckboxes;
-    private List<String> regimesPossibles = List.of("","Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo","Primal", "Whole30", "Low FODMAP");
-    private final String COULEUR_VALIDE = "-fx-background-color: #90EE90;";
-    private final String COULEUR_NOUVEAU = "-fx-background-color: #ADD8E6;";
-    private final String COULEUR_DECOCHE = "-fx-background-color: #FFB6C1;";
+    private List<String> dietsLabels = List.of("","Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo","Primal", "Whole30", "Low FODMAP");
+    private final String VALID_COLOR = "-fx-background-color: #90EE90;";
+    private final String NEW_COLOR = "-fx-background-color: #ADD8E6;";
+    private final String UNCHECKED_COLOR = "-fx-background-color: #FFB6C1;";
     private final Map<CheckBox, String> checkBoxToIntolerance = new HashMap<>();
     private final Set<String> initialIntolerances = new HashSet<>();
     private final Set<String> added = new HashSet<>();
@@ -37,26 +37,26 @@ public class UserController {
 
         // On récupère les données enregistrées sur l'utilisateur
         user = jsonRequestHandler.chargerUtilisateur();
-        nameField.setText(user.getNom());
-        for (String regime : regimesPossibles) {
+        nameField.setText(user.getName());
+        for (String regime : dietsLabels) {
             dietField.getItems().add(regime);
         }
 
         Preference pref = user.getPreference();
-        dietField.setValue(pref.getRegimeAlimentaire());
+        dietField.setValue(pref.getDiet());
 
         // Charger les intolérances enregistrées
-        initialIntolerances.addAll(pref.getIntolerancesAlimentaires());
+        initialIntolerances.addAll(pref.getIntolerances());
 
         // Créer les checkboxes
-        for (String intolerance : intolerancesPossibles) {
+        for (String intolerance : intolerancesLabels) {
             CheckBox cb = new CheckBox(intolerance);
 
             checkBoxToIntolerance.put(cb, intolerance); // Mapping du checkbox avec l'intolérance
 
             if (initialIntolerances.contains(intolerance)) {
                 cb.setSelected(true);
-                cb.setStyle(COULEUR_VALIDE);
+                cb.setStyle(VALID_COLOR);
             }
 
             cb.setOnAction(e -> handleCheckboxChange(cb));
@@ -65,16 +65,16 @@ public class UserController {
     }
 
     @FXML
-    public void sauvegarder() {
-        user.setNom(nameField.getText().trim());
+    public void save() {
+        user.setName(nameField.getText().trim());
         Preference pref = user.getPreference();
-        pref.setRegimeAlimentaire(dietField.getValue().toString());
+        pref.setDiet(dietField.getValue().toString());
 
         // Appliquer les modifs aux intolérances
         Set<String> updated = new HashSet<>(initialIntolerances);
         updated.addAll(added);
         updated.removeAll(removed);
-        pref.setIntolerancesAlimentaires(new ArrayList<>(updated));
+        pref.setIntolerances(new ArrayList<>(updated));
         jsonRequestHandler.modifierFichierUtilisateur(user);
 
 
@@ -86,7 +86,7 @@ public class UserController {
         // Mise à jour les styles des checkboxes
         for (CheckBox cb : checkBoxToIntolerance.keySet()) {
             if (cb.isSelected()) {
-                cb.setStyle(COULEUR_VALIDE);
+                cb.setStyle(VALID_COLOR);
             } else {
                 cb.setStyle("");
             }
@@ -95,7 +95,7 @@ public class UserController {
 
 
     @FXML
-    public void reinitialiser() {
+    public void reinitialize() {
         jsonRequestHandler.reinitialiserFichierUtilisateur();
         user = jsonRequestHandler.chargerUtilisateur();
         dietField.setValue(dietField.getItems().get(0));
@@ -118,15 +118,15 @@ public class UserController {
                 added.add(intolerance);
                 
                 removed.remove(intolerance);
-                cb.setStyle(COULEUR_NOUVEAU);
+                cb.setStyle(NEW_COLOR);
             } else {
                 removed.remove(intolerance);
-                cb.setStyle(COULEUR_VALIDE);
+                cb.setStyle(VALID_COLOR);
             }
         } else {
             if (initialIntolerances.contains(intolerance)) {
                 removed.add(intolerance);
-                cb.setStyle(COULEUR_DECOCHE);
+                cb.setStyle(UNCHECKED_COLOR);
             } else {
                 added.remove(intolerance);
                 cb.setStyle(""); // sans style = état initial

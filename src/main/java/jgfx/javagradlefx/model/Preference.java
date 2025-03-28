@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Preference {
     private Long id;
-    private String regimeAlimentaire;
-    private List<String> intolerancesAlimentaires;
+    private String diet;
+    private List<String> intolerances;
 
     //constructeur
     public Preference(Long id){
         this.id = id;
-        regimeAlimentaire = "";
-        intolerancesAlimentaires = new ArrayList<String>();
+        diet = "";
+        intolerances = new ArrayList<String>();
     }
 
     //getters et setters
@@ -24,29 +24,24 @@ public class Preference {
         this.id = id;
     }
 
-    public String getRegimeAlimentaire() {
-        return regimeAlimentaire;
+    public String getDiet() {
+        return diet;
     }
 
-    public void setRegimeAlimentaire(String regimeAlimentaire) {
-        this.regimeAlimentaire = regimeAlimentaire;
+    public void setDiet(String diet) {
+        this.diet = diet;
     }
 
-    public List<String> getIntolerancesAlimentaires() {
-        return intolerancesAlimentaires;
+    public List<String> getIntolerances() {
+        return intolerances;
     }
 
-    public void setIntolerancesAlimentaires(List<String> intolerancesAlimentaires) {
-        this.intolerancesAlimentaires = intolerancesAlimentaires;
+    public void setIntolerances(List<String> intolerances) {
+        this.intolerances = intolerances;
     }
 
     //méthode pour ajouter une intolérance alimentaire
-    public void ajouterIntoleranceAlimentaire(String intoleranceAlimentaire){
-        this.intolerancesAlimentaires.add(intoleranceAlimentaire);
-    }
-
-    //méthode pour supprimer une intolérance alimentaire
-    public void supprimerIntoleranceAlimentaire(String intoleranceAlimentaire){
-        this.intolerancesAlimentaires.remove(intoleranceAlimentaire);
+    public void addIntolerance(String intolerance){
+        this.intolerances.add(intolerance);
     }
 }

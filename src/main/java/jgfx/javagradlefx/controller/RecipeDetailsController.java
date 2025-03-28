@@ -23,6 +23,7 @@ public class RecipeDetailsController {
     private String groceryListView = "/jgfx/javagradlefx/GroceryListView.fxml";
     private String favoritesView = "/jgfx/javagradlefx/FavoriteListView.fxml";
     private String homeView = "/jgfx/javagradlefx/HomeView.fxml";
+
     GroceryList listeDeCourse;
     @FXML
     private Text titleContent;
@@ -82,21 +83,19 @@ public class RecipeDetailsController {
             Image image = new Image(recipeDetails.getImage(), true);
             imageView.setImage(image);
             if (image.isError()) {
-                System.out.println("Erreur chargement image pour recette " + recipeDetails.getNom() + ": " + image.getException());
-            } else {
-                System.out.println("Image chargée avec succès pour recette " + recipeDetails.getNom());
+                System.out.println("Erreur chargement image pour recette " + recipeDetails.getName() + ": " + image.getException());
             }
         } catch (Exception e) {
-            System.out.println("Exception lors du chargement de l'image pour recette " + recipeDetails.getNom() + ": " + e.getMessage());
+            System.out.println("Exception lors du chargement de l'image pour recette " + recipeDetails.getName() + ": " + e.getMessage());
         }
 
         // Affichage des autres éléments
-        titleContent.setText("\t" + recipeDetails.getNom());
-        portionContent.setText("\t" + Integer.toString(recipeDetails.getPortion()));
-        timeContent.setText("\t" + recipeDetails.getTempsPreparation() + " minutes");
+        titleContent.setText("\t" + recipeDetails.getName());
+        portionContent.setText("\t" + Integer.toString(recipeDetails.getServings()));
+        timeContent.setText("\t" + recipeDetails.getCookingTime() + " minutes");
         ingredientsContent.setText(ingredientToString(recipeDetails.getIngredientList()));
-        stepsContent.setText(etapesToString(recipeDetails.getEtapes()));
-        dietContent.setText(regimeToString(recipeDetails.getRegimesAlimentaires()));
+        stepsContent.setText(stepsToString(recipeDetails.getSteps()));
+        dietContent.setText(dietToString(recipeDetails.getDiets()));
         nutrientsContent.setText(nutrientToString(recipeDetails.getNutrients()));
         innerCardRecipeImage.getChildren().addAll(imageView);
         recipeDetailCard.getChildren().add(innerCardRecipeImage);
@@ -107,12 +106,12 @@ public class RecipeDetailsController {
         StringBuilder sb = new StringBuilder();
         for(int i = 0 ; i < ingredients.size() - 1; i++) {
             sb.append("\t");
-            sb.append("- " + ingredients.get(i).getQuantite() + " " + ingredients.get(i).getUnite() + " " + ingredients.get(i).getName());
+            sb.append("- " + ingredients.get(i).getQuantity() + " " + ingredients.get(i).getUnit() + " " + ingredients.get(i).getName());
             sb.append("\n");
         }
         sb.append("\t");
         sb.append("- ");
-        sb.append(ingredients.get(ingredients.size() - 1).getQuantite() + " " + ingredients.get(ingredients.size() - 1).getUnite() + " " + ingredients.get(ingredients.size() - 1).getName());
+        sb.append(ingredients.get(ingredients.size() - 1).getQuantity() + " " + ingredients.get(ingredients.size() - 1).getUnit() + " " + ingredients.get(ingredients.size() - 1).getName());
         return sb.toString();
     }
 
@@ -120,16 +119,16 @@ public class RecipeDetailsController {
         StringBuilder sb = new StringBuilder();
         for(int i = 0 ; i < nutrients.size() - 1; i++) {
             sb.append("\t");
-            sb.append("- " + nutrients.get(i).getQuantity() + " " + nutrients.get(i).getUnit() + " " + nutrients.get(i).getName());
+            sb.append("- " + nutrients.get(i).getQuantity() + " " + nutrients.get(i).getUnit() + " " + nutrients.get(i).getName() + "( Percent Of Daily Needs : " + nutrients.get(nutrients.size()-1).getPercentOfDailyNeeds() + " )");
             sb.append("\n");
         }
         sb.append("\t");
         sb.append("- ");
-        sb.append(nutrients.get(nutrients.size()-1).getQuantity() + " " + nutrients.get(nutrients.size()-1).getUnit() + " " + nutrients.get(nutrients.size()-1).getName());
+        sb.append(nutrients.get(nutrients.size()-1).getQuantity() + " " + nutrients.get(nutrients.size()-1).getUnit() + " " + nutrients.get(nutrients.size()-1).getName() + "( Percent Of Daily Needs : " + nutrients.get(nutrients.size()-1).getPercentOfDailyNeeds() + " )");
         return sb.toString();
     }
 
-    public String etapesToString(List<String> etapes) {
+    public String stepsToString(List<String> etapes) {
         StringBuilder sb = new StringBuilder();
         for(int i = 0 ; i < etapes.size() - 1; i++) {
             sb.append("\t");
@@ -143,7 +142,7 @@ public class RecipeDetailsController {
         return sb.toString();
     }
 
-    public String regimeToString(List<String> regimes) {
+    public String dietToString(List<String> regimes) {
         if (regimes.isEmpty()) {
             return "";
         }
@@ -163,17 +162,17 @@ public class RecipeDetailsController {
     @FXML
     public void modifInFavoriteList() {
         if (toFavoriteListButton.getText().equals("Add to favorites")) {
-            favoriteRecipe.ajouterFavoris(recipeDetails);
+            favoriteRecipe.addToFavoriteList(recipeDetails);
             toFavoriteListButton.setText("Remove from favorites");
         } else {
-            favoriteRecipe.supprimerFavoris(recipeDetails);
+            favoriteRecipe.removeFromFavoriteList(recipeDetails);
             toFavoriteListButton.setText("Add to favorites");
         }
     }
 
     @FXML
     private void addToShoppingList() {
-        listeDeCourse.genereListeDeCourseAutomatiquement(recipeDetails.getIngredientList());
+        listeDeCourse.generateGroceryListAuto(recipeDetails.getIngredientList());
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Liste de courses");
         alert.setHeaderText(null);

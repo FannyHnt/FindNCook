@@ -53,28 +53,28 @@
         "portion": 3,
         "ingredients": [
             {
-                "unite": "g",
+                "unit": "g",
+                "quantity": 5,
                 "name": "pomme",
-                "id": 1,
-                "quantite": 5
+                "id": 1
             },
             {
-                "unite": "g",
+                "unit": "g",
+                "quantity": 4,
                 "name": "orange",
-                "id": 2,
-                "quantite": 4
+                "id": 2
             },
             {
-                "unite": "kg",
+                "unit": "kg",
+                "quantity": 3,
                 "name": "avocat",
-                "id": 3,
-                "quantite": 3
+                "id": 3
             },
             {
-                "unite": "mg",
+                "unit": "mg",
+                "quantity": 6,
                 "name": "huile",
-                "id": 4,
-                "quantite": 6
+                "id": 4
             }
         ],
         "regimeAlimentaires": ["Vegan"],

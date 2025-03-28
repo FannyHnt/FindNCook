@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class NavigationHandler {
+
     @FXML
     public void goToAnotherPage(Node anyNodeInScene,String fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
@@ -27,7 +28,7 @@ public class NavigationHandler {
     }
 
     @FXML
-    public void goToRecetteDetaillee(Long id, Node anyNode) throws IOException {
+    public void goToRicipeDetails(Long id, Node anyNode) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/RecipeDetailsView.fxml"));
         Parent root = loader.load(); // Le FXML est chargé ici, le contrôleur est instancié par JavaFX
 

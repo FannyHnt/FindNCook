@@ -27,6 +27,7 @@ public class JsonRequestHandler {
         }
         return recipes;
     }
+
     // Transforme l'objet JSON en RecetteInfo
     public RecipeDetails jsonToRecipeInfo(JSONObject obj, Map<String, List<String>> stepsObj, JSONObject ingredientsObj, JSONObject nutrientsObj) {
         Long id = obj.getLong("id");
@@ -48,6 +49,7 @@ public class JsonRequestHandler {
 
         return new RecipeDetails(id, title, imageurl, nutrients, regimesAlimentaires, steps, ingredientList, tempsPreparation, portion );
     }
+
     // Methode pour extraire les ingrédients et les etapes d'une recette
     public Map<String, List<String>> extractStepsAndIngredients(JSONArray instructionsArray) {
         Map<String, List<String>> stepsAndIngredients = new HashMap<>();
@@ -101,7 +103,7 @@ public class JsonRequestHandler {
         return ingredients;
     }
 
-    public RecipeDetails jsonToIngredient_single(JSONObject recette, String id) {
+    public RecipeDetails jsonToIngredientSingle(JSONObject recette, String id) {
         List<Nutrient> nutrients = new ArrayList<>();
         for (int i = 0; i < recette.getJSONArray(  "nutrients") .length(); i++) {
             JSONObject nutrientObj = recette.getJSONArray(  "nutrients").getJSONObject(i);
@@ -182,15 +184,15 @@ public class JsonRequestHandler {
 
             JSONObject prefJson = obj.getJSONObject("preference");
             Preference preference = new Preference(prefJson.getLong("id"));
-            preference.setRegimeAlimentaire(prefJson.getString("regimeAlimentaire"));
+            preference.setDiet(prefJson.getString("regimeAlimentaire"));
 
             JSONArray intolerancesArray = prefJson.getJSONArray("intolerancesAlimentaires");
             for (int i = 0; i < intolerancesArray.length(); i++) {
-                preference.ajouterIntoleranceAlimentaire(intolerancesArray.getString(i));
+                preference.addIntolerance(intolerancesArray.getString(i));
             }
 
             User user = new User(id, nom);
-            user.mettreAJourPreference(preference);
+            user.updatePreference(preference);
 
             return user;
 
@@ -205,13 +207,13 @@ public class JsonRequestHandler {
         try {
             JSONObject obj = new JSONObject();
             obj.put("id", user.getId());
-            obj.put("nom", user.getNom());
+            obj.put("nom", user.getName());
 
             Preference pref = user.getPreference();
             JSONObject prefJson = new JSONObject();
             prefJson.put("id", pref.getId());
-            prefJson.put("regimeAlimentaire", pref.getRegimeAlimentaire());
-            prefJson.put("intolerancesAlimentaires", pref.getIntolerancesAlimentaires());
+            prefJson.put("regimeAlimentaire", pref.getDiet());
+            prefJson.put("intolerancesAlimentaires", pref.getIntolerances());
 
             obj.put("preference", prefJson);
 
@@ -226,9 +228,9 @@ public class JsonRequestHandler {
     public void reinitialiserFichierUtilisateur() {
         User user = new User(1L, "");
         Preference preference = new Preference(1L);
-        preference.setRegimeAlimentaire("");
-        preference.setIntolerancesAlimentaires(new ArrayList<>());
-        user.mettreAJourPreference(preference);
+        preference.setDiet("");
+        preference.setIntolerances(new ArrayList<>());
+        user.updatePreference(preference);
         modifierFichierUtilisateur(user);
     }
 

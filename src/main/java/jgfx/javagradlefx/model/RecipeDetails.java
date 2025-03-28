@@ -5,14 +5,13 @@ import java.util.List;
 
 public class RecipeDetails {
     private Long id;
-    private String nom;
+    private String name;
     private String image;
-    private int portion;
-    private double tempsPreparation;
+    private int servings;
+    private double cookingTime;
     private List<Ingredient> ingredientList;
-    private List<String> etapes;
-    //private List<String> ustensiles;
-    private List<String> regimesAlimentaires;
+    private List<String> steps;
+    private List<String> diets;
     private List<Nutrient> nutrients;
 
     public String getId() {
@@ -23,25 +22,25 @@ public class RecipeDetails {
     public String toString() {
         return "RecetteInfo{" +
                 "id=" + id +
-                ", portion=" + portion +
-                ", tempsPreparation=" + tempsPreparation +
+                ", portion=" + servings +
+                ", tempsPreparation=" + cookingTime +
                 ", ingredientList=" + ingredientList +
-                ", etapes=" + etapes +
-                ", regimesAlimentaires=" + regimesAlimentaires +
+                ", etapes=" + steps +
+                ", regimesAlimentaires=" + diets +
                 ", nutrients=" + nutrients +
                 '}';
     }
 
-    public RecipeDetails(Long id, String nom, String image, List<Nutrient> nutrients, List<String> regimesAlimentaires, List<String> etapes, List<Ingredient> ingredientList, double tempsPreparation, int portion) {
+    public RecipeDetails(Long id, String name, String image, List<Nutrient> nutrients, List<String> diets, List<String> steps, List<Ingredient> ingredientList, double cookingTime, int servings) {
         this.id = id;
-        this.nom = nom;
+        this.name = name;
         this.image = image;
         this.nutrients = nutrients;
-        this.regimesAlimentaires = regimesAlimentaires;
-        this.etapes = etapes;
+        this.diets = diets;
+        this.steps = steps;
         this.ingredientList = ingredientList;
-        this.tempsPreparation = tempsPreparation;
-        this.portion = portion;
+        this.cookingTime = cookingTime;
+        this.servings = servings;
 
     }
 
@@ -49,30 +48,28 @@ public class RecipeDetails {
         this.id = id;
     }
 
-
-
-    public int getPortion() {
-        return portion;
+    public int getServings() {
+        return servings;
     }
 
-    public double getTempsPreparation() {
-        return tempsPreparation;
+    public double getCookingTime() {
+        return cookingTime;
     }
 
     public List<Ingredient> getIngredientList() {
         return ingredientList;
     }
 
-    public List<String> getEtapes() {
-        return etapes;
+    public List<String> getSteps() {
+        return steps;
     }
 
-    public List<String> getRegimesAlimentaires() {
-        return regimesAlimentaires;
+    public List<String> getDiets() {
+        return diets;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
     public String getImage() {

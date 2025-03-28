@@ -2,13 +2,13 @@ package jgfx.javagradlefx.model;
 
 public class Recipe {
     private Long id;
-    private String nom;
+    private String name;
     private String urlImage;
 
     //constructeur
-    public Recipe(Long id, String nom, String urlImage){
+    public Recipe(Long id, String name, String urlImage){
         this.id = id;
-        this.nom = nom;
+        this.name = name;
         this.urlImage = urlImage;
     }
 
@@ -21,24 +21,16 @@ public class Recipe {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
+    public String getName() {
+        return name;
     }
 
     public String getUrlImage() {
         return urlImage;
     }
 
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
-    }
-
     @Override
     public String toString() {
-        return id+":{id=" + id + ", nom='" + nom + "', urlImage='" + urlImage + "'}";
+        return id+":{id=" + id + ", nom='" + name + "', urlImage='" + urlImage + "'}";
     }
 }

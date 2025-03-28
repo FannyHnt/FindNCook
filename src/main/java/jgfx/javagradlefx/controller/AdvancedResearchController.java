@@ -1,17 +1,12 @@
 package jgfx.javagradlefx.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 import jgfx.javagradlefx.model.Recipe;
 import org.json.JSONObject;
 
@@ -45,13 +40,13 @@ public class AdvancedResearchController {
     @FXML
     private TextField maxCaloriesField;
     @FXML
-    private VBox scrollPaneContent; // Ajoutez cette ligne pour référencer le VBox principal
+    private VBox scrollPaneContent;
     @FXML
-    private FlowPane recipeFlowPane; // Ajoutez cette ligne pour référencer le FlowPane des résultats
+    private FlowPane recipeFlowPane;
 
     private NavigationHandler navbar = new NavigationHandler();
     private String userView = "/jgfx/javagradlefx/UserView.fxml";
-    private String home = "/jgfx/javagradlefx/HomeView.fxml";
+    private String homeView = "/jgfx/javagradlefx/HomeView.fxml";
     private String groceryListView = "/jgfx/javagradlefx/GroceryListView.fxml";
     private String favoritesView = "/jgfx/javagradlefx/FavoriteListView.fxml";
 
@@ -162,20 +157,20 @@ public class AdvancedResearchController {
                 Image image = new Image(recipe.getUrlImage(), true);
                 imageView.setImage(image);
                 if (image.isError()) {
-                    System.out.println("Erreur chargement image pour recette " + recipe.getNom() + ": " + image.getException());
+                    System.out.println("Erreur chargement image pour recette " + recipe.getName() + ": " + image.getException());
                 } else {
-                    System.out.println("Image chargée avec succès pour recette " + recipe.getNom());
+                    System.out.println("Image chargée avec succès pour recette " + recipe.getName());
                 }
             } catch (Exception e) {
-                System.out.println("Exception lors du chargement de l'image pour recette " + recipe.getNom() + ": " + e.getMessage());
+                System.out.println("Exception lors du chargement de l'image pour recette " + recipe.getName() + ": " + e.getMessage());
             }
 
             Hyperlink hyperlink = new Hyperlink();
-            hyperlink.setText(recipe.getNom());
+            hyperlink.setText(recipe.getName());
             hyperlink.setId(String.valueOf(recipe.getId()));
             hyperlink.setOnAction(event -> {
                 try {
-                    goToRecetteDetaillee(Long.parseLong(hyperlink.getId()));
+                    goToRecipeDetails(Long.parseLong(hyperlink.getId()));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -200,21 +195,8 @@ public class AdvancedResearchController {
         }
     }
 
-    private void goToRecetteDetaillee(Long id) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/RecipeDetailsView.fxml"));
-        Parent root = loader.load(); // Le FXML est chargé ici, le contrôleur est instancié par JavaFX
-
-        RecipeDetailsController controller = loader.getController();
-        controller.setRecetteId(id);
-
-        double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
-        double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
-
-        Scene scene = new Scene(root, screenWidth, screenHeight);
-
-        Stage stage = (Stage) scrollPaneContent.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+    private void goToRecipeDetails(Long id) throws IOException {
+        navbar.goToRicipeDetails(id, recipeFlowPane);
     }
 
     @FXML
@@ -224,7 +206,7 @@ public class AdvancedResearchController {
 
     @FXML
     private void goToHome() throws IOException {
-        navbar.goToAnotherPage(includeIngredientField, home);
+        navbar.goToAnotherPage(includeIngredientField, homeView);
     }
 
     @FXML

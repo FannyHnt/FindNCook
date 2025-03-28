@@ -2,14 +2,13 @@ package jgfx.javagradlefx.model;
 
 public class User {
     private Long id;
-    private String nom;
+    private String name;
     private Preference preference;
-    private FavoriteRecipe favoriteRecipe;
 
     //constructeur
-    public User(Long id, String nom){
+    public User(Long id, String name){
         this.id = id;
-        this.nom = nom;
+        this.name = name;
         this.preference = new Preference(id);
     }
 
@@ -22,20 +21,19 @@ public class User {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Preference getPreference() {
         return preference;
     }
-
     //Methode pour mettre à jour les préférences de l'utilisateur
-    public void mettreAJourPreference(Preference preference) {
+    public void updatePreference(Preference preference) {
         this.preference = preference;
     }
 

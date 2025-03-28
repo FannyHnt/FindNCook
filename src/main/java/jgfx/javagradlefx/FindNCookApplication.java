@@ -5,17 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import jgfx.javagradlefx.controller.JsonFilesHandler;
-import jgfx.javagradlefx.model.FavoriteRecipe;
-import jgfx.javagradlefx.model.Ingredient;
-import jgfx.javagradlefx.model.Nutrient;
-import jgfx.javagradlefx.model.RecipeDetails;
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class FindNCookApplication extends Application {
@@ -33,59 +24,7 @@ public class FindNCookApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) throws UnsupportedEncodingException {
-
-
+    public static void main(String[] args) {
         launch();
-       JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
-//        ListeDecourses listeDecourses = new ListeDecourses();
-        List<Ingredient> ingredients = new ArrayList<>();
-        ingredients.add(new Ingredient(1, "pomme", "g", 5));
-        ingredients.add(new Ingredient(2, "orange", "g", 4));
-        ingredients.add(new Ingredient(3, "avocat", "kg", 3));
-        ingredients.add(new Ingredient(4, "huile", "mg", 6));
-
-        Nutrient nutrient = new Nutrient(1L,"nutrient 1", 44, "kg", 50);
-        List<Nutrient> nutrients = new ArrayList<>();
-        nutrients.add(nutrient);
-
-        List<String> regime = new ArrayList<>();
-        regime.add("Vegan");
-        List<String> etapes = new ArrayList<>();
-        etapes.add("etape1");
-        etapes.add("etape2");
-//
-//        System.out.println("----------------Avant---------------");
-//        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/GroceryList.json"));
-//        listeDecourses.genereListeDeCourseAutomatiquement(ingredients);
-//        System.out.println("----------------Après---------------");
-//        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/GroceryList.json"));
-//        //SpoonacularService service = new SpoonacularService();
-//        //service.getRecipe("tomato rice");
-//        //service.testRecipeByPreference();
-//        //System.out.println(service.getAnalyzedRecipeInfomation(1095889L).keySet());
-//        //System.out.println(service.getAnalyzedRecipeInfomation(1095889L));
-//        //System.out.println(service.getRecipeInfo(1095889L));
-//
-        RecipeDetails recipeDetails = new RecipeDetails(209129L,
-                "Dinner Tonight: Grilled Romesco-Style Pork",
-                "https://img.spoonacular.com/recipes/716429-556x370.jpg",
-                nutrients,
-                regime,
-                etapes,
-                ingredients,
-                45,3
-                );
-
-        FavoriteRecipe favoriteRecipe = new FavoriteRecipe();
-
-
-        System.out.println("----------------Avant---------------");
-        JSONObject obj = jsonFilesHandler.chargerFichier("src/main/resources/data/FavoriteRecipe.json");
-        System.out.println("-----------------apres----------------");
-        favoriteRecipe.ajouterFavoris(recipeDetails);
-        System.out.println(obj.getJSONObject("209129").get("image"));
-
-
     }
 }

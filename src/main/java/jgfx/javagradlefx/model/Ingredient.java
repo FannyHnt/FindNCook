@@ -3,16 +3,16 @@ package jgfx.javagradlefx.model;
 public class Ingredient {
     private long id;
     private String name;
-    private String unite;
-    private int quantite;
+    private String unit;
+    private int quantity;
 
     @Override
     public String toString() {
         return "Ingredient{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", unite='" + unite + '\'' +
-                ", quantite=" + quantite +
+                ", unite='" + unit + '\'' +
+                ", quantite=" + quantity +
                 '}';
     }
 
@@ -24,19 +24,19 @@ public class Ingredient {
         return id;
     }
 
-    public String getUnite() {
-        return unite;
+    public String getUnit() {
+        return unit;
     }
 
-    public int getQuantite() {
-        return quantite;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public Ingredient(long id, String name, String unite, int quantite) {
+    public Ingredient(long id, String name, String unit, int quantity) {
         this.id = id;
         this.name = name;
-        this.unite = unite;
-        this.quantite = quantite;
+        this.unit = unit;
+        this.quantity = quantity;
     }
 
 }
