@@ -24,6 +24,14 @@ public class Ingredient {
         return id;
     }
 
+    public String getUnite() {
+        return unite;
+    }
+
+    public int getQuantite() {
+        return quantite;
+    }
+
     public Ingredient(long id, String name, String unite, int quantite) {
         this.id = id;
         this.name = name;

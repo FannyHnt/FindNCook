@@ -112,13 +112,12 @@ public class RecetteDetailleeController {
         StringBuilder sb = new StringBuilder();
         for(int i = 0 ; i < ingredients.size() - 1; i++) {
             sb.append("\t");
-            sb.append("- ");
-            sb.append(ingredients.get(i).getName());
+            sb.append("- " + ingredients.get(i).getQuantite() + " " + ingredients.get(i).getUnite() + " " + ingredients.get(i).getName());
             sb.append("\n");
         }
         sb.append("\t");
         sb.append("- ");
-        sb.append(ingredients.get(ingredients.size()-1).getName());
+        sb.append(ingredients.get(ingredients.size() - 1).getQuantite() + " " + ingredients.get(ingredients.size() - 1).getUnite() + " " + ingredients.get(ingredients.size() - 1).getName());
         return sb.toString();
     }
 

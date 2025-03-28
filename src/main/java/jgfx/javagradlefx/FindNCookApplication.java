@@ -37,23 +37,23 @@ public class FindNCookApplication extends Application {
 
 
         launch();
-       //JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
+       JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
 //        ListeDecourses listeDecourses = new ListeDecourses();
-//        List<Ingredient> ingredients = new ArrayList<>();
-//        ingredients.add(new Ingredient(1, "pomme", "g", 5));
-//        ingredients.add(new Ingredient(2, "orange", "g", 4));
-//        ingredients.add(new Ingredient(3, "avocat", "kg", 3));
-//        ingredients.add(new Ingredient(4, "huile", "mg", 6));
-//
-//        Nutrient nutrient = new Nutrient(1L,"nutrient 1", 44, "kg", 50);
-//        List<Nutrient> nutrients = new ArrayList<>();
-//        nutrients.add(nutrient);
-//
-//        List<String> regime = new ArrayList<>();
-//        regime.add("Vegan");
-//        List<String> etapes = new ArrayList<>();
-//        etapes.add("etape1");
-//        etapes.add("etape2");
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(new Ingredient(1, "pomme", "g", 5));
+        ingredients.add(new Ingredient(2, "orange", "g", 4));
+        ingredients.add(new Ingredient(3, "avocat", "kg", 3));
+        ingredients.add(new Ingredient(4, "huile", "mg", 6));
+
+        Nutrient nutrient = new Nutrient(1L,"nutrient 1", 44, "kg", 50);
+        List<Nutrient> nutrients = new ArrayList<>();
+        nutrients.add(nutrient);
+
+        List<String> regime = new ArrayList<>();
+        regime.add("Vegan");
+        List<String> etapes = new ArrayList<>();
+        etapes.add("etape1");
+        etapes.add("etape2");
 //
 //        System.out.println("----------------Avant---------------");
 //        System.out.println(jsonFilesHandler.chargerFichier("src/main/resources/data/ListeDeCourse.json"));
@@ -67,22 +67,24 @@ public class FindNCookApplication extends Application {
 //        //System.out.println(service.getAnalyzedRecipeInfomation(1095889L));
 //        //System.out.println(service.getRecipeInfo(1095889L));
 //
-//        RecetteInfo recetteInfo = new RecetteInfo(209129L,
-//                "Dinner Tonight: Grilled Romesco-Style Pork",
-//                "https://img.spoonacular.com/recipes/716429-556x370.jpg",
-//                nutrients,
-//                regime,
-//                etapes,
-//                ingredients,
-//                45,3
-//                );
-//
-//        Favoris favoris = new Favoris();
-//
-//
-//        System.out.println("----------------Avant---------------");
-//        JSONObject obj = jsonFilesHandler.chargerFichier("src/main/resources/data/Favoris.json");
-//        System.out.println(obj.getJSONObject("209129").get("image"));
+        RecetteInfo recetteInfo = new RecetteInfo(209129L,
+                "Dinner Tonight: Grilled Romesco-Style Pork",
+                "https://img.spoonacular.com/recipes/716429-556x370.jpg",
+                nutrients,
+                regime,
+                etapes,
+                ingredients,
+                45,3
+                );
+
+        Favoris favoris = new Favoris();
+
+
+        System.out.println("----------------Avant---------------");
+        JSONObject obj = jsonFilesHandler.chargerFichier("src/main/resources/data/Favoris.json");
+        System.out.println("-----------------apres----------------");
+        favoris.ajouterFavoris(recetteInfo);
+        System.out.println(obj.getJSONObject("209129").get("image"));
 
 
     }
