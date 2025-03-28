@@ -27,11 +27,6 @@ public class SpoonacularService {
     // Cette méthode permet d'ouvrire une connexion avec l'API de spoonacular
     public StringBuilder connexion(URL url) {
         try {
-
-            String complex = "complexSearch";
-            // Create a URL object with the API endpoint
-
-
             // Open a connection
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -204,5 +199,16 @@ public class SpoonacularService {
         JSONObject ingredientsObj = getIngredientById(id);
         JSONObject nutritionObj = getNutritionInfo(id);
         return jsonRequestHandler.jsonToRecipeInfo(obj, stepsAndIngredients, ingredientsObj, nutritionObj);
+    }
+
+    public JSONObject getRepcipeByUrl(String url){
+        try {
+            URL finalUrl = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=f983acdf88c24b66b7705299529f9032"+ url);
+            JSONObject obj = new JSONObject(connexion(finalUrl).toString());
+            return obj;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Il y a un problème au niveau du query de la fonction getRepcipeByUrl");
+        }
     }
 }

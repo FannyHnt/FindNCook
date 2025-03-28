@@ -144,12 +144,14 @@
                             <TextField fx:id="maxCaloriesField"/>
                         </HBox>
 
-
                         <HBox spacing="10" alignment="CENTER">
-                            <Button text="Research"/>
+                            <Button text="Research" onAction="#handleSearch"/>
                         </HBox>
 
                     </VBox>
+
+                    <!-- Ajoutez ce FlowPane pour afficher les résultats -->
+                    <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
 
                 </VBox>
             </content>

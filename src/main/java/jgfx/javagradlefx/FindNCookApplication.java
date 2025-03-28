@@ -34,8 +34,10 @@ public class FindNCookApplication extends Application {
     }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
+
+
         launch();
-       JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
+       //JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
 //        ListeDecourses listeDecourses = new ListeDecourses();
 //        List<Ingredient> ingredients = new ArrayList<>();
 //        ingredients.add(new Ingredient(1, "pomme", "g", 5));
