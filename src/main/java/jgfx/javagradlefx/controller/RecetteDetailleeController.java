@@ -16,33 +16,6 @@ import java.util.List;
 
 public class RecetteDetailleeController {
 
-    public RecetteDetailleeController() {
-        List<String> regime = new ArrayList<>();
-        regime.add("Vegan");
-        List<String> etapes = new ArrayList<>();
-        etapes.add("etape1");
-        etapes.add("etape2");
-        List<Ingredient> ingredients = new ArrayList<>();
-        ingredients.add(new Ingredient(1, "pomme", "g", 5));
-        ingredients.add(new Ingredient(2, "orange", "g", 4));
-        ingredients.add(new Ingredient(3, "avocat", "kg", 3));
-        ingredients.add(new Ingredient(4, "huile", "mg", 6));
-
-        Nutrient nutrient = new Nutrient(1L,"nutrient 1", 44, "kg", 50);
-        List<Nutrient> nutrients = new ArrayList<>();
-        nutrients.add(nutrient);
-        recetteInfo = new RecetteInfo(209129L,
-                "Dinner Tonight: Grilled Romesco-Style Pork",
-                "https://img.spoonacular.com/recipes/716429-556x370.jpg",
-                nutrients,
-                regime,
-                etapes,
-                ingredients,
-                45,3
-        );;
-
-    }
-
     private RecetteInfo recetteInfo;
 
     @FXML
