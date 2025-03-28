@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.util.Callback;
@@ -18,7 +17,7 @@ public class ListeDeCourseController {
     @FXML
     private ListView<String> ingredientListView;
     private ListeDecourses listeDecourses = new ListeDecourses();
-    private NavbarHandler navbar = new NavbarHandler();
+    private NavigationHandler navbar = new NavigationHandler();
     private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
     private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
     private String homeView = "/jgfx/javagradlefx/accueil.fxml";

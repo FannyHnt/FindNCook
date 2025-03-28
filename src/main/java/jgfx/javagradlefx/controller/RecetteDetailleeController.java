@@ -11,7 +11,6 @@ import jgfx.javagradlefx.model.Ingredient;
 import jgfx.javagradlefx.model.Nutrient;
 import jgfx.javagradlefx.model.RecetteInfo;
 import javafx.scene.text.Text;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,7 +19,7 @@ public class RecetteDetailleeController {
 
     private RecetteInfo recetteInfo;
     private SpoonacularService service = new SpoonacularService();
-    private NavbarHandler navbar = new NavbarHandler();
+    private NavigationHandler navbar = new NavigationHandler();
     private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
     private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
     private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
@@ -59,13 +58,15 @@ public class RecetteDetailleeController {
     }
 
     public void setRecetteId(Long id) {
-        this.recetteInfo = service.getRecipeInfo(id);
-        showRecipes();
-        if (favoris.isInFavorites(recetteInfo.getId())){
+
+        if (favoris.isInFavorites(String.valueOf(id))){
             toFavoriteListButton.setText("Remove from favorites");
+            this.recetteInfo = favoris.getFavorisById(String.valueOf(id));
         } else {
+            this.recetteInfo = service.getRecipeInfo(id);
             toFavoriteListButton.setText("Add to favorites");
         }
+        showRecipes();
     }
 
     private void showRecipes() {
@@ -166,8 +167,14 @@ public class RecetteDetailleeController {
         return sb.toString();
     }
     @FXML
-    public void addToFavoriteList() {
-        favoris.ajouterFavoris(recetteInfo);
+    public void modifInFavoriteList() {
+        if (toFavoriteListButton.getText().equals("Add to favorites")) {
+            favoris.ajouterFavoris(recetteInfo);
+            toFavoriteListButton.setText("Remove from favorites");
+        } else {
+            favoris.supprimerFavoris(recetteInfo);
+            toFavoriteListButton.setText("Add to favorites");
+        }
     }
 
     @FXML

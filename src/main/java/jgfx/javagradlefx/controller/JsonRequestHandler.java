@@ -101,6 +101,50 @@ public class JsonRequestHandler {
         return ingredients;
     }
 
+    public RecetteInfo jsonToIngredient_single(JSONObject recette,String id) {
+        List<Nutrient> nutrients = new ArrayList<>();
+        for (int i = 0; i < recette.getJSONArray(  "nutrients") .length(); i++) {
+            JSONObject nutrientObj = recette.getJSONArray(  "nutrients").getJSONObject(i);
+
+            Nutrient nutrient = new Nutrient(
+                    Long.parseLong(id), // Utilisation de l'index comme ID temporaire
+                    nutrientObj.getString("name"),
+                    nutrientObj.getDouble("quantity"),
+                    nutrientObj.getString("unit"),
+                    nutrientObj.getDouble("percentOfDailyNeeds")
+            );
+            nutrients.add(nutrient);
+        }
+
+        List<Ingredient> ingredients = new ArrayList<>();
+        for (int i = 0; i < recette.getJSONArray("ingredients").length(); i++) {
+            JSONObject ingredientObj = recette.getJSONArray("ingredients").getJSONObject(i);
+
+            Ingredient ingredient = new Ingredient(
+                    Long.parseLong(id),
+                    ingredientObj.getString("name"),
+                    ingredientObj.getString("unite"),
+                    ingredientObj.getInt("quantite")
+            );
+            ingredients.add(ingredient);
+        }
+
+        List<String> steps = new ArrayList<>();
+        for (int i = 0; i < recette.getJSONArray("etapes").length(); i++) {
+            steps.add(recette.getJSONArray("etapes").getString(i));
+        }
+
+        List<String> diets = new ArrayList<>();
+        for (int i = 0; i < recette.getJSONArray("regimeAlimentaires").length(); i++) {
+            diets.add(recette.getJSONArray("regimeAlimentaires").getString(i));
+        }
+
+        RecetteInfo infos = new RecetteInfo(Long.parseLong(id), recette.getString("nom"), recette.getString("image"), nutrients,  diets, steps, ingredients , recette.getDouble("tempsPreparaation"), recette.getInt("portion"));
+
+        return infos;
+
+    }
+
     public List<Nutrient> jsonToNutrient(JSONObject obj, long id) {
         JSONArray nutrientsArray = obj.getJSONArray("nutrients");
 

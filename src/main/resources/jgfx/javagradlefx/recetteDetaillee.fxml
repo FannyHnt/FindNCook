@@ -121,7 +121,7 @@
 
                     <!-- Ajout des nouveaux boutons -->
                     <Button fx:id="addToShoppingListButton" text="add to shopping list" styleClass="action-button" onAction="#addToShoppingList"/>
-                    <Button fx:id="toFavoriteListButton" styleClass="action-button" onAction="#addToFavoriteList"/>
+                    <Button fx:id="toFavoriteListButton" styleClass="action-button" onAction="#modifInFavoriteList"/>
                 </VBox>
             </content>
         </ScrollPane>

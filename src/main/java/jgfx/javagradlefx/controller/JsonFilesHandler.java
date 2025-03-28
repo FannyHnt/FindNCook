@@ -1,6 +1,6 @@
 package jgfx.javagradlefx.controller;
 
-import jgfx.javagradlefx.model.Ingredient;
+
 import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;

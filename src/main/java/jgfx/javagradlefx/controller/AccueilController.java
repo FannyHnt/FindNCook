@@ -24,7 +24,7 @@ public class AccueilController {
     private List<Recette> recipes;
     private JsonRequestHandler json = new JsonRequestHandler();
     private Utilisateur user = json.chargerUtilisateur();
-    private NavbarHandler navbar = new NavbarHandler();
+    private NavigationHandler navbar = new NavigationHandler();
     private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
     private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
     private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";

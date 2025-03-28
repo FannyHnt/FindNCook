@@ -10,8 +10,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import jgfx.javagradlefx.model.Favoris;
 import jgfx.javagradlefx.model.Recette;
-import jgfx.javagradlefx.model.RecetteInfo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class FavorisController {
 
     Favoris favoris = new Favoris();
     List<Recette> recipes = new ArrayList<>();
-    private NavbarHandler navbar = new NavbarHandler();
+    private NavigationHandler navbar = new NavigationHandler();
     private String userView = "/jgfx/javagradlefx/utilisateur.fxml";
     private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
     private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";
@@ -73,7 +73,11 @@ public class FavorisController {
             hyperlink.setText(recette.getNom());
             hyperlink.setId(String.valueOf(recette.getId()));
             hyperlink.setOnAction(event -> {
-                System.out.println("Recette sélectionnée : " + recette.getNom());
+                try {
+                    navbar.goToRecetteDetaillee(Long.parseLong(hyperlink.getId()), recipeFlowPane);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             });
 
             card.getChildren().addAll(imageView, hyperlink);

@@ -1,12 +1,8 @@
 package jgfx.javagradlefx.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
 import jgfx.javagradlefx.model.Utilisateur;
 import jgfx.javagradlefx.model.Preference;
 
@@ -30,7 +26,7 @@ public class UtilisateurController {
     private final Set<String> added = new HashSet<>();
     private final Set<String> removed = new HashSet<>();
 
-    private NavbarHandler navbar = new NavbarHandler();
+    private NavigationHandler navbar = new NavigationHandler();
     private String homeView = "/jgfx/javagradlefx/accueil.fxml";
     private String AdvancedSearchView = "/jgfx/javagradlefx/advancedResearchView.fxml";
     private String groceryListView = "/jgfx/javagradlefx/listeDeCourse.fxml";

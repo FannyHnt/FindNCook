@@ -1,14 +1,17 @@
 package jgfx.javagradlefx.model;
 
 import jgfx.javagradlefx.controller.JsonFilesHandler;
+import jgfx.javagradlefx.controller.JsonRequestHandler;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Favoris {
     private final String PATH = "src/main/resources/data/Favoris.json";
     private JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
+    private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
 
     //methodes pour ajouter une recette dans la liste des favoris
     public void ajouterFavoris(RecetteInfo recette) {
@@ -69,5 +72,14 @@ public class Favoris {
             recettes.add(rec);
         }
         return recettes;
+    }
+
+    public RecetteInfo getFavorisById(String id) {
+        JSONObject obj = jsonFilesHandler.chargerFichier(PATH);
+        if (obj.has(id)) {
+            JSONObject recette = obj.getJSONObject(id);
+            return jsonRequestHandler.jsonToIngredient_single(recette, id);
+        }
+        return null;
     }
 }
