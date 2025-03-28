@@ -20,7 +20,7 @@
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
-                            <Image url="@/images/retour.png" />
+                            <Image url="@/images/home.png" />
                         </image>
                     </ImageView>
                 </graphic>
@@ -30,7 +30,7 @@
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
-                            <Image url="@/images/User.png" />
+                            <Image url="@/images/user.png" />
                         </image>
                     </ImageView>
                 </graphic>
@@ -40,9 +40,9 @@
 
             <Button fx:id="groceryButton" style="-fx-background-color: transparent;">
                 <graphic>
-                    <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                    <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
-                            <Image url="@/images/caddie.png" />
+                            <Image url="@/images/gorcery.png" />
                         </image>
                     </ImageView>
                 </graphic>
@@ -50,7 +50,7 @@
 
             <Button fx:id="favoritesButton" style="-fx-background-color: transparent;">
                 <graphic>
-                    <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                    <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
                             <Image url="@/images/heart.png" />
                         </image>
@@ -60,7 +60,7 @@
 
             <Button fx:id="advancedSearchButton" style="-fx-background-color: transparent;">
                 <graphic>
-                    <ImageView fitHeight="45" fitWidth="45" preserveRatio="true">
+                    <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
                             <Image url="@/images/search.png" />
                         </image>
