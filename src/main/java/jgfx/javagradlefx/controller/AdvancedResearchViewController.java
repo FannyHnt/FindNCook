@@ -92,6 +92,13 @@ public class AdvancedResearchViewController {
             StringBuilder cuisine = new StringBuilder(cuisineField.getValue());
             sb.append("&cuisine=").append(URLEncoder.encode(cuisine.toString(), "UTF-8"));
         }
+        if (!intolerancesChecked.isEmpty()) {
+            sb.append("&intolerances=");
+            for (String intolerance : intolerancesChecked) {
+                sb.append(intolerance).append(",");
+            }
+            sb.deleteCharAt(sb.length() - 1); // Supprimer la dernière virgule
+        }
         if (dietField.getValue() != null) {
             StringBuilder diet = new StringBuilder(dietField.getValue());
             sb.append("&diet=").append(URLEncoder.encode(diet.toString(), "UTF-8"));
