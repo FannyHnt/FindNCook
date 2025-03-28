@@ -1,11 +1,13 @@
 package jgfx.javagradlefx.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 public class AdvancedResearchViewController {
 
@@ -14,7 +16,7 @@ public class AdvancedResearchViewController {
     @FXML
     private ComboBox<String> dietField;
     @FXML
-    private ComboBox<String> intolerancesField;
+    private FlowPane intoleranceCheckboxes;
     @FXML
     private TextField includeIngredientField;
     @FXML
@@ -28,6 +30,12 @@ public class AdvancedResearchViewController {
     @FXML
     private TextField minCaloriesField;
 
+    private final String COULEUR_VALIDE = "-fx-background-color: #90EE90;";
+    private final String COULEUR_NOUVEAU = "-fx-background-color: #ADD8E6;";
+    private final String COULEUR_DECOCHE = "-fx-background-color: #FFB6C1;";
+    private final Set<String> added = new HashSet<>();
+    private final Map<CheckBox, String> checkBoxToIntolerance = new HashMap<>();
+
     private final List<String> cuisines = List.of("African", "Asian", "American", "British", "Cajun", "Caribbean", "Chinese", "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", "Italian", "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai", "Vietnamese");
     private final List<String> diets = List.of("Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo", "Primal", "Low FODMAP", "Whole30");
     private final List<String> intolerances = List.of("Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat");
@@ -37,8 +45,14 @@ public class AdvancedResearchViewController {
     public void initialize() {
         cuisineField.getItems().addAll(cuisines);
         dietField.getItems().addAll(diets);
-        intolerancesField.getItems().addAll(intolerances);
         typeField.getItems().addAll(types);
+        // Créer les checkboxes
+        for (String intolerance : intolerances) {
+            CheckBox cb = new CheckBox(intolerance);
+
+            checkBoxToIntolerance.put(cb, intolerance); // Mapping du checkbox avec l'intolérance
+            intoleranceCheckboxes.getChildren().add(cb);
+        }
     }
 
     @FXML
@@ -57,4 +71,5 @@ public class AdvancedResearchViewController {
  //       String apiUrl = buildApiUrl(cuisine, diet, intolerances, includeIngredient, excludeIngredient, type, maxReadyTime, minProtein, minCalories);
 
     }
+
 }

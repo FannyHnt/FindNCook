@@ -89,20 +89,20 @@
                           maxWidth="500"
                           maxHeight="500">
 
-                        <HBox spacing="10" alignment="CENTER">
+                        <VBox spacing="10" alignment="CENTER">
                             <Label text="Cuisine:"/>
                             <ComboBox fx:id="cuisineField"/>
-                        </HBox>
+                        </VBox>
 
-                        <HBox spacing="10" alignment="CENTER">
+                        <VBox spacing="10" alignment="CENTER">
                             <Label text="Diet:"/>
                             <ComboBox fx:id="dietField"/>
-                        </HBox>
+                        </VBox>
 
-                        <HBox spacing="10" alignment="CENTER">
+                        <VBox spacing="10" alignment="CENTER">
                             <Label text="Intolerances:"/>
-                            <ComboBox fx:id="intolerancesField" />
-                        </HBox>
+                            <FlowPane fx:id="intoleranceCheckboxes" hgap="15" vgap="15" alignment="CENTER"  />
+                        </VBox>
 
                         <HBox spacing="10" alignment="CENTER">
                             <Label text="Include Ingredient:"/>
@@ -114,10 +114,10 @@
                             <TextField fx:id="excludeIngredientField"/>
                         </HBox>
 
-                        <HBox spacing="10" alignment="CENTER">
+                        <VBox spacing="10" alignment="CENTER">
                             <Label text="Type:"/>
                             <ComboBox fx:id="typeField"/>
-                        </HBox>
+                        </VBox>
 
                         <HBox spacing="10" alignment="CENTER">
                             <Label text="Max Ready Time:"/>
