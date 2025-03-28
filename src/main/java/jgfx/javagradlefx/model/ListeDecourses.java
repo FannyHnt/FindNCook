@@ -2,6 +2,8 @@ package jgfx.javagradlefx.model;
 
 import jgfx.javagradlefx.controller.JsonFilesHandler;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -11,12 +13,12 @@ public class ListeDecourses {
     private JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
 
     // methode pour ajouter un ingredient dans la liste de course
-    public void ajouterIngredient(Ingredient ingredient){
+    public void ajouterIngredient(String ingredient){
         try {
             // Charger le fichier JSON
             JSONObject fichierJson = jsonFilesHandler.chargerFichier(PATH);
             // Ajouter le nouvel élément
-            fichierJson.put(ingredient.getName(), ingredient.getName());
+            fichierJson.put(ingredient, ingredient);
             // Sauvegarder les modifications dans le fichier
             jsonFilesHandler.ecrireDansFichier(fichierJson, PATH);
         } catch (Exception e) {
@@ -25,12 +27,12 @@ public class ListeDecourses {
     }
 
     // Methode pour supprimer un ingredient de la liste de course
-    public void supprimerIngredient(Ingredient ingredient){
+    public void supprimerIngredient(String ingredient){
         try {
             // charger le fichier JSON
             JSONObject fichier = jsonFilesHandler.chargerFichier(PATH);
             // Supprimer l'ingredient
-            fichier.remove(ingredient.getName());
+            fichier.remove(ingredient);
             // Sauvegarder la modification
             jsonFilesHandler.ecrireDansFichier(fichier, PATH);
         } catch (Exception e){
@@ -42,8 +44,18 @@ public class ListeDecourses {
     public void genereListeDeCourseAutomatiquement(List<Ingredient> ingredientList){
         // AJouter les ingredients
         for(Ingredient ingredient : ingredientList){
-            ajouterIngredient(ingredient);
+            ajouterIngredient(ingredient.getName());
         }
+    }
+
+    // Methode pour récupérer la liste de course
+    public List<String> getListeDeCourse(){
+        List<String> ingredients = new ArrayList<>();
+        JSONObject obj = jsonFilesHandler.chargerFichier(PATH);
+        for(String key : obj.keySet()){
+            ingredients.add(key);
+        }
+        return ingredients;
     }
 
 }

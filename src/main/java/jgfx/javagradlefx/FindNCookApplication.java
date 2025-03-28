@@ -18,7 +18,7 @@ import java.util.List;
 public class FindNCookApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(FindNCookApplication.class.getResource("accueil.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FindNCookApplication.class.getResource("listeDeCourse.fxml"));
 
         // Get screen dimensions
         double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
