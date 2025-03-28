@@ -2,15 +2,13 @@ package jgfx.javagradlefx.controller;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import jgfx.javagradlefx.model.Ingredient;
 import jgfx.javagradlefx.model.Nutrient;
 import jgfx.javagradlefx.model.RecetteInfo;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,21 +45,23 @@ public class RecetteDetailleeController {
     private RecetteInfo recette;
 
     @FXML
-    private FlowPane recipeFlowPane;
+    private Text titleContent;
     @FXML
-    private Label titleLabel;
+    private Text portionContent;
     @FXML
-    private Label portionLabel;
+    private Text timeContent;
     @FXML
-    private Label tempsPreparationLabel;
+    private Text ingredientsContent;
     @FXML
-    private Label ingredientsLabel;
+    private Text stepsContent;
     @FXML
-    private Label etapesLabel;
+    private Text dietContent;
     @FXML
-    private Label regimesAlimentairesLabel;
+    private Text nutrientsContent;
     @FXML
-    private Label nutrientsLabel;
+    private VBox recipeDetailCard;
+    @FXML
+    private VBox innerCardRecipe;
 
 
     @FXML
@@ -70,12 +70,12 @@ public class RecetteDetailleeController {
     }
 
     private void showRecipes() {
-        recipeFlowPane.getChildren().clear();
+        recipeDetailCard.getChildren().clear();
+        recipeDetailCard.setMaxWidth(700);
 
-        VBox card = new VBox(10);
-        card.setStyle("-fx-background-color: white; -fx-padding: 10; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.3, 0, 2);");
-        card.setPrefWidth((700));
-        card.setAlignment(Pos.TOP_LEFT);
+        VBox innerCardRecipeImage = new VBox(5);
+        innerCardRecipeImage.setAlignment(Pos.CENTER);
+        innerCardRecipeImage.setMaxWidth(250);
 
         // Image
         ImageView imageView = new ImageView();
@@ -96,62 +96,71 @@ public class RecetteDetailleeController {
 
 
         // Affichage des autres éléments
-        titleLabel.setText("Title : " + recette.getNom());
-        portionLabel.setText("Serving : " + recette.getPortion());
-        tempsPreparationLabel.setText("Preparation time : " + recette.getTempsPreparation() + " minutes");
-        ingredientsLabel.setText("Ingredients : " + ingredientToString(recette.getIngredientList()));
-        etapesLabel.setText("Steps : " + etapesToString(recette.getEtapes()));
-        regimesAlimentairesLabel.setText("Intolerances : " + regimeToString(recette.getRegimesAlimentaires()));
-        nutrientsLabel.setText("Nutrients : " + nutrientToString(recette.getNutrients()));
-        card.getChildren().addAll(imageView, titleLabel,ingredientsLabel, tempsPreparationLabel,  etapesLabel, portionLabel, regimesAlimentairesLabel, nutrientsLabel);
-        recipeFlowPane.getChildren().add(card);
+        titleContent.setText("\t" + recette.getNom());
+        portionContent.setText("\t" + Integer.toString(recette.getPortion()));
+        timeContent.setText("\t" + recette.getTempsPreparation() + " minutes");
+        ingredientsContent.setText(ingredientToString(recette.getIngredientList()));
+        stepsContent.setText(etapesToString(recette.getEtapes()));
+        dietContent.setText(regimeToString(recette.getRegimesAlimentaires()));
+        nutrientsContent.setText(nutrientToString(recette.getNutrients()));
+        innerCardRecipeImage.getChildren().addAll(imageView);
+        recipeDetailCard.getChildren().add(innerCardRecipeImage);
+        recipeDetailCard.getChildren().add(innerCardRecipe);
     }
 
     public String ingredientToString(List<Ingredient> ingredients) {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n");
-        for(int i = 0 ; i < ingredients.size(); i++) {
+        for(int i = 0 ; i < ingredients.size() - 1; i++) {
+            sb.append("\t");
             sb.append("- ");
             sb.append(ingredients.get(i).getName());
-            sb.append(" ");
             sb.append("\n");
         }
+        sb.append("\t");
+        sb.append("- ");
+        sb.append(ingredients.get(ingredients.size()-1).getName());
         return sb.toString();
     }
 
     public String nutrientToString(List<Nutrient> nutrients) {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n");
-        for(int i = 0 ; i < nutrients.size(); i++) {
+        for(int i = 0 ; i < nutrients.size() - 1; i++) {
+            sb.append("\t");
             sb.append("- ");
             sb.append(nutrients.get(i).getName());
-            sb.append(" ");
             sb.append("\n");
         }
+        sb.append("\t");
+        sb.append("- ");
+        sb.append(nutrients.get(nutrients.size()-1).getName());
         return sb.toString();
     }
 
     public String etapesToString(List<String> etapes) {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n");
-        for(int i = 0 ; i < etapes.size(); i++) {
+        for(int i = 0 ; i < etapes.size() - 1; i++) {
+            sb.append("\t");
             sb.append("- ");
             sb.append(etapes.get(i));
-            sb.append(" ");
             sb.append("\n");
         }
+        sb.append("\t");
+        sb.append("- ");
+        sb.append(etapes.get(etapes.size()-1));
         return sb.toString();
     }
 
     public String regimeToString(List<String> regimes) {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n");
-        for(int i = 0 ; i < regimes.size(); i++) {
+        for(int i = 0 ; i < regimes.size() - 1; i++) {
+            sb.append("\t");
             sb.append("- ");
             sb.append(regimes.get(i));
-            sb.append(" ");
             sb.append("\n");
         }
+        sb.append("\t");
+        sb.append("- ");
+        sb.append(regimes.get(regimes.size()-1));
         return sb.toString();
     }
 

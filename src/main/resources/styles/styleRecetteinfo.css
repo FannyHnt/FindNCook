@@ -1,4 +1,4 @@
-.button {
+.action-button {
     -fx-background-color: transparent;
     -fx-border-color: white;
     -fx-border-width: 1px;
@@ -10,4 +10,37 @@
 .button:hover {
     -fx-background-color: white;
     -fx-text-fill: black;
+}
+
+
+.title-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #8B4513; /* marron foncé */
+}
+
+
+.info-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #a0522d; /* un peu plus doux que le titre */
+}
+
+
+.content-text {
+    -fx-font-size: 14px;
+    -fx-fill: #333333; /* gris foncé lisible */
+    -fx-font-family: "Georgia", serif; /* police plus élégante */
+    -fx-wrap-text: true;
+}
+
+.title-label, .info-label {
+    -fx-font-family: "Segoe Script", cursive;
+}
+
+.recipe-card {
+    -fx-background-image: url("../images/parchemin.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-radius: 15;
 }
