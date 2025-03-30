@@ -81,7 +81,7 @@
                             </image>
                         </ImageView>
 
-                        <Label text="MANAGE PREFERENCES" style="-fx-font-size: 30px; -fx-font-weight: BOLD;"/>
+                        <Label text="MANAGE PREFERENCES" style="-fx-font-size: 30px; -fx-font-weight: BOLD; -fx-text-fill: black"/>
                     </VBox>
 
                     <VBox alignment="CENTER" spacing="20"
@@ -91,7 +91,7 @@
 
                         <HBox fx:id="nameBox" spacing="10" alignment="CENTER">
                             <Label fx:id="nameLabel" text="User name: " style="-fx-font-size: 15px;"/>
-                            <TextField fx:id="nameField"/>
+                            <TextField fx:id="nameField" promptText="Enter your user name"/>
                         </HBox>
 
                         <HBox fx:id="dietBox" spacing="10" alignment="CENTER">

@@ -37,7 +37,14 @@ public class UserController {
 
         // On récupère les données enregistrées sur l'utilisateur
         user = jsonRequestHandler.chargerUtilisateur();
+
+        if (user.getName().equals("")){
+            nameField.setText("Enter your name");
+        } else {
+            nameField.setText(user.getName());
+        }
         nameField.setText(user.getName());
+
         for (String regime : dietsLabels) {
             dietField.getItems().add(regime);
         }
