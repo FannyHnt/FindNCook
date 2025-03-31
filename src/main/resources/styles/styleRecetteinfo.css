@@ -44,3 +44,23 @@
     -fx-background-size: cover;
     -fx-background-radius: 15;
 }
+
+.setting-card {
+    -fx-background-image: url("../images/setting_background.png");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+.container-userSetting {
+    -fx-background-color: #FFEB3B;
+    -fx-padding: 20px;
+    -fx-spacing: 20px;
+}
+
+.user-setting-input-field {
+    -fx-font-size: 14px;
+    -fx-background-color: #FFF8E1; /* Fond clair */
+    -fx-border-color: #D4A157; /* Bordure jaune */
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}

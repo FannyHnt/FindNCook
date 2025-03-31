@@ -5,6 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.shape.Rectangle?>
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
             fx:controller="jgfx.javagradlefx.controller.UserController"
             stylesheets="@/styles/styleRecetteinfo.css"
@@ -81,37 +82,45 @@
                             </image>
                         </ImageView>
 
-                        <Label text="MANAGE PREFERENCES" style="-fx-font-size: 30px; -fx-font-weight: BOLD; -fx-text-fill: black"/>
                     </VBox>
 
-                    <VBox alignment="CENTER" spacing="20"
-                          style="-fx-background-color: white ; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #a56600; -fx-border-width: 2px; -fx-text-fill: #FFD700;"
+                    <VBox alignment="CENTER" spacing="30"
+                          style="-fx-padding: 20px; -fx-border-radius: 15px; -fx-border-color: #a56600; -fx-text-fill: #FFD700;"
                           maxWidth="500"
-                          maxHeight="500">
+                          minHeight="400"
+                          styleClass="setting-card"
+                          layoutX="300"
+                          layoutY="300"
+                    >
+                        <clip>
+                            <Rectangle width="500" height="400" arcWidth="40" arcHeight="40"/>
+                        </clip>
+
+                        <Label text="MANAGE PREFERENCES" style="-fx-font-size: 30px; -fx-font-weight: BOLD; -fx-text-fill: white"/>
 
                         <HBox fx:id="nameBox" spacing="10" alignment="CENTER">
-                            <Label fx:id="nameLabel" text="User name: " style="-fx-font-size: 15px;"/>
-                            <TextField fx:id="nameField" promptText="Enter your user name"/>
+                            <Label fx:id="nameLabel" text="User name: " style="-fx-font-size: 15px; -fx-text-fill: white" />
+                            <TextField fx:id="nameField" promptText="Enter your user name" styleClass="user-setting-input-field"/>
                         </HBox>
 
                         <HBox fx:id="dietBox" spacing="10" alignment="CENTER">
-                            <Label fx:id="dietLabel" text="Diet : " style="-fx-font-size: 15px;"/>
-                            <ComboBox fx:id="dietField"/>
+                            <Label fx:id="dietLabel" text="Diet : " style="-fx-font-size: 15px; -fx-text-fill: white"/>
+                            <ComboBox fx:id="dietField" styleClass="user-setting-input-field"/>
                         </HBox>
 
-                        <VBox>
-                            <Label fx:id="intolerancesLabel" text="Intolerances : " style="-fx-font-size: 15px;"/>
-                            <FlowPane fx:id="intoleranceCheckboxes" hgap="15" vgap="15" alignment="CENTER">
+                        <VBox spacing="10" alignment="CENTER">
+                            <Label fx:id="intolerancesLabel" text="Intolerances : " style="-fx-font-size: 15px; -fx-text-fill: white"/>
+                            <FlowPane fx:id="intoleranceCheckboxes" hgap="20" vgap="20" alignment="CENTER">
 
                             </FlowPane>
                         </VBox>
 
-                    </VBox>
+                        <HBox spacing="10" alignment="CENTER">
+                            <Button text="Sauvegarder" onAction="#save" styleClass="action-button"/>
+                            <Button text="Réinitialiser" onAction="#reinitialize" styleClass="action-button" />
+                        </HBox>
 
-                    <HBox spacing="10" alignment="CENTER">
-                        <Button text="Sauvegarder" onAction="#save" styleClass="action-button"/>
-                        <Button text="Réinitialiser" onAction="#reinitialize" styleClass="action-button" />
-                    </HBox>
+                    </VBox>
 
                 </VBox>
             </content>

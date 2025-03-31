@@ -125,8 +125,8 @@ public class JsonRequestHandler {
             Ingredient ingredient = new Ingredient(
                     Long.parseLong(id),
                     ingredientObj.getString("name"),
-                    ingredientObj.getString("unite"),
-                    ingredientObj.getInt("quantite")
+                    ingredientObj.getString("unit"),
+                    ingredientObj.getInt("quantity")
             );
             ingredients.add(ingredient);
         }
