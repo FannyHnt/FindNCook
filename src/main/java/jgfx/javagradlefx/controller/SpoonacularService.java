@@ -186,7 +186,6 @@ public class SpoonacularService {
         try {
             URL finalUrl = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=f983acdf88c24b66b7705299529f9032"+ url);
             JSONObject obj = new JSONObject(connexion(finalUrl).toString());
-            System.out.printf(finalUrl.toString()+"\n");
             return obj;
         } catch (Exception e) {
             e.printStackTrace();

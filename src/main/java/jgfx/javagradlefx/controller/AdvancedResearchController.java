@@ -157,12 +157,10 @@ public class AdvancedResearchController {
                 Image image = new Image(recipe.getUrlImage(), true);
                 imageView.setImage(image);
                 if (image.isError()) {
-                    System.out.println("Erreur chargement image pour recette " + recipe.getName() + ": " + image.getException());
-                } else {
-                    System.out.println("Image chargée avec succès pour recette " + recipe.getName());
+                    throw new RuntimeException("Erreur chargement image pour recette " + recipe.getName() + ": " + image.getException());
                 }
             } catch (Exception e) {
-                System.out.println("Exception lors du chargement de l'image pour recette " + recipe.getName() + ": " + e.getMessage());
+                throw new RuntimeException("Exception lors du chargement de l'image pour recette " + recipe.getName() + ": " + e.getMessage());
             }
 
             Hyperlink hyperlink = new Hyperlink();
