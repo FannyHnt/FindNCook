@@ -21,7 +21,7 @@ import jgfx.javagradlefx.model.Recipe;
 public class SpoonacularService {
 
     private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
-    private String key = "f983acdf88c24b66b7705299529f9032";
+    private String key = "e8a0cb265d1d4ab79427f52aba817b54";
     private String prefix = "https://api.spoonacular.com/recipes/";
 
     // Cette méthode permet d'ouvrire une connexion avec l'API de spoonacular
@@ -184,7 +184,7 @@ public class SpoonacularService {
 
     public JSONObject getRepcipeByUrl(String url){
         try {
-            URL finalUrl = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=f983acdf88c24b66b7705299529f9032"+ url);
+            URL finalUrl = new URL("https://api.spoonacular.com/recipes/complexSearch?apiKey=" + key + url + "&number=24");
             JSONObject obj = new JSONObject(connexion(finalUrl).toString());
             return obj;
         } catch (Exception e) {

@@ -40,6 +40,20 @@ public class GroceryList {
         }
     }
 
+    // Methode pour vider la liste de course
+    public void clearGroceryList(){
+        try {
+            // charger le fichier JSON
+            JSONObject fichier = jsonFilesHandler.readFile(PATH);
+            // Supprimer tous les ingredients
+            fichier = new JSONObject();
+            // Sauvegarder la modification
+            jsonFilesHandler.writeToFile(fichier, PATH);
+        } catch (Exception e){
+            throw new RuntimeException("Erreur de la supprision de l'ingredient : " + e.getMessage());
+        }
+    }
+
     // Methode pour générer une liste automatiquement
     public void generateGroceryListAuto(List<Ingredient> ingredientList){
         // AJouter les ingredients

@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
             fx:controller="jgfx.javagradlefx.controller.UserController"
-            stylesheets="@/styles/styleRecetteinfo.css"
+            stylesheets="@/styles/style.css"
             style="-fx-background-color: #a56600;">
 
     <!-- Barre de tâche FIXE -->
@@ -95,8 +95,7 @@
                     <Rectangle width="500" height="400" arcWidth="40" arcHeight="40"/>
                 </clip>
 
-                <Label text="MANAGE PREFERENCES"
-                       style="-fx-font-size: 30px; -fx-font-weight: BOLD; -fx-text-fill: white"/>
+                <Label text="MANAGE PREFERENCES" style="-fx-font-size: 30px; -fx-font-weight: BOLD; -fx-text-fill: white"/>
 
                 <HBox fx:id="nameBox" spacing="10" alignment="CENTER">
                     <Label fx:id="nameLabel" text="User name: " style="-fx-font-size: 15px; -fx-text-fill: white"/>

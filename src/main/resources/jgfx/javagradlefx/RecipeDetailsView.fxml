@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
             fx:controller="jgfx.javagradlefx.controller.RecipeDetailsController"
-            stylesheets="@/styles/styleRecetteinfo.css"
+            stylesheets="@/styles/style.css"
             style="-fx-background-color: #a56600;">
     <top>
         <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="50"
@@ -91,7 +91,7 @@
                         <!-- Ajout des nouveaux éléments avec style -->
                         <VBox fx:id="innerCardRecipe" spacing="15" alignment="CENTER" maxWidth="300">
                             <VBox fx:id="titleBox" spacing="5" alignment="CENTER_LEFT">
-                                <Label fx:id="titleLabel" styleClass="title-label" text="TITLE :"/>
+                                <Label fx:id="titleLabel" styleClass="info-label" text="TITLE :"/>
                                 <Text fx:id="titleContent" styleClass="content-text"/>
                             </VBox>
                             <VBox fx:id="ingredientsBox" spacing="5" alignment="CENTER_LEFT">
@@ -123,6 +123,7 @@
                         <!-- Ajout des nouveaux boutons -->
                         <Button fx:id="addToShoppingListButton" text="add to shopping list" styleClass="action-button" onAction="#addToShoppingList"/>
                         <Button fx:id="toFavoriteListButton" styleClass="action-button" onAction="#modifInFavoriteList"/>
+                        <Region/>
                     </VBox>
                 </content>
             </ScrollPane>

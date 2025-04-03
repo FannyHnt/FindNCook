@@ -7,7 +7,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
             fx:controller="jgfx.javagradlefx.controller.AdvancedResearchController"
-            stylesheets="@/styles/styleRecetteinfo.css"
+            stylesheets="@/styles/style.css"
             style="-fx-background-color: #a56600;">
 
     <!-- Barre de tâche FIXE -->
@@ -73,7 +73,7 @@
         <VBox style="-fx-background-color: #a56600" VBox.vgrow="ALWAYS">
             <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
                 <content>
-                    <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
+                    <VBox fx:id="scrollPaneContent" spacing="10" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
 
                         <VBox alignment="CENTER" spacing="20">
                             <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
@@ -81,75 +81,81 @@
                                     <Image url="@/images/Logo.PNG" />
                                 </image>
                             </ImageView>
-
-                            <Label text="ADVANCED RESEARCH" style="-fx-font-size: 30px; -fx-font-weight: BOLD;"/>
                         </VBox>
 
                         <VBox alignment="CENTER" spacing="20"
                               style="-fx-background-color: white ; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #a56600; -fx-border-width: 2px;"
-                              maxWidth="500"
-                              maxHeight="500">
+                              maxWidth="700"
+                              maxHeight="500"
+                              styleClass="setting-card">
+
+                            <Label text="ADVANCED RESEARCH" style="-fx-font-size: 30px; -fx-font-weight: BOLD; -fx-text-fill: white"/>
+
+                            <HBox spacing="10" alignment="CENTER">
+                                <Label text="Cuisine:" styleClass="parametre-label"/>
+                                <ComboBox fx:id="cuisineField" styleClass="user-setting-input-field"/>
+                            </HBox>
+
+                            <HBox spacing="10" alignment="CENTER">
+                                <Label text="Diet:" styleClass="parametre-label"/>
+                                <ComboBox fx:id="dietField" styleClass="user-setting-input-field"/>
+                            </HBox>
 
                             <VBox spacing="10" alignment="CENTER">
-                                <Label text="Cuisine:"/>
-                                <ComboBox fx:id="cuisineField"/>
-                            </VBox>
-
-                            <VBox spacing="10" alignment="CENTER">
-                                <Label text="Diet:"/>
-                                <ComboBox fx:id="dietField"/>
-                            </VBox>
-
-                            <VBox spacing="10" alignment="CENTER">
-                                <Label text="Intolerances:"/>
+                                <Label text="Intolerances:" styleClass="parametre-label"/>
                                 <FlowPane fx:id="intoleranceCheckboxes" hgap="15" vgap="15" alignment="CENTER"  />
                             </VBox>
 
                             <HBox spacing="10" alignment="CENTER">
-                                <Label text="Include Ingredient:"/>
-                                <TextField fx:id="includeIngredientField"/>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <Label text="Include Ingredient:" styleClass="parametre-label"/>
+                                    <TextField fx:id="includeIngredientField" styleClass="user-setting-input-field"/>
+                                </HBox>
+
+                                <HBox spacing="5" alignment="CENTER">
+                                    <Label text="Exclude Ingredient:" styleClass="parametre-label"/>
+                                    <TextField fx:id="excludeIngredientField" styleClass="user-setting-input-field"/>
+                                </HBox>
                             </HBox>
 
                             <HBox spacing="10" alignment="CENTER">
-                                <Label text="Exclude Ingredient:"/>
-                                <TextField fx:id="excludeIngredientField"/>
-                            </HBox>
-
-                            <VBox spacing="10" alignment="CENTER">
-                                <Label text="Type:"/>
-                                <ComboBox fx:id="typeField"/>
-                            </VBox>
-
-                            <HBox spacing="10" alignment="CENTER">
-                                <Label text="Max Ready Time:"/>
-                                <TextField fx:id="maxReadyTimeField"/>
+                                <Label text="Type:" styleClass="parametre-label"/>
+                                <ComboBox fx:id="typeField" styleClass="user-setting-input-field"/>
                             </HBox>
 
                             <HBox spacing="10" alignment="CENTER">
-                                <Label text="Min Protein:"/>
-                                <TextField fx:id="minProteinField"/>
+                                <Label text="Max Ready Time:" styleClass="parametre-label"/>
+                                <TextField fx:id="maxReadyTimeField" styleClass="user-setting-input-field"/>
                             </HBox>
 
                             <HBox spacing="10" alignment="CENTER">
-                                <Label text="Max Protein:"/>
-                                <TextField fx:id="maxProteinField"/>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <Label text="Min Protein:" styleClass="parametre-label"/>
+                                    <TextField fx:id="minProteinField" styleClass="user-setting-input-field"/>
+                                </HBox>
+
+                                <HBox spacing="5" alignment="CENTER">
+                                    <Label text="Max Protein:" styleClass="parametre-label"/>
+                                    <TextField fx:id="maxProteinField" styleClass="user-setting-input-field"/>
+                                </HBox>
                             </HBox>
 
                             <HBox spacing="10" alignment="CENTER">
-                                <Label text="Min Calories:"/>
-                                <TextField fx:id="minCaloriesField"/>
-                            </HBox>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <Label text="Min Calories:" styleClass="parametre-label"/>
+                                    <TextField fx:id="minCaloriesField" styleClass="user-setting-input-field"/>
+                                </HBox>
 
-                            <HBox spacing="10" alignment="CENTER">
-                                <Label text="Max Calories:"/>
-                                <TextField fx:id="maxCaloriesField"/>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <Label text="Max Calories:" styleClass="parametre-label"/>
+                                    <TextField fx:id="maxCaloriesField" styleClass="user-setting-input-field"/>
+                                </HBox>
                             </HBox>
-
-                            <HBox spacing="10" alignment="CENTER">
-                                <Button text="Research" onAction="#handleSearch"/>
-                            </HBox>
-
                         </VBox>
+
+                        <HBox spacing="10" alignment="CENTER">
+                            <Button text="Research" onAction="#handleSearch" styleClass="action-button"/>
+                        </HBox>
 
                         <!-- Ajoutez ce FlowPane pour afficher les résultats -->
                         <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>

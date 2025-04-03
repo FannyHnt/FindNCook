@@ -7,7 +7,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
             fx:controller="jgfx.javagradlefx.controller.HomeController"
-            stylesheets="@/styles/styleRecetteinfo.css"
+            stylesheets="@/styles/style.css"
             style="-fx-background-color: #a56600;">
 
     <!-- Barre de tâche FIXE -->
@@ -69,7 +69,7 @@
         </HBox>
     </top>
 
-    <!-- 📜 Partie scrollable -->
+    <!-- Partie scrollable -->
     <center>
         <VBox style="-fx-background-color: #a56600" VBox.vgrow="ALWAYS">
             <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
@@ -96,7 +96,7 @@
                         </VBox>
 
                         <!-- Recettes -->
-                        <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
+                        <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER" VBox.vgrow="ALWAYS"/>
                     </VBox>
                 </content>
             </ScrollPane>
