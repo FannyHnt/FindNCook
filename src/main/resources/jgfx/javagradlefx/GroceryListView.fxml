@@ -41,7 +41,7 @@
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
-                            <Image url="@/images/gorcery.png" />
+                            <Image url="@/images/grocery.png" />
                         </image>
                     </ImageView>
                 </graphic>
@@ -71,28 +71,33 @@
 
     <!-- Partie scrollable -->
     <center>
-        <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
-            <content>
-                <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
-                    <!-- Logo et champ de recherche -->
-                    <VBox spacing="15" alignment="CENTER">
-                        <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@/images/Logo.PNG" />
-                            </image>
-                        </ImageView>
+        <VBox style="-fx-background-color: #a56600" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
+                <content>
+                    <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
+                        <!-- Logo et champ de recherche -->
+                        <VBox spacing="15" alignment="CENTER">
+                            <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@/images/Logo.PNG" />
+                                </image>
+                            </ImageView>
+                        </VBox>
+                        <Label text="Shopping List" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                        <!-- Formulaire pour ajouter un ingrédient -->
+                        <HBox spacing="10" alignment="CENTER">
+                            <TextField fx:id="ingredientNameField" promptText="ingredient name"/>
+                            <Button text="Add" onAction="#addIngredient"/>
+                        </HBox>
+                        <!-- Liste des ingrédients -->
+                        <VBox VBox.vgrow="ALWAYS" style="-fx-background-color: #a56600">
+                            <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER" VBox.vgrow="ALWAYS">
+                                <ListView fx:id="ingredientListView"/>
+                            </FlowPane>
+                        </VBox>
                     </VBox>
-                    <Label text="Shopping List" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-                    <!-- Formulaire pour ajouter un ingrédient -->
-                    <HBox spacing="10" alignment="CENTER">
-                        <TextField fx:id="ingredientNameField" promptText="ingredient name"/>
-                        <Button text="Add" onAction="#addIngredient"/>
-                    </HBox>
-                    <!-- Liste des ingrédients -->
-                    <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
-                    <ListView fx:id="ingredientListView" prefHeight="400" prefWidth="30"/>
-                </VBox>
-            </content>
-        </ScrollPane>
+                </content>
+            </ScrollPane>
+        </VBox>
     </center>
 </BorderPane>

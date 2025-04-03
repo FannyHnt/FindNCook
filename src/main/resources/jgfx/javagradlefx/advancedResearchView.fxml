@@ -40,7 +40,7 @@
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
-                            <Image url="@/images/gorcery.png" />
+                            <Image url="@/images/grocery.png" />
                         </image>
                     </ImageView>
                 </graphic>
@@ -70,95 +70,94 @@
 
     <!-- Partie scrollable -->
     <center>
-        <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
-            <content>
-                <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
+        <VBox style="-fx-background-color: #a56600" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
+                <content>
+                    <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
 
-                    <VBox alignment="CENTER" spacing="20">
-                        <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@/images/Logo.PNG" />
-                            </image>
-                        </ImageView>
+                        <VBox alignment="CENTER" spacing="20">
+                            <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@/images/Logo.PNG" />
+                                </image>
+                            </ImageView>
 
-                        <Label text="ADVANCED RESEARCH" style="-fx-font-size: 30px; -fx-font-weight: BOLD;"/>
+                            <Label text="ADVANCED RESEARCH" style="-fx-font-size: 30px; -fx-font-weight: BOLD;"/>
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="20"
+                              style="-fx-background-color: white ; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #a56600; -fx-border-width: 2px;"
+                              maxWidth="500"
+                              maxHeight="500">
+
+                            <VBox spacing="10" alignment="CENTER">
+                                <Label text="Cuisine:"/>
+                                <ComboBox fx:id="cuisineField"/>
+                            </VBox>
+
+                            <VBox spacing="10" alignment="CENTER">
+                                <Label text="Diet:"/>
+                                <ComboBox fx:id="dietField"/>
+                            </VBox>
+
+                            <VBox spacing="10" alignment="CENTER">
+                                <Label text="Intolerances:"/>
+                                <FlowPane fx:id="intoleranceCheckboxes" hgap="15" vgap="15" alignment="CENTER"  />
+                            </VBox>
+
+                            <HBox spacing="10" alignment="CENTER">
+                                <Label text="Include Ingredient:"/>
+                                <TextField fx:id="includeIngredientField"/>
+                            </HBox>
+
+                            <HBox spacing="10" alignment="CENTER">
+                                <Label text="Exclude Ingredient:"/>
+                                <TextField fx:id="excludeIngredientField"/>
+                            </HBox>
+
+                            <VBox spacing="10" alignment="CENTER">
+                                <Label text="Type:"/>
+                                <ComboBox fx:id="typeField"/>
+                            </VBox>
+
+                            <HBox spacing="10" alignment="CENTER">
+                                <Label text="Max Ready Time:"/>
+                                <TextField fx:id="maxReadyTimeField"/>
+                            </HBox>
+
+                            <HBox spacing="10" alignment="CENTER">
+                                <Label text="Min Protein:"/>
+                                <TextField fx:id="minProteinField"/>
+                            </HBox>
+
+                            <HBox spacing="10" alignment="CENTER">
+                                <Label text="Max Protein:"/>
+                                <TextField fx:id="maxProteinField"/>
+                            </HBox>
+
+                            <HBox spacing="10" alignment="CENTER">
+                                <Label text="Min Calories:"/>
+                                <TextField fx:id="minCaloriesField"/>
+                            </HBox>
+
+                            <HBox spacing="10" alignment="CENTER">
+                                <Label text="Max Calories:"/>
+                                <TextField fx:id="maxCaloriesField"/>
+                            </HBox>
+
+                            <HBox spacing="10" alignment="CENTER">
+                                <Button text="Research" onAction="#handleSearch"/>
+                            </HBox>
+
+                        </VBox>
+
+                        <!-- Ajoutez ce FlowPane pour afficher les résultats -->
+                        <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
+
                     </VBox>
-
-                    <VBox alignment="CENTER" spacing="20"
-                          style="-fx-background-color: white ; -fx-padding: 20px; -fx-border-radius: 10px; -fx-border-color: #a56600; -fx-border-width: 2px;"
-                          maxWidth="500"
-                          maxHeight="500">
-
-                        <VBox spacing="10" alignment="CENTER">
-                            <Label text="Cuisine:"/>
-                            <ComboBox fx:id="cuisineField"/>
-                        </VBox>
-
-                        <VBox spacing="10" alignment="CENTER">
-                            <Label text="Diet:"/>
-                            <ComboBox fx:id="dietField"/>
-                        </VBox>
-
-                        <VBox spacing="10" alignment="CENTER">
-                            <Label text="Intolerances:"/>
-                            <FlowPane fx:id="intoleranceCheckboxes" hgap="15" vgap="15" alignment="CENTER"  />
-                        </VBox>
-
-                        <HBox spacing="10" alignment="CENTER">
-                            <Label text="Include Ingredient:"/>
-                            <TextField fx:id="includeIngredientField"/>
-                        </HBox>
-
-                        <HBox spacing="10" alignment="CENTER">
-                            <Label text="Exclude Ingredient:"/>
-                            <TextField fx:id="excludeIngredientField"/>
-                        </HBox>
-
-                        <VBox spacing="10" alignment="CENTER">
-                            <Label text="Type:"/>
-                            <ComboBox fx:id="typeField"/>
-                        </VBox>
-
-                        <HBox spacing="10" alignment="CENTER">
-                            <Label text="Max Ready Time:"/>
-                            <TextField fx:id="maxReadyTimeField"/>
-                        </HBox>
-
-                        <HBox spacing="10" alignment="CENTER">
-                            <Label text="Min Protein:"/>
-                            <TextField fx:id="minProteinField"/>
-                        </HBox>
-
-                        <HBox spacing="10" alignment="CENTER">
-                            <Label text="Max Protein:"/>
-                            <TextField fx:id="maxProteinField"/>
-                        </HBox>
-
-                        <HBox spacing="10" alignment="CENTER">
-                            <Label text="Min Calories:"/>
-                            <TextField fx:id="minCaloriesField"/>
-                        </HBox>
-
-                        <HBox spacing="10" alignment="CENTER">
-                            <Label text="Max Calories:"/>
-                            <TextField fx:id="maxCaloriesField"/>
-                        </HBox>
-
-                        <HBox spacing="10" alignment="CENTER">
-                            <Button text="Research" onAction="#handleSearch"/>
-                        </HBox>
-
-                    </VBox>
-
-                    <!-- Ajoutez ce FlowPane pour afficher les résultats -->
-                    <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
-
-                </VBox>
-            </content>
-        </ScrollPane>
+                </content>
+            </ScrollPane>
+        </VBox>
     </center>
 
-    <bottom>
-        <HBox style="-fx-background-color: #a56600;" minHeight="0" prefHeight="0" maxHeight="0"/>
-    </bottom>
 </BorderPane>

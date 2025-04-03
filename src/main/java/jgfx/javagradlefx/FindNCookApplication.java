@@ -15,8 +15,10 @@ public class FindNCookApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(FindNCookApplication.class.getResource("HomeView.fxml"));
 
         // Get screen dimensions
-        double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
-        double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
+        double screenWidth = Screen.getPrimary().getBounds().getWidth() - 100;
+        double screenHeight = Screen.getPrimary().getBounds().getHeight() - 100;
+
+        stage.setResizable(true);
 
         Scene scene = new Scene(fxmlLoader.load(), screenWidth, screenHeight);
         stage.setTitle("Find N Cook");

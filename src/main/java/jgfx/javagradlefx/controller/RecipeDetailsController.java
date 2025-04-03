@@ -82,6 +82,8 @@ public class RecipeDetailsController {
         try {
             Image image = new Image(recipeDetails.getImage(), true);
             imageView.setImage(image);
+            imageView.setFitWidth(300);
+            imageView.setFitHeight(300);
             if (image.isError()) {
                 System.out.println("Erreur chargement image pour recette " + recipeDetails.getName() + ": " + image.getException());
             }

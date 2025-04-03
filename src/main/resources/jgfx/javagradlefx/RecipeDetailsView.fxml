@@ -43,7 +43,7 @@
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
-                            <Image url="@/images/gorcery.png" />
+                            <Image url="@/images/grocery.png" />
                         </image>
                     </ImageView>
                 </graphic>
@@ -72,58 +72,60 @@
     </top>
 
     <center>
-        <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
-            <content>
-                <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
-                    <VBox spacing="15" alignment="CENTER">
-                        <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@/images/Logo.PNG" />
-                            </image>
-                        </ImageView>
+        <VBox style="-fx-background-color: #a56600" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
+                <content>
+                    <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
+                        <VBox spacing="15" alignment="CENTER">
+                            <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@/images/Logo.PNG" />
+                                </image>
+                            </ImageView>
+                        </VBox>
+
+
+
+                        <VBox fx:id="recipeDetailCard" spacing="20" alignment="CENTER" maxWidth="700" styleClass="recipe-card"/>
+
+                        <!-- Ajout des nouveaux éléments avec style -->
+                        <VBox fx:id="innerCardRecipe" spacing="15" alignment="CENTER" maxWidth="300">
+                            <VBox fx:id="titleBox" spacing="5" alignment="CENTER_LEFT">
+                                <Label fx:id="titleLabel" styleClass="title-label" text="TITLE :"/>
+                                <Text fx:id="titleContent" styleClass="content-text"/>
+                            </VBox>
+                            <VBox fx:id="ingredientsBox" spacing="5" alignment="CENTER_LEFT">
+                                <Label fx:id="ingredientsLabel" styleClass="info-label" text="INGREDIENTS :"/>
+                                <Text fx:id="ingredientsContent" styleClass="content-text"/>
+                            </VBox>
+                            <VBox fx:id="timeBox" spacing="5" alignment="CENTER_LEFT">
+                                <Label fx:id="tempsPreparationLabel" styleClass="info-label" text="PREPARATION TIME :"/>
+                                <Text fx:id="timeContent" styleClass="content-text"/>
+                            </VBox>
+                            <VBox fx:id="portionBox" spacing="5" alignment="CENTER_LEFT">
+                                <Label fx:id="portionLabel" styleClass="info-label" text="SERVING :"/>
+                                <Text fx:id="portionContent" styleClass="content-text"/>
+                            </VBox>
+                            <VBox fx:id="stepsBox" alignment="CENTER_LEFT" spacing="5">
+                                <Label fx:id="etapesLabel" styleClass="info-label" text="STEPS :"/>
+                                <Text fx:id="stepsContent" styleClass="content-text"/>
+                            </VBox>
+                            <VBox fx:id="dietBox" spacing="5" alignment="CENTER_LEFT">
+                                <Label fx:id="regimesAlimentairesLabel" styleClass="info-label" text="DIET AND INTOLERANCES :"/>
+                                <Text fx:id="dietContent" styleClass="content-text"/>
+                            </VBox>
+                            <VBox fx:id="nutrientsBox" spacing="5" alignment="CENTER_LEFT">
+                                <Label fx:id="nutrientsLabel" styleClass="info-label" text="NUTRIENTS :"/>
+                                <Text fx:id="nutrientsContent" styleClass="content-text"/>
+                            </VBox>
+                        </VBox>
+
+                        <!-- Ajout des nouveaux boutons -->
+                        <Button fx:id="addToShoppingListButton" text="add to shopping list" styleClass="action-button" onAction="#addToShoppingList"/>
+                        <Button fx:id="toFavoriteListButton" styleClass="action-button" onAction="#modifInFavoriteList"/>
                     </VBox>
-
-
-
-                    <VBox fx:id="recipeDetailCard" spacing="20" alignment="CENTER" maxWidth="700" styleClass="recipe-card"/>
-
-                    <!-- Ajout des nouveaux éléments avec style -->
-                    <VBox fx:id="innerCardRecipe" spacing="15" alignment="TOP_LEFT" maxWidth="400">
-                        <VBox fx:id="titleBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="titleLabel" styleClass="title-label" text="TITLE :"/>
-                            <Text fx:id="titleContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="ingredientsBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="ingredientsLabel" styleClass="info-label" text="INGREDIENTS :"/>
-                            <Text fx:id="ingredientsContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="timeBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="tempsPreparationLabel" styleClass="info-label" text="PREPARATION TIME :"/>
-                            <Text fx:id="timeContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="portionBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="portionLabel" styleClass="info-label" text="SERVING :"/>
-                            <Text fx:id="portionContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="stepsBox" alignment="CENTER_LEFT" spacing="5">
-                            <Label fx:id="etapesLabel" styleClass="info-label" text="STEPS :"/>
-                            <Text fx:id="stepsContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="dietBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="regimesAlimentairesLabel" styleClass="info-label" text="DIET AND INTOLERANCES :"/>
-                            <Text fx:id="dietContent" styleClass="content-text"/>
-                        </VBox>
-                        <VBox fx:id="nutrientsBox" spacing="5" alignment="CENTER_LEFT">
-                            <Label fx:id="nutrientsLabel" styleClass="info-label" text="NUTRIENTS :"/>
-                            <Text fx:id="nutrientsContent" styleClass="content-text"/>
-                        </VBox>
-                    </VBox>
-
-                    <!-- Ajout des nouveaux boutons -->
-                    <Button fx:id="addToShoppingListButton" text="add to shopping list" styleClass="action-button" onAction="#addToShoppingList"/>
-                    <Button fx:id="toFavoriteListButton" styleClass="action-button" onAction="#modifInFavoriteList"/>
-                </VBox>
-            </content>
-        </ScrollPane>
+                </content>
+            </ScrollPane>
+        </VBox>
     </center>
 </BorderPane>

@@ -41,7 +41,7 @@
                 <graphic>
                     <ImageView fitHeight="30" fitWidth="30" preserveRatio="true">
                         <image>
-                            <Image url="@/images/gorcery.png" />
+                            <Image url="@/images/grocery.png" />
                         </image>
                     </ImageView>
                 </graphic>
@@ -71,38 +71,35 @@
 
     <!-- 📜 Partie scrollable -->
     <center>
-        <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
-            <content>
-                <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
+        <VBox style="-fx-background-color: #a56600" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToWidth="true" style="-fx-background-color: #a56600;">
+                <content>
+                    <VBox fx:id="scrollPaneContent" spacing="20" alignment="TOP_CENTER" minHeight="700" style="-fx-background-color: #a56600;">
 
-                    <!-- Logo et champ de recherche -->
-                    <VBox spacing="15" alignment="CENTER">
-                        <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@/images/Logo.PNG" />
-                            </image>
-                        </ImageView>
+                        <!-- Logo et champ de recherche -->
+                        <VBox spacing="15" alignment="CENTER">
+                            <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@/images/Logo.PNG" />
+                                </image>
+                            </ImageView>
 
-                        <HBox spacing="10" alignment="CENTER">
-                            <TextField fx:id="searchField" promptText="Search recipes"
-                                       style="-fx-background-radius: 10; -fx-padding: 5 10;"
-                                       VBox.vgrow="NEVER"
-                                       maxWidth="200"/>
-                            <Button text="Search" onAction="#handleSearch" />
-                        </HBox>
+                            <HBox spacing="10" alignment="CENTER">
+                                <TextField fx:id="searchField" promptText="Search recipes"
+                                           style="-fx-background-radius: 10; -fx-padding: 5 10;"
+                                           VBox.vgrow="NEVER"
+                                           maxWidth="200"/>
+                                <Button text="Search" onAction="#handleSearch" />
+                            </HBox>
 
-                        <Label fx:id="searchResultLabel" />
+                            <Label fx:id="searchResultLabel" />
+                        </VBox>
+
+                        <!-- Recettes -->
+                        <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
                     </VBox>
-
-                    <!-- Recettes -->
-                    <FlowPane fx:id="recipeFlowPane" hgap="15" vgap="15" alignment="CENTER"/>
-                </VBox>
-            </content>
-        </ScrollPane>
+                </content>
+            </ScrollPane>
+        </VBox>
     </center>
-
-
-    <bottom>
-        <HBox style="-fx-background-color: #a56600;" minHeight="0" prefHeight="0" maxHeight="0"/>
-    </bottom>
 </BorderPane>
