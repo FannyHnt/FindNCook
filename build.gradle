@@ -28,7 +28,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'jgfx.javagradlefx'
-    mainClass = 'jgfx.javagradlefx.HelloApplication'
+    mainClass = 'jgfx.javagradlefx.FindNCookApplication'
 }
 
 javafx {

@@ -76,4 +76,12 @@ public class FavoriteRecipe {
         }
         return null;
     }
+
+    public void setJsonFilesHandler(JsonFilesHandler jsonFilesHandler) {
+        this.jsonFilesHandler = jsonFilesHandler;
+    }
+
+    public void setJsonRequestHandler(JsonRequestHandler jsonRequestHandler) {
+        this.jsonRequestHandler = jsonRequestHandler;
+    }
 }

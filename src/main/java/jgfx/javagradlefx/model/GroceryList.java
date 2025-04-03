@@ -72,4 +72,7 @@ public class GroceryList {
         return ingredients;
     }
 
+    public void setJsonFilesHandler(JsonFilesHandler jsonFilesHandler) {
+        this.jsonFilesHandler = jsonFilesHandler;
+    }
 }
