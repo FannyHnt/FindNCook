@@ -17,8 +17,8 @@ public class NavigationHandler {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
 
         // Get screen dimensions
-        double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
-        double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
+        double screenWidth = anyNodeInScene.getScene().getWindow().getWidth();
+        double screenHeight = anyNodeInScene.getScene().getWindow().getHeight();
 
         Scene root =new Scene(loader.load(),screenWidth,screenHeight);
 
@@ -28,15 +28,16 @@ public class NavigationHandler {
     }
 
     @FXML
-    public void goToRicipeDetails(Long id, Node anyNode) throws IOException {
+    public void goToRecipeDetails(Long id, Node anyNode) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/RecipeDetailsView.fxml"));
         Parent root = loader.load(); // Le FXML est chargé ici, le contrôleur est instancié par JavaFX
 
         RecipeDetailsController controller = loader.getController();
         controller.setRecetteId(id);
 
-        double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
-        double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
+        // Get screen dimensions
+        double screenWidth = anyNode.getScene().getWindow().getWidth();
+        double screenHeight = anyNode.getScene().getWindow().getHeight();
 
         Scene scene =new Scene(root,screenWidth,screenHeight);
 

@@ -1,9 +1,6 @@
 package jgfx.javagradlefx.controller;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -11,8 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 import jgfx.javagradlefx.model.Recipe;
 import jgfx.javagradlefx.model.User;
 import java.io.IOException;
@@ -116,21 +111,7 @@ public class HomeController {
     }
 
     private void goToRecipeDetails(Long id) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/jgfx/javagradlefx/RecipeDetailsView.fxml"));
-        Parent root = loader.load(); // Le FXML est chargé ici, le contrôleur est instancié par JavaFX
-
-        RecipeDetailsController controller = loader.getController();
-        controller.setRecetteId(id);
-
-        double screenWidth = Screen.getPrimary().getBounds().getWidth() - 200;
-        double screenHeight = Screen.getPrimary().getBounds().getHeight() - 200;
-
-        Scene scene =new Scene(root,screenWidth,screenHeight);
-
-        Stage stage = (Stage) searchField.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        navbar.goToRecipeDetails(id,searchField);
     }
-
 }
 

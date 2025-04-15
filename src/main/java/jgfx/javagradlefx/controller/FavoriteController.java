@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -29,6 +30,9 @@ public class FavoriteController {
     private FlowPane recipeFlowPane;
 
     @FXML
+    private ScrollPane scrollPaneRoot;
+
+    @FXML
     private void initialize() {
         showRecipes();
     }
@@ -36,6 +40,7 @@ public class FavoriteController {
     private void showRecipes(){
         recipeFlowPane.getChildren().clear();
         recipes = favoriteRecipe.getFavoris();
+
 
         if (recipes.isEmpty()) {
             Label label = new Label("Empty");
@@ -69,7 +74,7 @@ public class FavoriteController {
             hyperlink.setId(String.valueOf(recipe.getId()));
             hyperlink.setOnAction(event -> {
                 try {
-                    navbar.goToRicipeDetails(Long.parseLong(hyperlink.getId()), recipeFlowPane);
+                    navbar.goToRecipeDetails(Long.parseLong(hyperlink.getId()), recipeFlowPane);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

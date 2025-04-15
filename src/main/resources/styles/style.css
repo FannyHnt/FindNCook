@@ -14,16 +14,22 @@
 
 
 .title-label {
-    -fx-font-size: 16px;
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
-    -fx-text-fill: #8B4513; /* marron foncé */
+    -fx-font-style: normal;
+    -fx-text-fill: #6e3518; /* marron très foncé */
 }
 
 
 .info-label {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-text-fill: #a0522d; /* un peu plus doux que le titre */
+    -fx-text-fill: #7a3e1d; /* un peu plus doux que le titre */
+}
+
+.parametre-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: white; /* un peu plus doux que le titre */
 }
 
 
@@ -58,9 +64,9 @@
 }
 
 .user-setting-input-field {
-    -fx-font-size: 14px;
+    -fx-font-size: 10px;
     -fx-background-color: #FFF8E1; /* Fond clair */
     -fx-border-color: #D4A157; /* Bordure jaune */
     -fx-border-radius: 5px;
-    -fx-padding: 10px;
+    -fx-padding: 3px;
 }

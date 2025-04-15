@@ -194,7 +194,7 @@ public class AdvancedResearchController {
     }
 
     private void goToRecipeDetails(Long id) throws IOException {
-        navbar.goToRicipeDetails(id, recipeFlowPane);
+        navbar.goToRecipeDetails(id, recipeFlowPane);
     }
 
     @FXML

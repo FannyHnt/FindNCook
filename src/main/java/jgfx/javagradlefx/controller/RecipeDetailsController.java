@@ -82,6 +82,8 @@ public class RecipeDetailsController {
         try {
             Image image = new Image(recipeDetails.getImage(), true);
             imageView.setImage(image);
+            imageView.setFitWidth(300);
+            imageView.setFitHeight(300);
             if (image.isError()) {
                 System.out.println("Erreur chargement image pour recette " + recipeDetails.getName() + ": " + image.getException());
             }
@@ -119,12 +121,12 @@ public class RecipeDetailsController {
         StringBuilder sb = new StringBuilder();
         for(int i = 0 ; i < nutrients.size() - 1; i++) {
             sb.append("\t");
-            sb.append("- " + nutrients.get(i).getQuantity() + " " + nutrients.get(i).getUnit() + " " + nutrients.get(i).getName() + "( Percent Of Daily Needs : " + nutrients.get(nutrients.size()-1).getPercentOfDailyNeeds() + " )");
+            sb.append("- " + nutrients.get(i).getQuantity() + " " + nutrients.get(i).getUnit() + " " + nutrients.get(i).getName());
             sb.append("\n");
         }
         sb.append("\t");
         sb.append("- ");
-        sb.append(nutrients.get(nutrients.size()-1).getQuantity() + " " + nutrients.get(nutrients.size()-1).getUnit() + " " + nutrients.get(nutrients.size()-1).getName() + "( Percent Of Daily Needs : " + nutrients.get(nutrients.size()-1).getPercentOfDailyNeeds() + " )");
+        sb.append(nutrients.get(nutrients.size()-1).getQuantity() + " " + nutrients.get(nutrients.size()-1).getUnit() + " " + nutrients.get(nutrients.size()-1).getName() );
         return sb.toString();
     }
 
