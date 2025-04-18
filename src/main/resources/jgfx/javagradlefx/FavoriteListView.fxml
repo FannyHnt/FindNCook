@@ -79,7 +79,7 @@
                         <VBox spacing="15" alignment="CENTER">
                             <ImageView fitHeight="180" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@/images/Logo.PNG" />
+                                    <Image url="@/images/Logo.png" />
                                 </image>
                             </ImageView>
                         </VBox>
