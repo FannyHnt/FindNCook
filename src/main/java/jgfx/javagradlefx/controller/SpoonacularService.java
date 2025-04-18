@@ -21,7 +21,7 @@ import jgfx.javagradlefx.model.Recipe;
 public class SpoonacularService {
 
     private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();
-    private String key = "e8a0cb265d1d4ab79427f52aba817b54";
+    private String key = "39e2f7028c974a77ae679d0d22e6fd38";
     private String prefix = "https://api.spoonacular.com/recipes/";
 
     // Cette méthode permet d'ouvrire une connexion avec l'API de spoonacular

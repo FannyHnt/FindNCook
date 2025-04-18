@@ -91,7 +91,6 @@
                                            maxWidth="200"/>
                                 <Button text="Search" onAction="#handleSearch" />
                             </HBox>
-
                             <Label fx:id="searchResultLabel" />
                         </VBox>
 

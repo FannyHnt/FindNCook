@@ -5,6 +5,7 @@ module jgfx.javagradlefx {
     requires java.desktop;
 
 
-    opens jgfx.javagradlefx to javafx.fxml;
+    opens jgfx.javagradlefx.controller to javafx.fxml;
     exports jgfx.javagradlefx;
+    exports jgfx.javagradlefx.controller;
 }
