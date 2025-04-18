@@ -1,6 +1,10 @@
-# java-gradle-fx
-
 # FindNCook
+
+## DEVELOPPEUR
+- ANNNOUR AHMAT MASNA
+- HANITRINIRINA SAROBIDY FANNY
+
+## DESCRIPTION
 
 FindNCook est un projet Java utilisant JavaFX, conçu pour faciliter la recherche de recette de cuisine. Il intègre des outils modernes tels que Gradle pour la gestion de projet, JUnit pour les tests, et des workflows CI/CD préconfigurés pour assurer une intégration continue sur les systèmes Linux, Windows et macOS.
 
@@ -38,18 +42,41 @@ Assurez-vous d'avoir installé les éléments suivants sur votre machine :
    ```
 
 3. Ouvrez le projet dans votre IDE préféré (IntelliJ IDEA, Eclipse, etc.).
-4. Assurez-vous que le JDK 17 est configuré dans votre IDE.
-5. Importez le projet Gradle si nécessaire.
-6. Buildez le projet :
+
+4. Importez le projet Gradle si nécessaire.
+
+5. Assurez-vous que le JDK 17 est configuré dans votre IDE.
+   - Pour IntelliJ IDEA, allez dans `File > Project Structure > Project` et sélectionnez le JDK 17.
+   - Pour Eclipse, allez dans `Window > Preferences > Java > Installed JREs` et ajoutez le JDK 17.
+   
+6. Télécharger JavaFX SDK 17.0.1 depuis [GluonHQ](https://gluonhq.com/products/javafx/) et décompressez-le dans un répertoire de votre choix.
+
+7. Ajoutez le chemin de JavaFX à votre projet :
+   - Pour IntelliJ IDEA, allez dans `File > Project Structure > Libraries` et ajoutez le répertoire `lib` de JavaFX.
+   - Pour Eclipse, allez dans `Project > Properties > Java Build Path > Libraries` et ajoutez le répertoire `lib` de JavaFX.
+   
+8. Buildez le projet :
 
    ```bash
    ./gradlew build
    ```
-7. Exécutez le projet à l'aide de votre IDE ou en ligne de commande :
+9. Exécutez le projet à l'aide de votre IDE 
+
+10. Sinon exécutez le en ligne de commande :
 
    ```bash
    ./gradlew run
    ```
+11. Modifier les configurations si nécessaire:
+    - En utilisant Intellij, aller dans Edit configurations > Add new configuration > Application > Main class: `com.example.findncook.Main` > Program arguments: `--module-path /path/to/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml` (remplacez `/path/to/javafx-sdk/lib` par le chemin d'accès à votre installation JavaFX).
+
+## FONCTIONNALITES
+- Recherche de recettes par ingrédients
+- Affichage des détails de la recette
+- Sauvegarde des recettes favorites
+- Interface utilisateur intuitive et réactive
+
+## INFORMATIONS SUPPLEMENTAIRES
 
 Additionally workflows for CI/CD on Linux, Windows, and MacOS are pre-configured below:
 

@@ -1,1 +1,332 @@
-{}
+{"715415": {
+    "image": "https://img.spoonacular.com/recipes/715415-556x370.jpg",
+    "etapes": [
+        "Enjoy!",
+        "To the pot, add the tomatoes, turnip and red lentils",
+        "Season conservatively with a pinch of salt and black pepper",
+        "Add the chicken breast and parsley",
+        "Stir in the vegetable stock and increase the heat on the stove to high",
+        "Simmer for 20 minutes or until the turnips are tender and the lentils are cooked through",
+        "Add the garlic and cook for an additional 2 minutes, or until fragrant",
+        "Cook for an additional 5 minutes",
+        "Adjust seasoning to taste",
+        "Bring the soup to a boil and then reduce to a simmer",
+        "To a large dutch oven or soup pot, heat the olive oil over medium heat",
+        "Add the onion, carrots and celery and cook for 8-10 minutes or until tender, stirring occasionally",
+        "Stir to combine",
+        "Serve the soup immediately garnished with fresh parsley and any additional toppings"
+    ],
+    "tempsPreparaation": 55,
+    "portion": 8,
+    "ingredients": [
+        {
+            "unit": "servings",
+            "quantity": 8,
+            "name": "diced additional toppings: avocado",
+            "id": 715415
+        },
+        {
+            "unit": "medium",
+            "quantity": 3,
+            "name": "diced carrots",
+            "id": 715415
+        },
+        {
+            "unit": "",
+            "quantity": 3,
+            "name": "diced celery stalks",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 280,
+            "name": "shredded chicken breast",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 30,
+            "name": "italian flat leaf parsley",
+            "id": 715415
+        },
+        {
+            "unit": "cloves",
+            "quantity": 6,
+            "name": "garlic",
+            "id": 715415
+        },
+        {
+            "unit": "Tbsps",
+            "quantity": 2,
+            "name": "olive oil",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 793,
+            "name": "canned tomatoes",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 360,
+            "name": "red dried lentils",
+            "id": 715415
+        },
+        {
+            "unit": "servings",
+            "quantity": 8,
+            "name": "black salt and pepper",
+            "id": 715415
+        },
+        {
+            "unit": "large",
+            "quantity": 1,
+            "name": "diced turnip",
+            "id": 715415
+        },
+        {
+            "unit": "l",
+            "quantity": 1,
+            "name": "vegetable stock",
+            "id": 715415
+        },
+        {
+            "unit": "medium",
+            "quantity": 1,
+            "name": "yellow diced onion",
+            "id": 715415
+        }
+    ],
+    "regimeAlimentaires": [
+        "gluten free",
+        "dairy free"
+    ],
+    "nom": "Red Lentil Soup with Chicken and Turnips",
+    "nutrients": [
+        {
+            "unit": "kcal",
+            "quantity": 477.24,
+            "percentOfDailyNeeds": 23.86,
+            "name": "Calories",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 20.34,
+            "percentOfDailyNeeds": 31.29,
+            "name": "Fat",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 3.1,
+            "percentOfDailyNeeds": 19.37,
+            "name": "Saturated Fat",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 51.78,
+            "percentOfDailyNeeds": 17.26,
+            "name": "Carbohydrates",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 27.99,
+            "percentOfDailyNeeds": 10.18,
+            "name": "Net Carbohydrates",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 10.55,
+            "percentOfDailyNeeds": 11.72,
+            "name": "Sugar",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 29.75,
+            "percentOfDailyNeeds": 9.92,
+            "name": "Cholesterol",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 1335.78,
+            "percentOfDailyNeeds": 58.08,
+            "name": "Sodium",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 0,
+            "percentOfDailyNeeds": 100,
+            "name": "Alcohol",
+            "id": 715415
+        },
+        {
+            "unit": "%",
+            "quantity": 0,
+            "percentOfDailyNeeds": 100,
+            "name": "Alcohol %",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 26.93,
+            "percentOfDailyNeeds": 53.86,
+            "name": "Protein",
+            "id": 715415
+        },
+        {
+            "unit": "IU",
+            "quantity": 5029.39,
+            "percentOfDailyNeeds": 100.59,
+            "name": "Vitamin A",
+            "id": 715415
+        },
+        {
+            "unit": "g",
+            "quantity": 23.79,
+            "percentOfDailyNeeds": 95.16,
+            "name": "Fiber",
+            "id": 715415
+        },
+        {
+            "unit": "µg",
+            "quantity": 95.8,
+            "percentOfDailyNeeds": 91.23,
+            "name": "Vitamin K",
+            "id": 715415
+        },
+        {
+            "unit": "µg",
+            "quantity": 327.55,
+            "percentOfDailyNeeds": 81.89,
+            "name": "Folate",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 1.05,
+            "percentOfDailyNeeds": 52.74,
+            "name": "Manganese",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.96,
+            "percentOfDailyNeeds": 47.99,
+            "name": "Vitamin B6",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 9.33,
+            "percentOfDailyNeeds": 46.63,
+            "name": "Vitamin B3",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 1465.81,
+            "percentOfDailyNeeds": 41.88,
+            "name": "Potassium",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 34.02,
+            "percentOfDailyNeeds": 41.23,
+            "name": "Vitamin C",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.6,
+            "percentOfDailyNeeds": 39.83,
+            "name": "Vitamin B1",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 390.65,
+            "percentOfDailyNeeds": 39.06,
+            "name": "Phosphorus",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 6.06,
+            "percentOfDailyNeeds": 33.66,
+            "name": "Iron",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.67,
+            "percentOfDailyNeeds": 33.52,
+            "name": "Copper",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 3.12,
+            "percentOfDailyNeeds": 31.23,
+            "name": "Vitamin B5",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 123.14,
+            "percentOfDailyNeeds": 30.78,
+            "name": "Magnesium",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 4.32,
+            "percentOfDailyNeeds": 28.83,
+            "name": "Vitamin E",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 3.62,
+            "percentOfDailyNeeds": 24.12,
+            "name": "Zinc",
+            "id": 715415
+        },
+        {
+            "unit": "µg",
+            "quantity": 14.97,
+            "percentOfDailyNeeds": 21.39,
+            "name": "Selenium",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 0.35,
+            "percentOfDailyNeeds": 20.43,
+            "name": "Vitamin B2",
+            "id": 715415
+        },
+        {
+            "unit": "mg",
+            "quantity": 103.76,
+            "percentOfDailyNeeds": 10.38,
+            "name": "Calcium",
+            "id": 715415
+        },
+        {
+            "unit": "µg",
+            "quantity": 0.12,
+            "percentOfDailyNeeds": 1.98,
+            "name": "Vitamin B12",
+            "id": 715415
+        }
+    ]
+}}
