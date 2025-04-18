@@ -13,6 +13,24 @@ import jgfx.javagradlefx.model.User;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Contrôleur pour la gestion de la page d'accueil dans l'application JavaFX.
+ * Permet d'afficher des recettes recommandées ou recherchées par l'utilisateur.
+ *
+ * Dépendances :
+ * - `SpoonacularService` : Appels API pour les recettes.
+ * - `JsonRequestHandler` : Gestion des données utilisateur.
+ * - `NavigationHandler` : Navigation entre les vues.
+ *
+ * FXML associé : Non spécifié.
+ *
+ * Méthodes principales :
+ * - `initialize()` : Charge les recettes recommandées selon les préférences utilisateur.
+ * - `handleSearch()` : Recherche des recettes selon une requête utilisateur.
+ * - `showRecipes()` : Affiche les recettes sous forme de cartes interactives.
+ * - Méthodes de navigation (`goToUser`, `goToAdvancedSearch`, etc.) : Naviguent vers d'autres vues.
+ */
+
 public class HomeController {
 
     private SpoonacularService spoonacularService;

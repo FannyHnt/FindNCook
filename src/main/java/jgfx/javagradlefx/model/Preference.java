@@ -3,6 +3,23 @@ package jgfx.javagradlefx.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Représente les préférences alimentaires d'un utilisateur dans l'application JavaFX.
+ * Contient des informations sur le régime alimentaire et les intolérances.
+ *
+ * Champs principaux :
+ * - `id` : Identifiant unique des préférences.
+ * - `diet` : Régime alimentaire de l'utilisateur (ex. végétarien, végan).
+ * - `intolerances` : Liste des intolérances alimentaires de l'utilisateur.
+ *
+ * Méthodes principales :
+ * - `getDiet()` : Récupère le régime alimentaire.
+ * - `setDiet(String diet)` : Définit le régime alimentaire.
+ * - `getIntolerances()` : Récupère la liste des intolérances.
+ * - `setIntolerances(List<String> intolerances)` : Définit la liste des intolérances.
+ * - `addIntolerance(String intolerance)` : Ajoute une intolérance à la liste.
+ */
+
 public class Preference {
     private Long id;
     private String diet;

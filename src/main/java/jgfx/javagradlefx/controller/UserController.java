@@ -9,6 +9,27 @@ import jgfx.javagradlefx.model.Preference;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Contrôleur pour la gestion des préférences utilisateur dans l'application JavaFX.
+ * Permet de modifier le nom, le régime alimentaire et les intolérances de l'utilisateur.
+ *
+ * Dépendances :
+ * - `JsonRequestHandler` : Gestion des données utilisateur via un fichier JSON.
+ * - `NavigationHandler` : Navigation entre les différentes vues.
+ *
+ * FXML associé : Non spécifié.
+ *
+ * Méthodes principales :
+ * - `initialize()` : Initialise les données utilisateur et configure les cases à cocher.
+ * - `save()` : Sauvegarde les modifications apportées aux préférences utilisateur.
+ * - `reinitialize()` : Réinitialise les préférences utilisateur avec des valeurs par défaut.
+ * - Méthodes de navigation (`goToHome`, `goToAdvancedSearch`, etc.) : Naviguent vers d'autres vues.
+ *
+ * Gestion des intolérances :
+ * - Les intolérances ajoutées, supprimées ou inchangées sont suivies via des ensembles (`added`, `removed`, etc.).
+ * - Les styles des cases à cocher changent en fonction de leur état (nouveau, validé, ou décoché).
+ */
+
 public class UserController {
 
     private JsonRequestHandler jsonRequestHandler = new JsonRequestHandler();

@@ -13,6 +13,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Gestionnaire pour les requêtes JSON liées aux recettes et utilisateurs.
+ * Fournit des méthodes pour transformer des objets JSON en modèles Java et gérer les données utilisateur.
+ *
+ * Méthodes principales :
+ * - `jsonToRecipe(JSONObject obj)` : Convertit un objet JSON en liste de recettes.
+ * - `jsonToRecipeInfo(JSONObject obj, Map<String, List<String>> stepsObj, JSONObject ingredientsObj, JSONObject nutrientsObj)` :
+ *   Transforme un objet JSON en détails de recette.
+ * - `extractStepsAndIngredients(JSONArray instructionsArray)` : Extrait les étapes et ingrédients d'un tableau JSON.
+ * - `jsonToIngredients(JSONObject obj, Long id)` : Convertit un objet JSON en liste d'ingrédients.
+ * - `jsonToNutrient(JSONObject obj, long id)` : Convertit un objet JSON en liste de nutriments.
+ * - `chargerUtilisateur()` : Charge les données utilisateur depuis un fichier JSON.
+ * - `modifierFichierUtilisateur(User user)` : Sauvegarde les données utilisateur dans un fichier JSON.
+ * - `reinitialiserFichierUtilisateur()` : Réinitialise les données utilisateur avec des valeurs par défaut.
+ *
+ * Exceptions :
+ * - Lance une `RuntimeException` en cas d'erreur de lecture/écriture ou de format JSON invalide.
+ */
+
 public class JsonRequestHandler {
 
     private static final String USER_FILE_PATH = "src/main/resources/data/User.json";

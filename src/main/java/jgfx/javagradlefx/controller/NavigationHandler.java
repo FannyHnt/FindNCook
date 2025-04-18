@@ -5,10 +5,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+
+/**
+ * Gestionnaire de navigation pour l'application JavaFX.
+ * Permet de changer de vue et de naviguer vers les différentes pages de l'application.
+ *
+ * Méthodes principales :
+ * - `goToAnotherPage(Node anyNodeInScene, String fxmlFile)` : Change la scène actuelle vers une nouvelle vue.
+ * - `goToRecipeDetails(Long id, Node anyNode)` : Navigue vers la vue des détails d'une recette en passant l'ID.
+ *
+ * Exceptions :
+ * - Lance une `IOException` en cas d'erreur de chargement du fichier FXML.
+ */
 
 public class NavigationHandler {
 

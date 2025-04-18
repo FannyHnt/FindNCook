@@ -18,6 +18,26 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLEncoder;
 
+/**
+ * Contrôleur pour la gestion de la liste de courses dans l'application JavaFX.
+ * Permet d'ajouter, supprimer, imprimer ou envoyer par email des ingrédients.
+ *
+ * Dépendances :
+ * - `GroceryList` : Gestion des ingrédients de la liste de courses.
+ * - `NavigationHandler` : Navigation entre les vues.
+ *
+ * FXML associé : Non spécifié.
+ *
+ * Méthodes principales :
+ * - `initialize()` : Initialise la liste de courses et configure les cellules personnalisées.
+ * - `addIngredient()` : Ajoute un ingrédient à la liste.
+ * - `uploadIngredients()` : Met à jour l'affichage des ingrédients.
+ * - `emptyList()` : Vide la liste de courses.
+ * - `printIngredientList()` : Imprime la liste des ingrédients.
+ * - `sendListByEmail()` : Envoie la liste des ingrédients par email.
+ * - Méthodes de navigation (`goToUser`, `goToHome`, etc.) : Naviguent vers d'autres vues.
+ */
+
 public class ShoppingListController {
 
     @FXML

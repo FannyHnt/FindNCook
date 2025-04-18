@@ -1,7 +1,35 @@
 package jgfx.javagradlefx.model;
 
-
 import java.util.List;
+
+/**
+ * Représente les détails d'une recette dans l'application JavaFX.
+ * Contient des informations complètes sur une recette, y compris les ingrédients, les étapes, les régimes alimentaires, etc.
+ *
+ * Champs principaux :
+ * - `id` : Identifiant unique de la recette.
+ * - `name` : Nom de la recette.
+ * - `image` : URL de l'image associée à la recette.
+ * - `servings` : Nombre de portions de la recette.
+ * - `cookingTime` : Temps de préparation de la recette.
+ * - `ingredientList` : Liste des ingrédients nécessaires pour la recette.
+ * - `steps` : Étapes de préparation de la recette.
+ * - `diets` : Régimes alimentaires compatibles avec la recette.
+ * - `nutrients` : Liste des nutriments associés à la recette.
+ *
+ * Méthodes principales :
+ * - `getId()` : Récupère l'identifiant de la recette.
+ * - `getName()` : Récupère le nom de la recette.
+ * - `getImage()` : Récupère l'URL de l'image de la recette.
+ * - `getServings()` : Récupère le nombre de portions.
+ * - `getCookingTime()` : Récupère le temps de préparation.
+ * - `getIngredientList()` : Récupère la liste des ingrédients.
+ * - `getSteps()` : Récupère les étapes de préparation.
+ * - `getDiets()` : Récupère les régimes alimentaires compatibles.
+ * - `getNutrients()` : Récupère la liste des nutriments.
+ * - `toString()` : Retourne une représentation textuelle des détails de la recette.
+ */
+
 
 public class RecipeDetails {
     private Long id;

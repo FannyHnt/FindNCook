@@ -15,6 +15,28 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.*;
 
+/**
+ * Contrôleur pour la gestion de la recherche avancée dans l'application JavaFX.
+ * Ce contrôleur permet à l'utilisateur de rechercher des recettes en fonction de divers critères,
+ * tels que la cuisine, le régime alimentaire, les intolérances, les ingrédients inclus/exclus,
+ * le type de plat, le temps de préparation, et les valeurs nutritionnelles.
+ *
+ * Dépendances :
+ * - `NavigationHandler` pour la navigation entre les vues.
+ * - `SpoonacularService` pour les appels API.
+ * - `JsonRequestHandler` pour le traitement des réponses JSON.
+ *
+ * FXML associé : `AdvancedResearchView.fxml`
+ *
+ * Méthodes principales :
+ * - `initialize()` : Initialise les champs et les cases à cocher.
+ * - `handleSearch()` : Gère la recherche en construisant une requête API.
+ * - `showRecipes()` : Affiche les recettes trouvées sous forme de cartes.
+ * - `handleCheckboxChange(CheckBox cb)` : Gère les changements d'état des cases à cocher.
+ * - `goToRecipeDetails(Long id)` : Navigue vers les détails d'une recette.
+ * - Méthodes de navigation (`goToUser`, `goToHome`, etc.) : Naviguent vers d'autres vues.
+ */
+
 public class AdvancedResearchController {
 
     @FXML

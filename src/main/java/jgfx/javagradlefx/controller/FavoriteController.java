@@ -16,6 +16,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Contrôleur pour la gestion des recettes favorites dans l'application JavaFX.
+ * Permet d'afficher les recettes favorites sous forme de cartes interactives.
+ *
+ * Dépendances :
+ * - `NavigationHandler` : Navigation entre les vues.
+ * - `FavoriteRecipe` : Gestion des recettes favorites.
+ *
+ * FXML associé : Non spécifié.
+ *
+ * Méthodes principales :
+ * - `initialize()` : Initialise l'affichage des recettes favorites.
+ * - `showRecipes()` : Affiche les recettes favorites sous forme de cartes.
+ * - Méthodes de navigation (`goToUser`, `goToAdvancedSearch`, etc.) : Naviguent vers d'autres vues.
+ */
+
 public class FavoriteController {
 
     FavoriteRecipe favoriteRecipe = new FavoriteRecipe();

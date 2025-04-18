@@ -1,5 +1,22 @@
 package jgfx.javagradlefx.model;
 
+/**
+ * Représente une recette dans l'application JavaFX.
+ * Contient des informations sur l'identifiant, le nom et l'URL de l'image de la recette.
+ *
+ * Champs principaux :
+ * - `id` : Identifiant unique de la recette.
+ * - `name` : Nom de la recette.
+ * - `urlImage` : URL de l'image associée à la recette.
+ *
+ * Méthodes principales :
+ * - `getId()` : Récupère l'identifiant de la recette.
+ * - `setId(Long id)` : Définit l'identifiant de la recette.
+ * - `getName()` : Récupère le nom de la recette.
+ * - `getUrlImage()` : Récupère l'URL de l'image de la recette.
+ * - `toString()` : Retourne une représentation textuelle de la recette.
+ */
+
 public class Recipe {
     private Long id;
     private String name;

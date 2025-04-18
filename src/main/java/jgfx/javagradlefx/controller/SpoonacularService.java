@@ -17,6 +17,23 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import jgfx.javagradlefx.model.Recipe;
 
+/**
+ * Service pour interagir avec l'API Spoonacular.
+ * Fournit des méthodes pour récupérer des recettes, des informations nutritionnelles et des détails d'ingrédients.
+ *
+ * Méthodes principales :
+ * - `getRecipe(String query)` : Récupère une liste de recettes correspondant à une requête.
+ * - `getRecipeByPrefs(String regime, List<String> intolerancesAlimentaires)` : Récupère des recettes basées sur les préférences utilisateur.
+ * - `getRecipeInformation(Long id)` : Récupère les informations détaillées d'une recette par son ID.
+ * - `getAnalyzedRecipeInfomation(Long id)` : Récupère les étapes détaillées d'une recette par son ID.
+ * - `getIngredientById(Long id)` : Récupère les informations des ingrédients d'une recette.
+ * - `getNutritionInfo(Long id)` : Récupère les informations nutritionnelles d'une recette.
+ * - `getRecipeInfo(long id)` : Construit une recette détaillée à partir de plusieurs requêtes.
+ * - `getRepcipeByUrl(String url)` : Récupère des recettes via une URL personnalisée.
+ *
+ * Exceptions :
+ * - Lance une `RuntimeException` en cas d'erreur de connexion ou de requête.
+ */
 
 public class SpoonacularService {
 

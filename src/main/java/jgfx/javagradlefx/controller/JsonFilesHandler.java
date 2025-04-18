@@ -7,6 +7,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Gestionnaire de fichiers JSON pour la lecture et l'écriture.
+ * Fournit des méthodes utilitaires pour manipuler des fichiers JSON.
+ *
+ * Méthodes principales :
+ * - `readFile(String PATH)` : Lit le contenu d'un fichier JSON et le retourne sous forme de `JSONObject`.
+ * - `writeToFile(JSONObject jsonObject, String PATH)` : Écrit un objet JSON dans un fichier.
+ *
+ * Exceptions :
+ * - Lance une `RuntimeException` si le fichier n'existe pas ou en cas d'erreur d'entrée/sortie.
+ */
+
 public class JsonFilesHandler {
 
     // Fonction pour charger les éléments d'un fichier JSON

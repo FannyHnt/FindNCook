@@ -13,6 +13,26 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Contrôleur pour la gestion des détails d'une recette dans l'application JavaFX.
+ * Permet d'afficher les informations détaillées d'une recette, de l'ajouter aux favoris ou à la liste de courses.
+ *
+ * Dépendances :
+ * - `SpoonacularService` : Récupération des détails de la recette via l'API.
+ * - `FavoriteRecipe` : Gestion des recettes favorites.
+ * - `GroceryList` : Gestion de la liste de courses.
+ * - `NavigationHandler` : Navigation entre les vues.
+ *
+ * FXML associé : `/jgfx/javagradlefx/RecipeDetailsView.fxml`.
+ *
+ * Méthodes principales :
+ * - `setRecetteId(Long id)` : Charge les détails d'une recette par son ID.
+ * - `showRecipes()` : Affiche les détails de la recette dans l'interface.
+ * - `modifInFavoriteList()` : Ajoute ou retire une recette des favoris.
+ * - `addToShoppingList()` : Ajoute les ingrédients de la recette à la liste de courses.
+ * - Méthodes de navigation (`goToUser`, `goToHome`, etc.) : Naviguent vers d'autres vues.
+ */
+
 public class RecipeDetailsController {
 
     private RecipeDetails recipeDetails;

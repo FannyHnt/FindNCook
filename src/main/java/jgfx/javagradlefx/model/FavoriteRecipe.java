@@ -7,6 +7,31 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Gestionnaire des recettes favorites dans l'application JavaFX.
+ * Permet d'ajouter, de supprimer et de récupérer des recettes favorites.
+ *
+ * Dépendances :
+ * - `JsonFilesHandler` : Gestion des fichiers JSON pour stocker les recettes favorites.
+ * - `JsonRequestHandler` : Conversion des objets JSON en objets Java et inversement.
+ *
+ * Fichier JSON associé : `src/main/resources/data/FavoriteRecipe.json`.
+ *
+ * Méthodes principales :
+ * - `addToFavoriteList(RecipeDetails recette)` : Ajoute une recette aux favoris.
+ * - `removeFromFavoriteList(RecipeDetails recette)` : Supprime une recette des favoris.
+ * - `isInFavorites(String id)` : Vérifie si une recette est dans les favoris.
+ * - `getFavoris()` : Récupère toutes les recettes favorites sous forme de liste.
+ * - `getFavoriteById(String id)` : Récupère les détails d'une recette favorite par son ID.
+ *
+ * Méthodes utilitaires :
+ * - `recipeDetailsToJson(RecipeDetails recipeDetails)` : Convertit une recette en objet JSON.
+ *
+ * Exceptions :
+ * - Lance une `RuntimeException` en cas d'erreur de lecture ou d'écriture dans le fichier JSON.
+ */
+
 public class FavoriteRecipe {
     private final String PATH = "src/main/resources/data/FavoriteRecipe.json";
     private JsonFilesHandler jsonFilesHandler = new JsonFilesHandler();
